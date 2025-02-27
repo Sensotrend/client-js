@@ -58,7 +58,10 @@ function getSecurityExtensionsFromWellKnownJson(baseUrl = "/", requestOptions?: 
 /**
  * Fetch a `CapabilityStatement` and extract the SMART endpoints from it
  */
-function getSecurityExtensionsFromConformanceStatement(baseUrl = "/", requestOptions?: RequestInit): Promise<fhirclient.OAuthSecurityExtensions>
+function getSecurityExtensionsFromConformanceStatement(
+    baseUrl = "/",
+    requestOptions?: RequestInit
+): Promise<fhirclient.OAuthSecurityExtensions>
 {
     return fetchConformanceStatement(baseUrl, requestOptions).then(meta => {
         const nsUri = "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris";
@@ -94,15 +97,19 @@ function getSecurityExtensionsFromConformanceStatement(baseUrl = "/", requestOpt
 
 /**
  * Given a FHIR server, returns an object with it's Oauth security endpoints
- * that we are interested in. This will try to find the info in both the
- * `CapabilityStatement` and the `.well-known/smart-configuration`. Whatever
- * Arrives first will be used and the other request will be aborted.
+ * that we are interested in. This will first try to find the info in the
+ * `.well-known/smart-configuration` and in case that fails, from the
+ * `CapabilityStatement` through the `metadata` endpoint.
  * @param [baseUrl = "/"] Fhir server base URL
+ * @param [options] request options for call to the metadata endpoint
  */
-export function getSecurityExtensions(baseUrl = "/"): Promise<fhirclient.OAuthSecurityExtensions>
+export function getSecurityExtensions(
+    baseUrl = "/",
+    options?: fhirclient.FetchOptions
+): Promise<fhirclient.OAuthSecurityExtensions>
 {
     return getSecurityExtensionsFromWellKnownJson(baseUrl)
-        .catch(() => getSecurityExtensionsFromConformanceStatement(baseUrl));
+        .catch(() => getSecurityExtensionsFromConformanceStatement(baseUrl, options));
 }
 
 /**
@@ -161,6 +168,7 @@ export async function authorize(
         height,
         pkceMode,
         clientPublicKeySetUrl,
+        agent,
         // Two deprecated values to use as fall-back values later
         redirect_uri,
         client_id,
@@ -300,8 +308,10 @@ export async function authorize(
         return await env.redirect(redirectUrl);
     }
 
+    const securityOptions = agent ? { agent } : undefined;
+
     // Get oauth endpoints and add them to the state
-    const extensions = await getSecurityExtensions(serverUrl);
+    const extensions = await getSecurityExtensions(serverUrl, securityOptions);
     Object.assign(state, extensions);
     await storage.set(stateKey, state);
 
@@ -573,6 +583,10 @@ export async function ready(env: fhirclient.Adapter, options: fhirclient.ReadyOp
         });
         debug("Token request options: %O", requestOptions);
 
+        if (options.agent) {
+            requestOptions.agent = options.agent;
+        }
+
         // The EHR authorization server SHALL return a JSON structure that
         // includes an access token or a message indicating that the
         // authorization request has been denied.
@@ -643,7 +657,7 @@ export async function buildTokenRequest(
             kid: string
         }
     }
-): Promise<RequestInit>
+): Promise<fhirclient.FetchOptions>
 {
     const { redirectUri, clientSecret, tokenUri, clientId, codeVerifier } = state;
 
