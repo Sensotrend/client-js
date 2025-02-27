@@ -1191,16 +1191,19 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.assertJsonPatch = exports.assert = exports.getTargetWindow = exports.getPatientParam = exports.byCodes = exports.byCode = exports.getAccessTokenExpiration = exports.getTimeInFuture = exports.jwtDecode = exports.randomString = exports.absolute = exports.makeArray = exports.setPath = exports.getPath = exports.fetchConformanceStatement = exports.getAndCache = exports.request = exports.loweCaseKeys = exports.responseToJSON = exports.checkResponse = exports.units = exports.debug = void 0;
+// const debug = require("debug");
+const debug_1 = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
 const HttpError_1 = __webpack_require__(/*! ./HttpError */ "./src/HttpError.ts");
 const settings_1 = __webpack_require__(/*! ./settings */ "./src/settings.ts");
-const debug = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+// import kantaMetadata from "../kanta-hrp-metadata.json";
+const kantaMetadata = __webpack_require__(/*! ./kanta-hrp-metadata.json */ "./src/kanta-hrp-metadata.json");
 // $lab:coverage:off$
 // @ts-ignore
 const {
   fetch
 } =  true ? window : 0;
 // $lab:coverage:on$
-const _debug = debug("FHIR");
+const _debug = (0, debug_1.default)("FHIR");
 exports.debug = _debug;
 /**
  * The cache for the `getAndCache` function
@@ -1397,7 +1400,8 @@ exports.getAndCache = getAndCache;
 function fetchConformanceStatement(baseUrl = "/", requestOptions) {
   const url = String(baseUrl).replace(/\/*$/, "/") + "metadata";
   return getAndCache(url, requestOptions).catch(ex => {
-    throw new Error(`Failed to fetch the conformance statement from "${url}". ${ex}`);
+    console.error(`Failed to fetch the conformance statement from "${url}". ${ex}. Returning predefined Kanta metadata instead.`);
+    return kantaMetadata;
   });
 }
 exports.fetchConformanceStatement = fetchConformanceStatement;
@@ -1967,13 +1971,14 @@ function getSecurityExtensionsFromConformanceStatement(baseUrl = "/", requestOpt
 }
 /**
  * Given a FHIR server, returns an object with it's Oauth security endpoints
- * that we are interested in. This will try to find the info in both the
- * `CapabilityStatement` and the `.well-known/smart-configuration`. Whatever
- * Arrives first will be used and the other request will be aborted.
+ * that we are interested in. This will first try to find the info in the
+ * `.well-known/smart-configuration` and in case that fails, from the
+ * `CapabilityStatement` through the `metadata` endpoint.
  * @param [baseUrl = "/"] Fhir server base URL
+ * @param [options] request options for call to the metadata endpoint
  */
-function getSecurityExtensions(baseUrl = "/") {
-  return getSecurityExtensionsFromWellKnownJson(baseUrl).catch(() => getSecurityExtensionsFromConformanceStatement(baseUrl));
+function getSecurityExtensions(baseUrl = "/", options) {
+  return getSecurityExtensionsFromWellKnownJson(baseUrl).catch(() => getSecurityExtensionsFromConformanceStatement(baseUrl, options));
 }
 exports.getSecurityExtensions = getSecurityExtensions;
 /**
@@ -2023,6 +2028,7 @@ async function authorize(env, params = {}) {
     height,
     pkceMode,
     clientPublicKeySetUrl,
+    agent,
     // Two deprecated values to use as fall-back values later
     redirect_uri,
     client_id
@@ -2132,8 +2138,11 @@ async function authorize(env, params = {}) {
     }
     return await env.redirect(redirectUrl);
   }
+  const securityOptions = agent ? {
+    agent
+  } : undefined;
   // Get oauth endpoints and add them to the state
-  const extensions = await getSecurityExtensions(serverUrl);
+  const extensions = await getSecurityExtensions(serverUrl, securityOptions);
   Object.assign(state, extensions);
   await storage.set(stateKey, state);
   // If this happens to be an open server and there is no authorizeUri
@@ -2364,6 +2373,9 @@ async function ready(env, options = {}) {
       privateKey: options.privateKey || state.clientPrivateJwk
     });
     debug("Token request options: %O", requestOptions);
+    if (options.agent) {
+      requestOptions.agent = options.agent;
+    }
     // The EHR authorization server SHALL return a JSON structure that
     // includes an access token or a message indicating that the
     // authorization request has been denied.
@@ -4279,6 +4291,17 @@ function plural(ms, msAbs, n, name) {
 
  /* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ({}); // section modified by isomorphic-webcrypto build 
 
+
+/***/ }),
+
+/***/ "./src/kanta-hrp-metadata.json":
+/*!*************************************!*\
+  !*** ./src/kanta-hrp-metadata.json ***!
+  \*************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"resourceType":"CapabilityStatement","id":"kanta-hrp","name":"MockMetadataForKantaHRP","status":"active","experimental":true,"date":"2024-12-07T06:35:44Z","kind":"instance","fhirVersion":"4.0.1","format":["json"],"rest":[{"mode":"server","security":{"extension":[{"extension":[{"valueUri":"https://phr-auth.at.kanta.fi/phr-authserver/authorize","url":"authorize"},{"valueUri":"https://phr-token.at.kanta.fi/phr-authserver/token","url":"token"}],"url":"http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris"}],"cors":true,"service":[{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/restful-security-service","code":"OAuth","display":"OAuth"}],"text":"OAuth"},{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/restful-security-service","code":"SMART-on-FHIR","display":"SMART-on-FHIR"}],"text":"SMART-on-FHIR"},{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/restful-security-service","code":"Basic","display":"Basic"}],"text":"Basic"}]}}]}');
 
 /***/ })
 

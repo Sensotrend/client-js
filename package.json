@@ -1,17 +1,19 @@
 {
   "name": "fhirclient",
-  "version": "2.5.4",
+  "version": "2.5.4-kanta-hrp-5",
   "description": "JavaScript client for Fast Healthcare Interoperability Resources",
   "author": "SMART Health IT <support@smarthealthit.org> (https://smarthealthit.org/)",
   "contributors": [
     "Josh Mandel <joshua.mandel@childrens.harvard.edu>",
     "Vladimir Ignatov <vlad.ignatov@gmail.com>",
-    "Dylan Phelan <dtphelan1@gmail.com>"
+    "Dylan Phelan <dtphelan1@gmail.com>",
+    "Mikael Rinnetmäki <mikael@sensotrend.com>"
   ],
   "keywords": [
     "SMART",
     "FHIR",
-    "Client"
+    "Client",
+    "Kanta"
   ],
   "license": "Apache-2.0",
   "main": "dist/lib/entry/node.js",
@@ -41,7 +43,7 @@
     "pack": "webpack",
     "build": "npm run clean && npm run build:module && npm run pack",
     "build:dev": "webpack --watch",
-    "build:module": "cp src/types.d.ts dist/lib && tsc -p tsconfig.module.json && babel --env-name module -d dist/lib dist/lib",
+    "build:module": "cp src/types.d.ts src/kanta-hrp-metadata.json dist/lib && tsc -p tsconfig.module.json && babel --env-name module -d dist/lib dist/lib",
     "doc": "typedoc",
     "clean": "rm -rf dist/build && rm -r dist/lib/*",
     "nightwatch": "nightwatch --headless test/specs/*.js"

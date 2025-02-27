@@ -78,13 +78,14 @@ function getSecurityExtensionsFromConformanceStatement(baseUrl = "/", requestOpt
 }
 /**
  * Given a FHIR server, returns an object with it's Oauth security endpoints
- * that we are interested in. This will try to find the info in both the
- * `CapabilityStatement` and the `.well-known/smart-configuration`. Whatever
- * Arrives first will be used and the other request will be aborted.
+ * that we are interested in. This will first try to find the info in the
+ * `.well-known/smart-configuration` and in case that fails, from the
+ * `CapabilityStatement` through the `metadata` endpoint.
  * @param [baseUrl = "/"] Fhir server base URL
+ * @param [options] request options for call to the metadata endpoint
  */
-function getSecurityExtensions(baseUrl = "/") {
-  return getSecurityExtensionsFromWellKnownJson(baseUrl).catch(() => getSecurityExtensionsFromConformanceStatement(baseUrl));
+function getSecurityExtensions(baseUrl = "/", options) {
+  return getSecurityExtensionsFromWellKnownJson(baseUrl).catch(() => getSecurityExtensionsFromConformanceStatement(baseUrl, options));
 }
 exports.getSecurityExtensions = getSecurityExtensions;
 /**
@@ -134,6 +135,7 @@ async function authorize(env, params = {}) {
     height,
     pkceMode,
     clientPublicKeySetUrl,
+    agent,
     // Two deprecated values to use as fall-back values later
     redirect_uri,
     client_id
@@ -243,8 +245,11 @@ async function authorize(env, params = {}) {
     }
     return await env.redirect(redirectUrl);
   }
+  const securityOptions = agent ? {
+    agent
+  } : undefined;
   // Get oauth endpoints and add them to the state
-  const extensions = await getSecurityExtensions(serverUrl);
+  const extensions = await getSecurityExtensions(serverUrl, securityOptions);
   Object.assign(state, extensions);
   await storage.set(stateKey, state);
   // If this happens to be an open server and there is no authorizeUri
@@ -475,6 +480,9 @@ async function ready(env, options = {}) {
       privateKey: options.privateKey || state.clientPrivateJwk
     });
     debug("Token request options: %O", requestOptions);
+    if (options.agent) {
+      requestOptions.agent = options.agent;
+    }
     // The EHR authorization server SHALL return a JSON structure that
     // includes an access token or a message indicating that the
     // authorization request has been denied.

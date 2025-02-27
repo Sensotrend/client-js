@@ -2496,15 +2496,18 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.assertJsonPatch = exports.assert = exports.getTargetWindow = exports.getPatientParam = exports.byCodes = exports.byCode = exports.getAccessTokenExpiration = exports.getTimeInFuture = exports.jwtDecode = exports.randomString = exports.absolute = exports.makeArray = exports.setPath = exports.getPath = exports.fetchConformanceStatement = exports.getAndCache = exports.request = exports.loweCaseKeys = exports.responseToJSON = exports.checkResponse = exports.units = exports.debug = void 0;
+// const debug = require("debug");
+var debug_1 = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
 var HttpError_1 = __webpack_require__(/*! ./HttpError */ "./src/HttpError.ts");
 var settings_1 = __webpack_require__(/*! ./settings */ "./src/settings.ts");
-var debug = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+// import kantaMetadata from "../kanta-hrp-metadata.json";
+var kantaMetadata = __webpack_require__(/*! ./kanta-hrp-metadata.json */ "./src/kanta-hrp-metadata.json");
 // $lab:coverage:off$
 // @ts-ignore
 var _ref = typeof FHIRCLIENT_PURE !== "undefined" ? window : __webpack_require__(/*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js"),
   fetch = _ref.fetch;
 // $lab:coverage:on$
-var _debug = debug("FHIR");
+var _debug = (0, debug_1.default)("FHIR");
 exports.debug = _debug;
 /**
  * The cache for the `getAndCache` function
@@ -2725,7 +2728,8 @@ function fetchConformanceStatement() {
   var requestOptions = arguments.length > 1 ? arguments[1] : undefined;
   var url = String(baseUrl).replace(/\/*$/, "/") + "metadata";
   return getAndCache(url, requestOptions).catch(function (ex) {
-    throw new Error("Failed to fetch the conformance statement from \"".concat(url, "\". ").concat(ex));
+    console.error("Failed to fetch the conformance statement from \"".concat(url, "\". ").concat(ex, ". Returning predefined Kanta metadata instead."));
+    return kantaMetadata;
   });
 }
 exports.fetchConformanceStatement = fetchConformanceStatement;
@@ -3549,15 +3553,17 @@ function getSecurityExtensionsFromConformanceStatement() {
 }
 /**
  * Given a FHIR server, returns an object with it's Oauth security endpoints
- * that we are interested in. This will try to find the info in both the
- * `CapabilityStatement` and the `.well-known/smart-configuration`. Whatever
- * Arrives first will be used and the other request will be aborted.
+ * that we are interested in. This will first try to find the info in the
+ * `.well-known/smart-configuration` and in case that fails, from the
+ * `CapabilityStatement` through the `metadata` endpoint.
  * @param [baseUrl = "/"] Fhir server base URL
+ * @param [options] request options for call to the metadata endpoint
  */
 function getSecurityExtensions() {
   var baseUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "/";
+  var options = arguments.length > 1 ? arguments[1] : undefined;
   return getSecurityExtensionsFromWellKnownJson(baseUrl).catch(function () {
-    return getSecurityExtensionsFromConformanceStatement(baseUrl);
+    return getSecurityExtensionsFromConformanceStatement(baseUrl, options);
   });
 }
 exports.getSecurityExtensions = getSecurityExtensions;
@@ -3588,6 +3594,7 @@ function _authorize() {
       height,
       pkceMode,
       clientPublicKeySetUrl,
+      agent,
       redirect_uri,
       client_id,
       iss,
@@ -3610,6 +3617,7 @@ function _authorize() {
       state,
       fullSessionStorageSupport,
       redirectUrl,
+      securityOptions,
       extensions,
       redirectParams,
       codes,
@@ -3654,7 +3662,7 @@ function _authorize() {
         case 11:
           // ------------------------------------------------------------------------
           // Obtain input
-          clientSecret = params.clientSecret, fakeTokenResponse = params.fakeTokenResponse, encounterId = params.encounterId, target = params.target, width = params.width, height = params.height, pkceMode = params.pkceMode, clientPublicKeySetUrl = params.clientPublicKeySetUrl, redirect_uri = params.redirect_uri, client_id = params.client_id;
+          clientSecret = params.clientSecret, fakeTokenResponse = params.fakeTokenResponse, encounterId = params.encounterId, target = params.target, width = params.width, height = params.height, pkceMode = params.pkceMode, clientPublicKeySetUrl = params.clientPublicKeySetUrl, agent = params.agent, redirect_uri = params.redirect_uri, client_id = params.client_id;
           iss = params.iss, launch = params.launch, patientId = params.patientId, fhirServiceUrl = params.fhirServiceUrl, redirectUri = params.redirectUri, noRedirect = params.noRedirect, _params$scope = params.scope, scope = _params$scope === void 0 ? "" : _params$scope, clientId = params.clientId, completeInTarget = params.completeInTarget, clientPrivateJwk = params.clientPrivateJwk;
           storage = env.getStorage(); // For these, a url param takes precedence over inline option
           iss = url.searchParams.get("iss") || iss;
@@ -3769,63 +3777,66 @@ function _authorize() {
         case 51:
           return _context.abrupt("return", _context.sent);
         case 52:
-          _context.next = 54;
-          return getSecurityExtensions(serverUrl);
-        case 54:
+          securityOptions = agent ? {
+            agent: agent
+          } : undefined; // Get oauth endpoints and add them to the state
+          _context.next = 55;
+          return getSecurityExtensions(serverUrl, securityOptions);
+        case 55:
           extensions = _context.sent;
           Object.assign(state, extensions);
-          _context.next = 58;
+          _context.next = 59;
           return storage.set(stateKey, state);
-        case 58:
+        case 59:
           if (state.authorizeUri) {
-            _context.next = 64;
+            _context.next = 65;
             break;
           }
           if (!noRedirect) {
-            _context.next = 61;
+            _context.next = 62;
             break;
           }
           return _context.abrupt("return", redirectUrl);
-        case 61:
-          _context.next = 63;
+        case 62:
+          _context.next = 64;
           return env.redirect(redirectUrl);
-        case 63:
-          return _context.abrupt("return", _context.sent);
         case 64:
+          return _context.abrupt("return", _context.sent);
+        case 65:
           // build the redirect uri
           redirectParams = ["response_type=code", "client_id=" + encodeURIComponent(clientId || ""), "scope=" + encodeURIComponent(scope), "redirect_uri=" + encodeURIComponent(redirectUri), "aud=" + encodeURIComponent(serverUrl), "state=" + encodeURIComponent(stateKey)]; // also pass this in case of EHR launch
           if (launch) {
             redirectParams.push("launch=" + encodeURIComponent(launch));
           }
           if (!shouldIncludeChallenge(extensions.codeChallengeMethods.includes('S256'), pkceMode)) {
-            _context.next = 75;
+            _context.next = 76;
             break;
           }
-          _context.next = 69;
+          _context.next = 70;
           return env.security.generatePKCEChallenge();
-        case 69:
+        case 70:
           codes = _context.sent;
           Object.assign(state, codes);
-          _context.next = 73;
+          _context.next = 74;
           return storage.set(stateKey, state);
-        case 73:
+        case 74:
           redirectParams.push("code_challenge=" + state.codeChallenge); // note that the challenge is ALREADY encoded properly
           redirectParams.push("code_challenge_method=S256");
-        case 75:
+        case 76:
           redirectUrl = state.authorizeUri + "?" + redirectParams.join("&");
           if (!noRedirect) {
-            _context.next = 78;
+            _context.next = 79;
             break;
           }
           return _context.abrupt("return", redirectUrl);
-        case 78:
+        case 79:
           if (!(target && isBrowser())) {
-            _context.next = 87;
+            _context.next = 88;
             break;
           }
-          _context.next = 81;
+          _context.next = 82;
           return (0, lib_1.getTargetWindow)(target, width, height);
-        case 81:
+        case 82:
           win = _context.sent;
           if (win !== self) {
             try {
@@ -3850,12 +3861,12 @@ function _authorize() {
             self.location.href = redirectUrl;
           }
           return _context.abrupt("return");
-        case 87:
-          _context.next = 89;
+        case 88:
+          _context.next = 90;
           return env.redirect(redirectUrl);
-        case 89:
-          return _context.abrupt("return", _context.sent);
         case 90:
+          return _context.abrupt("return", _context.sent);
+        case 91:
         case "end":
           return _context.stop();
       }
@@ -4059,7 +4070,7 @@ function _ready() {
           authorized = !code || ((_a = state.tokenResponse) === null || _a === void 0 ? void 0 : _a.access_token); // If we are authorized already, then this is just a reload.
           // Otherwise, we have to complete the code flow
           if (!(!authorized && state.tokenUri)) {
-            _context2.next = 53;
+            _context2.next = 54;
             break;
           }
           (0, lib_1.assert)(code, "'code' url parameter is required");
@@ -4074,12 +4085,15 @@ function _ready() {
         case 39:
           requestOptions = _context2.sent;
           debug("Token request options: %O", requestOptions);
+          if (options.agent) {
+            requestOptions.agent = options.agent;
+          }
           // The EHR authorization server SHALL return a JSON structure that
           // includes an access token or a message indicating that the
           // authorization request has been denied.
-          _context2.next = 43;
+          _context2.next = 44;
           return (0, lib_1.request)(state.tokenUri, requestOptions);
-        case 43:
+        case 44:
           tokenResponse = _context2.sent;
           debug("Token response: %O", tokenResponse);
           (0, lib_1.assert)(tokenResponse.access_token, "Failed to obtain access token.");
@@ -4090,26 +4104,26 @@ function _ready() {
           state = _objectSpread(_objectSpread({}, state), {}, {
             tokenResponse: tokenResponse
           });
-          _context2.next = 50;
+          _context2.next = 51;
           return Storage.set(key, state);
-        case 50:
+        case 51:
           debug("Authorization successful!");
-          _context2.next = 54;
+          _context2.next = 55;
           break;
-        case 53:
-          debug(((_b = state.tokenResponse) === null || _b === void 0 ? void 0 : _b.access_token) ? "Already authorized" : "No authorization needed");
         case 54:
+          debug(((_b = state.tokenResponse) === null || _b === void 0 ? void 0 : _b.access_token) ? "Already authorized" : "No authorization needed");
+        case 55:
           if (!fullSessionStorageSupport) {
-            _context2.next = 57;
+            _context2.next = 58;
             break;
           }
-          _context2.next = 57;
+          _context2.next = 58;
           return Storage.set(settings_1.SMART_KEY, key);
-        case 57:
+        case 58:
           client = new Client_1.default(env, state);
           debug("Created client instance: %O", client);
           return _context2.abrupt("return", client);
-        case 60:
+        case 61:
         case "end":
           return _context2.stop();
       }
@@ -19114,6 +19128,17 @@ $({ target: 'URL', proto: true, enumerable: true }, {
 
  /* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ({}); // section modified by isomorphic-webcrypto build 
 
+
+/***/ }),
+
+/***/ "./src/kanta-hrp-metadata.json":
+/*!*************************************!*\
+  !*** ./src/kanta-hrp-metadata.json ***!
+  \*************************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"resourceType":"CapabilityStatement","id":"kanta-hrp","name":"MockMetadataForKantaHRP","status":"active","experimental":true,"date":"2024-12-07T06:35:44Z","kind":"instance","fhirVersion":"4.0.1","format":["json"],"rest":[{"mode":"server","security":{"extension":[{"extension":[{"valueUri":"https://phr-auth.at.kanta.fi/phr-authserver/authorize","url":"authorize"},{"valueUri":"https://phr-token.at.kanta.fi/phr-authserver/token","url":"token"}],"url":"http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris"}],"cors":true,"service":[{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/restful-security-service","code":"OAuth","display":"OAuth"}],"text":"OAuth"},{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/restful-security-service","code":"SMART-on-FHIR","display":"SMART-on-FHIR"}],"text":"SMART-on-FHIR"},{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/restful-security-service","code":"Basic","display":"Basic"}],"text":"Basic"}]}}]}');
 
 /***/ })
 

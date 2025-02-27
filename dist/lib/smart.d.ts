@@ -11,12 +11,13 @@ export { SMART_KEY as KEY };
 export declare function fetchWellKnownJson(baseUrl?: string, requestOptions?: RequestInit): Promise<fhirclient.WellKnownSmartConfiguration>;
 /**
  * Given a FHIR server, returns an object with it's Oauth security endpoints
- * that we are interested in. This will try to find the info in both the
- * `CapabilityStatement` and the `.well-known/smart-configuration`. Whatever
- * Arrives first will be used and the other request will be aborted.
+ * that we are interested in. This will first try to find the info in the
+ * `.well-known/smart-configuration` and in case that fails, from the
+ * `CapabilityStatement` through the `metadata` endpoint.
  * @param [baseUrl = "/"] Fhir server base URL
+ * @param [options] request options for call to the metadata endpoint
  */
-export declare function getSecurityExtensions(baseUrl?: string): Promise<fhirclient.OAuthSecurityExtensions>;
+export declare function getSecurityExtensions(baseUrl?: string, options?: fhirclient.FetchOptions): Promise<fhirclient.OAuthSecurityExtensions>;
 /**
  * Starts the SMART Launch Sequence.
  * > **IMPORTANT**:
@@ -83,7 +84,7 @@ export declare function buildTokenRequest(env: fhirclient.Adapter, { code, state
         alg: "RS384" | "ES384";
         kid: string;
     };
-}): Promise<RequestInit>;
+}): Promise<fhirclient.FetchOptions>;
 /**
  * This function can be used when you want to handle everything in one page
  * (no launch endpoint needed). You can think of it as if it does:

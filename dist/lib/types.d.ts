@@ -3,6 +3,7 @@
 import Client from "./Client";
 import { getPath, byCodes, byCode } from "./lib";
 import { IncomingMessage } from "http";
+import { Agent } from "https";
 
 declare namespace fhirclient {
 
@@ -256,6 +257,11 @@ declare namespace fhirclient {
          * abd the parsed body (if any)
          */
         includeResponse?: boolean;
+
+        /**
+         * An HTTPS Agent to support client side TLS certificates.
+        */
+        agent?: Agent;
     }
 
     /**
@@ -578,6 +584,10 @@ declare namespace fhirclient {
          */
         clientPrivateJwk?: JWK;
 
+        /**
+         * An Agent to handle mutual TLS.
+         */
+        agent?: Agent;
 
         /**
          * Useful for testing. This object can contain any properties that are
@@ -642,6 +652,7 @@ declare namespace fhirclient {
             kid: string
         };
         clientPublicKeySetUrl?: string; // for jku
+        agent?: Agent;
         // [key: string]: any; // Other options TBD
     }
 
