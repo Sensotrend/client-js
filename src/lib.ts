@@ -3,10 +3,15 @@
  * are defined here so that tests can import this library and test them.
  */
 
+// const debug = require("debug");
+import debug from "debug";
+
 import HttpError from "./HttpError";
 import { patientParams } from "./settings";
 import { fhirclient } from "./types";
-const debug = require("debug");
+
+// import kantaMetadata from "../kanta-hrp-metadata.json";
+const kantaMetadata = require("./kanta-hrp-metadata.json");
 
 // $lab:coverage:off$
 // @ts-ignore
@@ -192,9 +197,8 @@ export function fetchConformanceStatement(baseUrl = "/", requestOptions?: Reques
 {
     const url = String(baseUrl).replace(/\/*$/, "/") + "metadata";
     return getAndCache(url, requestOptions).catch((ex: Error) => {
-        throw new Error(
-            `Failed to fetch the conformance statement from "${url}". ${ex}`
-        );
+        console.error(`Failed to fetch the conformance statement from "${url}". ${ex}. Returning predefined Kanta metadata instead.`);
+        return kantaMetadata;
     });
 }
 
