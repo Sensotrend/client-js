@@ -827,8 +827,14 @@ export default class Client
                     options
                 );
                 return request<fhirclient.FetchResult>(url, requestOptions).then(result => {
+                    const resp = (result as fhirclient.CombinedFetchResult).response;
+                    debugRequest(
+                        "Response: %O",
+                        resp
+                    );
+    
                     if (requestOptions.includeResponse) {
-                        response = (result as fhirclient.CombinedFetchResult).response;
+                        response = resp;
                         return (result as fhirclient.CombinedFetchResult).body;
                     }
                     return result;
