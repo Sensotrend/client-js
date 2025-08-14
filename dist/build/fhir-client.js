@@ -1634,8 +1634,10 @@ var Client = /*#__PURE__*/function () {
               .then(function (requestOptions) {
                 debugRequest("%s, options: %O, fhirOptions: %O", url, requestOptions, options);
                 return (0, lib_1.request)(url, requestOptions).then(function (result) {
+                  var resp = result.response;
+                  debugRequest("Response: %O", resp);
                   if (requestOptions.includeResponse) {
-                    response = result.response;
+                    response = resp;
                     return result.body;
                   }
                   return result;
