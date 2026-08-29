@@ -1,6 +1,6 @@
 {
   "name": "fhirclient",
-  "version": "2.5.4-kanta-hrp-7",
+  "version": "2.6.3-kanta-hrp-1",
   "description": "JavaScript client for Fast Healthcare Interoperability Resources",
   "author": "SMART Health IT <support@smarthealthit.org> (https://smarthealthit.org/)",
   "contributors": [
@@ -31,6 +31,11 @@
   "peerDependencies": {
     "@types/hapi": ">=18",
     "@types/node": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "@types/hapi": {
+      "optional": true
+    }
   },
   "engines": {
     "node": ">=18"

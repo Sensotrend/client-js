@@ -3,7 +3,6 @@
 import Client from "./Client";
 import { getPath, byCodes, byCode } from "./lib";
 import { IncomingMessage } from "http";
-import { Agent } from "https";
 
 declare namespace fhirclient {
 
@@ -104,6 +103,15 @@ declare namespace fhirclient {
          * "omit"        - do not send cookies
          */
         refreshTokenWithCredentials?: "omit" | "include" | "same-origin";
+
+        /**
+         * Some OAuth implementations require the client_id to be sent
+         * when using a refresh token.
+         * Setting `FHIR.oauth2.settings.refreshTokenWithClientId = true`
+         * enables this behavior, sending the "client_id" parameter in
+         * the refresh request body.
+         */
+        refreshTokenWithClientId?: boolean;
 
         // storage?: Storage | ((options?: JsonObject) => Storage);
     }
@@ -257,11 +265,6 @@ declare namespace fhirclient {
          * abd the parsed body (if any)
          */
         includeResponse?: boolean;
-
-        /**
-         * An HTTPS Agent to support client side TLS certificates.
-        */
-        agent?: Agent;
     }
 
     /**
@@ -584,10 +587,6 @@ declare namespace fhirclient {
          */
         clientPrivateJwk?: JWK;
 
-        /**
-         * An Agent to handle mutual TLS.
-         */
-        agent?: Agent;
 
         /**
          * Useful for testing. This object can contain any properties that are
@@ -643,6 +642,35 @@ declare namespace fhirclient {
          *    this setting
          */
         pkceMode?: PkceMode;
+
+        /**
+         * An opaque value used by the client to maintain state between the request and callback.
+         *
+         * If stateKey is not specified, one will be generated automatically.
+         *
+         * The authorization server includes this value when redirecting the user-agent back to the
+         * client.
+         *
+         * It's important to ensure that no sensitive information is included in the state
+         * parameter because it could be saved in the browser's history or server logs. To prevent
+         * CSRF attacks, the state parameter should be generated with a secure random seed.
+         *
+         * From the perspective of developing client applications, the state parameter is useful
+         * for restoring a user's session, which might involve querying a data structure for cached
+         * objects specific to that user. The state parameter could refer to a user session key,
+         * but its purpose may vary depending on the application.
+         */
+        stateKey?: string;
+
+        /**
+         * Optional request options (headers, etc) to use when calling fetchWellKnownJson.
+         */
+        wellKnownRequestOptions?: RequestInit;
+
+        /**
+         * Optional request options (headers, etc) to use when calling getSecurityExtensionsFromConformanceStatement.
+         */
+        conformanceRequestOptions?: RequestInit;
     }
 
     interface ReadyOptions {
@@ -652,7 +680,8 @@ declare namespace fhirclient {
             kid: string
         };
         clientPublicKeySetUrl?: string; // for jku
-        agent?: Agent;
+        code?: string;  // Optional authorization code to use vs. from URL in ready()
+        stateKey?: string; // Optional state value to use vs. from URL in ready()
         // [key: string]: any; // Other options TBD
     }
 

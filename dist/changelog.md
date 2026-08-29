@@ -1,5 +1,32 @@
 # Changelog
 
+# v2.6.3
+- Added missing authorization header to sub-request client methods like `update`, `create`, `delete`, etc. Fixes #201
+
+# v2.6.2
+- Forgot to include the built files in v2.6.1. This is the version that should be used instead!
+
+# v2.6.1
+- Added `wellKnownRequestOptions` and `conformanceRequestOptions` to `authorize` options, allowing custom headers and fetch options for SMART discovery endpoints ([#200](https://github.com/smart-on-fhir/client-js/issues/200))
+- Improved TypeScript types for `AuthorizeParams` and related interfaces
+- Enhanced test coverage for new options and fixed test environment compatibility issues
+- Updated documentation for new options and usage patterns
+- Fixed compatibility with newer versions of ChromeDriver and Chrome for Nightwatch/browser tests
+- Various bugfixes and internal refactoring for better maintainability
+
+## v2.6.0
+- Mark @types/hapi peer dependency as optional #193
+- Auto-detect Chrome driver version in GitHub CI
+- Changes to support code and stateKey as ReadyOptions in auth flow #191
+- Added new `FhirClient` base class to simplify usage with open servers. This can work without requiring request end response objects in Node.
+- npm audit fix - to fix some of the latest dependency issues
+
+## v2.5.5
+- Updated dependencies, browserlist db, CVEs...
+- Updated docs and links to examples
+- Add the ability to supply user-defined state key. #168
+- Add refreshTokenWithClientId option, to send client_id when using a refresh token #175
+
 ## v2.5.4
 - Fixed double port issue preventing this library from working with NextJs - #186
 - The `includeResponse` now works for update requests with empty response - #162

@@ -30,7 +30,7 @@ Here is the full list of options:
 |Name        |Type      |Description
 |------------|----------|-----------
 |clientId    |`String`  | The `client_id` that you have obtained while registering your app in the EHR. This is not required if you only intend to communicate with open FHIR servers. **Note:** For backwards compatibility reasons we also accept `client_id` instead of `clientId`!
-|scope       |`String`  | One or more space-separated scopes that you would like to request from the EHR. [Learn more](http://hl7.org/fhir/smart-app-launch/scopes-and-launch-context/index.html)
+|scope       |`String`  | One or more space-separated scopes that you would like to request from the EHR. [Learn more](https://www.hl7.org/fhir/smart-app-launch/scopes-and-launch-context.html)
 |clientSecret|`String`  | If you have registered a confidential client, you should pass your `clientSecret` here. **Note: ONLY use this on the server**, as the browsers are considered incapable of keeping a secret. 
 |iss         |`String`  | This is the URL of the service you are connecting to. For [EHR Launch](http://hl7.org/fhir/smart-app-launch/#ehr-launch-sequence) you **MUST NOT** provide this option. It will be passed by the EHR as url parameter instead. Using `iss` as an option will "lock" your app to that service provider. In other words, passing an `iss` option is how you do [Standalone Launch](http://hl7.org/fhir/smart-app-launch/#standalone-launch-sequence).
 |redirectUri |`String`  | Where to redirect to after successful authorization. Defaults to the root (the index) of the current directory. The `redirectUri` should point to a location on the same domain, thus relative paths should be used and they will internally be converted to absolute. In rare cases you might want to to redirect to the site root. That would add a slash to your origin (eg.: `http://localhost/`). If you don't want the trailing slash to be added you can use an absolute URL instead. **Note:** For backwards compatibility reasons we also accept `redirect_uri` instead of `redirectUri`!
@@ -41,6 +41,7 @@ Here is the full list of options:
 ||| `"unsafeV1"` - Use against Smart v1 servers. Smart v1 does not define conformance, so validate your server supports PKCE before using this setting
 |clientPrivateJwk|`object`|If you have registered a confidential client, you should pass your clientPrivateJwk here. Note: ONLY use this on the server, as the browsers are considered incapable of keeping a secret.
 |clientPublicKeySetUrl|`String`|If you have registered a confidential client and you host your public key online, you can pass your JWKS URL here. Note: ONLY use this on the server, as the browsers are considered incapable of keeping a secret.
+
 
 #### Advanced Options
 These should **ONLY** be used in development.
@@ -53,6 +54,8 @@ These should **ONLY** be used in development.
 |encounterId      |`String`  | The ID of the selected encounter. If you are launching against an open FHIR server, there is no way to obtain the launch context that would (in some EHRs) include the selected encounter ID. This way you can "inject" that ID and make the client behave as if this is the currently active encounter.
 |launch           |`String`  | The launch identifier that is typically provided by the launching EHR as `launch` url parameter. In development it is sometimes useful to be able to pass this as an option. For example, this could allow you to simulate launches from you tests.
 |fakeTokenResponse|`Object`  | Useful for testing. This object can contain any properties that are typically contained in an [access token response](http://hl7.org/fhir/smart-app-launch/#step-3-app-exchanges-authorization-code-for-access-token). These properties will be stored into the client state, making it "believe" that it has been authorized.
+|wellKnownRequestOptions|`Object`| Optional [fetch RequestInit options](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request) to use when calling the `.well-known/smart-configuration` endpoint (for example, to add custom headers).
+|conformanceRequestOptions|`Object`| Optional [fetch RequestInit options](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request) to use when calling the FHIR CapabilityStatement/metadata endpoint (for example, to add custom headers).
 |target|`string` or `number` or `function` or `Window`| Where to start the auth flow. This option is only applicable in browsers and is ignored on the server. Can be one of:
 | | | `"_self"`   Authorize in the same window (**default**)
 | | | `"_top"`    Authorize in the topmost window

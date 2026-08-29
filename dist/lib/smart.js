@@ -24,7 +24,7 @@ function isBrowser() {
  * browser) because it might have to be re-used by the client
  * @param baseUrl The base URL of the FHIR server
  */
-function fetchWellKnownJson(baseUrl = "/", requestOptions) {
+async function fetchWellKnownJson(baseUrl = "/", requestOptions) {
   const url = String(baseUrl).replace(/\/*$/, "/") + ".well-known/smart-configuration";
   return (0, lib_1.getAndCache)(url, requestOptions).catch(ex => {
     throw new Error(`Failed to fetch the well-known json "${url}". ${ex.message}`);
@@ -34,7 +34,7 @@ exports.fetchWellKnownJson = fetchWellKnownJson;
 /**
  * Fetch a "WellKnownJson" and extract the SMART endpoints from it
  */
-function getSecurityExtensionsFromWellKnownJson(baseUrl = "/", requestOptions) {
+async function getSecurityExtensionsFromWellKnownJson(baseUrl = "/", requestOptions) {
   return fetchWellKnownJson(baseUrl, requestOptions).then(meta => {
     if (!meta.authorization_endpoint || !meta.token_endpoint) {
       throw new Error("Invalid wellKnownJson");
@@ -50,7 +50,7 @@ function getSecurityExtensionsFromWellKnownJson(baseUrl = "/", requestOptions) {
 /**
  * Fetch a `CapabilityStatement` and extract the SMART endpoints from it
  */
-function getSecurityExtensionsFromConformanceStatement(baseUrl = "/", requestOptions) {
+async function getSecurityExtensionsFromConformanceStatement(baseUrl = "/", requestOptions) {
   return (0, lib_1.fetchConformanceStatement)(baseUrl, requestOptions).then(meta => {
     const nsUri = "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris";
     const extensions = ((0, lib_1.getPath)(meta || {}, "rest.0.security.extension") || []).filter(e => e.url === nsUri).map(o => o.extension)[0];
@@ -78,14 +78,13 @@ function getSecurityExtensionsFromConformanceStatement(baseUrl = "/", requestOpt
 }
 /**
  * Given a FHIR server, returns an object with it's Oauth security endpoints
- * that we are interested in. This will first try to find the info in the
- * `.well-known/smart-configuration` and in case that fails, from the
- * `CapabilityStatement` through the `metadata` endpoint.
+ * that we are interested in. This will try to find the info in both the
+ * `CapabilityStatement` and the `.well-known/smart-configuration`. Whatever
+ * Arrives first will be used and the other request will be aborted.
  * @param [baseUrl = "/"] Fhir server base URL
- * @param [options] request options for call to the metadata endpoint
  */
-function getSecurityExtensions(baseUrl = "/", options) {
-  return getSecurityExtensionsFromWellKnownJson(baseUrl).catch(() => getSecurityExtensionsFromConformanceStatement(baseUrl, options));
+async function getSecurityExtensions(baseUrl = "/", wellKnownRequestOptions, conformanceRequestOptions) {
+  return getSecurityExtensionsFromWellKnownJson(baseUrl, wellKnownRequestOptions).catch(() => getSecurityExtensionsFromConformanceStatement(baseUrl, conformanceRequestOptions));
 }
 exports.getSecurityExtensions = getSecurityExtensions;
 /**
@@ -135,7 +134,6 @@ async function authorize(env, params = {}) {
     height,
     pkceMode,
     clientPublicKeySetUrl,
-    agent,
     // Two deprecated values to use as fall-back values later
     redirect_uri,
     client_id
@@ -150,7 +148,8 @@ async function authorize(env, params = {}) {
     scope = "",
     clientId,
     completeInTarget,
-    clientPrivateJwk
+    clientPrivateJwk,
+    stateKey
   } = params;
   const storage = env.getStorage();
   // For these, a url param takes precedence over inline option
@@ -201,8 +200,8 @@ async function authorize(env, params = {}) {
   // this is a re-authorize)
   const oldKey = await storage.get(settings_1.SMART_KEY);
   await storage.unset(oldKey);
-  // create initial state
-  const stateKey = (0, lib_1.randomString)(16);
+  stateKey = stateKey !== null && stateKey !== void 0 ? stateKey : (0, lib_1.randomString)(16);
+  // Create initial state
   const state = {
     clientId,
     scope,
@@ -245,11 +244,8 @@ async function authorize(env, params = {}) {
     }
     return await env.redirect(redirectUrl);
   }
-  const securityOptions = agent ? {
-    agent
-  } : undefined;
   // Get oauth endpoints and add them to the state
-  const extensions = await getSecurityExtensions(serverUrl, securityOptions);
+  const extensions = await getSecurityExtensions(serverUrl, params.wellKnownRequestOptions, params.conformanceRequestOptions);
   Object.assign(state, extensions);
   await storage.set(stateKey, state);
   // If this happens to be an open server and there is no authorizeUri
@@ -374,8 +370,8 @@ async function ready(env, options = {}) {
   const url = env.getUrl();
   const Storage = env.getStorage();
   const params = url.searchParams;
-  let key = params.get("state");
-  const code = params.get("code");
+  let key = params.get("state") || options.stateKey;
+  const code = params.get("code") || options.code;
   const authError = params.get("error");
   const authErrorDescription = params.get("error_description");
   if (!key) {
@@ -434,7 +430,7 @@ async function ready(env, options = {}) {
   }
   url.searchParams.delete("complete");
   // Do we have to remove the `code` and `state` params from the URL?
-  const hasState = params.has("state");
+  const hasState = params.has("state") || options.stateKey ? true : false;
   if (isBrowser() && (0, lib_1.getPath)(env, "options.replaceBrowserHistory") && (code || hasState)) {
     // `code` is the flag that tell us to request an access token.
     // We have to remove it, otherwise the page will authorize on
@@ -480,9 +476,6 @@ async function ready(env, options = {}) {
       privateKey: options.privateKey || state.clientPrivateJwk
     });
     debug("Token request options: %O", requestOptions);
-    if (options.agent) {
-      requestOptions.agent = options.agent;
-    }
     // The EHR authorization server SHALL return a JSON structure that
     // includes an access token or a message indicating that the
     // authorization request has been denied.

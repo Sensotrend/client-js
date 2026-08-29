@@ -883,22 +883,23 @@ module.exports = setup;
 
 
 __webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+__webpack_require__(/*! core-js/modules/es.array.filter.js */ "./node_modules/core-js/modules/es.array.filter.js");
 __webpack_require__(/*! core-js/modules/es.object.get-own-property-descriptor.js */ "./node_modules/core-js/modules/es.object.get-own-property-descriptor.js");
 __webpack_require__(/*! core-js/modules/es.object.get-own-property-descriptors.js */ "./node_modules/core-js/modules/es.object.get-own-property-descriptors.js");
+__webpack_require__(/*! core-js/modules/es.object.keys.js */ "./node_modules/core-js/modules/es.object.keys.js");
+__webpack_require__(/*! core-js/modules/es.reflect.construct.js */ "./node_modules/core-js/modules/es.reflect.construct.js");
+__webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
 var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
 __webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
-__webpack_require__(/*! core-js/modules/es.array.filter.js */ "./node_modules/core-js/modules/es.array.filter.js");
 __webpack_require__(/*! core-js/modules/es.array.find.js */ "./node_modules/core-js/modules/es.array.find.js");
 __webpack_require__(/*! core-js/modules/es.array.flat.js */ "./node_modules/core-js/modules/es.array.flat.js");
 __webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
 __webpack_require__(/*! core-js/modules/es.array.join.js */ "./node_modules/core-js/modules/es.array.join.js");
 __webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
 __webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
-__webpack_require__(/*! core-js/modules/es.array.sort.js */ "./node_modules/core-js/modules/es.array.sort.js");
 __webpack_require__(/*! core-js/modules/es.array.unscopables.flat.js */ "./node_modules/core-js/modules/es.array.unscopables.flat.js");
 __webpack_require__(/*! core-js/modules/es.object.assign.js */ "./node_modules/core-js/modules/es.object.assign.js");
-__webpack_require__(/*! core-js/modules/es.object.keys.js */ "./node_modules/core-js/modules/es.object.keys.js");
 __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
 __webpack_require__(/*! core-js/modules/es.promise.js */ "./node_modules/core-js/modules/es.promise.js");
 __webpack_require__(/*! core-js/modules/es.promise.finally.js */ "./node_modules/core-js/modules/es.promise.finally.js");
@@ -907,9 +908,7 @@ __webpack_require__(/*! core-js/modules/es.string.iterator.js */ "./node_modules
 __webpack_require__(/*! core-js/modules/es.string.match.js */ "./node_modules/core-js/modules/es.string.match.js");
 __webpack_require__(/*! core-js/modules/es.string.replace.js */ "./node_modules/core-js/modules/es.string.replace.js");
 __webpack_require__(/*! core-js/modules/es.string.search.js */ "./node_modules/core-js/modules/es.string.search.js");
-__webpack_require__(/*! core-js/modules/es.string.trim.js */ "./node_modules/core-js/modules/es.string.trim.js");
 __webpack_require__(/*! core-js/modules/es.string.link.js */ "./node_modules/core-js/modules/es.string.link.js");
-__webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 __webpack_require__(/*! core-js/modules/web.dom-collections.iterator.js */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
 __webpack_require__(/*! core-js/modules/web.url.js */ "./node_modules/core-js/modules/web.url.js");
 __webpack_require__(/*! core-js/modules/web.url.to-json.js */ "./node_modules/core-js/modules/web.url.to-json.js");
@@ -917,15 +916,23 @@ __webpack_require__(/*! core-js/modules/web.url-search-params.js */ "./node_modu
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js"));
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js"));
 var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js"));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+var _get2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/get */ "./node_modules/@babel/runtime/helpers/get.js"));
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js"));
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/asyncToGenerator.js"));
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2.default)(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2.default)(o), (0, _possibleConstructorReturn2.default)(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2.default)(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _superPropGet(t, o, e, r) { var p = (0, _get2.default)((0, _getPrototypeOf2.default)(1 & r ? t.prototype : t), o, e); return 2 & r && "function" == typeof p ? function (t) { return p.apply(e, t); } : p; }
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 var lib_1 = __webpack_require__(/*! ./lib */ "./src/lib.ts");
 var strings_1 = __webpack_require__(/*! ./strings */ "./src/strings.ts");
 var settings_1 = __webpack_require__(/*! ./settings */ "./src/settings.ts");
+var FhirClient_1 = __webpack_require__(/*! ./FhirClient */ "./src/FhirClient.ts");
 // $lab:coverage:off$
 // @ts-ignore
 var _ref = typeof FHIRCLIENT_PURE !== "undefined" ? window : __webpack_require__(/*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js"),
@@ -943,22 +950,25 @@ function contextualize(_x, _x2) {
   return _contextualize.apply(this, arguments);
 }
 /**
- * Gets single reference by id. Caches the result.
- * @param refId
- * @param cache A map to store the resolved refs
- * @param client The client instance
- * @param requestOptions Only signal and headers are currently used if provided
- * @returns The resolved reference
- * @private
+ * This is a FHIR client that is returned to you from the `ready()` call of the
+ * **SMART API**. You can also create it yourself if needed:
+ *
+ * ```js
+ * // BROWSER
+ * const client = FHIR.client("https://r4.smarthealthit.org");
+ *
+ * // SERVER
+ * const client = smart(req, res).client("https://r4.smarthealthit.org");
+ * ```
  */
 function _contextualize() {
-  _contextualize = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee9(requestOptions, client) {
+  _contextualize = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee9(requestOptions, client) {
     var base, contextualURL, _contextualURL;
     return _regenerator.default.wrap(function _callee9$(_context9) {
       while (1) switch (_context9.prev = _context9.next) {
         case 0:
           _contextualURL = function _contextualURL3() {
-            _contextualURL = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee8(_url) {
+            _contextualURL = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee8(_url) {
               var resourceType, conformance, searchParam;
               return _regenerator.default.wrap(function _callee8$(_context8) {
                 while (1) switch (_context8.prev = _context8.next) {
@@ -981,7 +991,7 @@ function _contextualize() {
             }));
             return _contextualURL.apply(this, arguments);
           };
-          contextualURL = function _contextualURL2(_x9) {
+          contextualURL = function _contextualURL2(_x7) {
             return _contextualURL.apply(this, arguments);
           };
           base = (0, lib_1.absolute)("/", client.state.serverUrl);
@@ -1010,145 +1020,30 @@ function _contextualize() {
   }));
   return _contextualize.apply(this, arguments);
 }
-function getRef(refId, cache, client, requestOptions) {
-  if (!cache[refId]) {
-    var signal = requestOptions.signal,
-      headers = requestOptions.headers;
-    // Note that we set cache[refId] immediately! When the promise is
-    // settled it will be updated. This is to avoid a ref being fetched
-    // twice because some of these requests are executed in parallel.
-    cache[refId] = client.request({
-      url: refId,
-      headers: headers,
-      signal: signal
-    }).then(function (res) {
-      cache[refId] = res;
-      return res;
-    }, function (error) {
-      delete cache[refId];
-      throw error;
-    });
-  }
-  return Promise.resolve(cache[refId]);
-}
-/**
- * Resolves a reference in the given resource.
- * @param obj FHIR Resource
- */
-function resolveRef(obj, path, graph, cache, client, requestOptions) {
-  var node = (0, lib_1.getPath)(obj, path);
-  if (node) {
-    var isArray = Array.isArray(node);
-    return Promise.all((0, lib_1.makeArray)(node).filter(Boolean).map(function (item, i) {
-      var ref = item.reference;
-      if (ref) {
-        return getRef(ref, cache, client, requestOptions).then(function (sub) {
-          if (graph) {
-            if (isArray) {
-              if (path.indexOf("..") > -1) {
-                (0, lib_1.setPath)(obj, "".concat(path.replace("..", ".".concat(i, "."))), sub);
-              } else {
-                (0, lib_1.setPath)(obj, "".concat(path, ".").concat(i), sub);
-              }
-            } else {
-              (0, lib_1.setPath)(obj, path, sub);
-            }
-          }
-        }).catch(function (ex) {
-          /* ignore missing references */
-          if (ex.status !== 404) {
-            throw ex;
-          }
-        });
-      }
-    }));
-  }
-}
-/**
- * Given a resource and a list of ref paths - resolves them all
- * @param obj FHIR Resource
- * @param fhirOptions The fhir options of the initiating request call
- * @param cache A map to store fetched refs
- * @param client The client instance
- * @private
- */
-function resolveRefs(obj, fhirOptions, cache, client, requestOptions) {
-  // 1. Sanitize paths, remove any invalid ones
-  var paths = (0, lib_1.makeArray)(fhirOptions.resolveReferences).filter(Boolean) // No false, 0, null, undefined or ""
-  .map(function (path) {
-    return String(path).trim();
-  }).filter(Boolean); // No space-only strings
-  // 2. Remove duplicates
-  paths = paths.filter(function (p, i) {
-    var index = paths.indexOf(p, i + 1);
-    if (index > -1) {
-      debug("Duplicated reference path \"%s\"", p);
-      return false;
-    }
-    return true;
-  });
-  // 3. Early exit if no valid paths are found
-  if (!paths.length) {
-    return Promise.resolve();
-  }
-  // 4. Group the paths by depth so that child refs are looked up
-  // after their parents!
-  var groups = {};
-  paths.forEach(function (path) {
-    var len = path.split(".").length;
-    if (!groups[len]) {
-      groups[len] = [];
-    }
-    groups[len].push(path);
-  });
-  // 5. Execute groups sequentially! Paths within same group are
-  // fetched in parallel!
-  var task = Promise.resolve();
-  Object.keys(groups).sort().forEach(function (len) {
-    var group = groups[len];
-    task = task.then(function () {
-      return Promise.all(group.map(function (path) {
-        return resolveRef(obj, path, !!fhirOptions.graph, cache, client, requestOptions);
-      }));
-    });
-  });
-  return task;
-}
-/**
- * This is a FHIR client that is returned to you from the `ready()` call of the
- * **SMART API**. You can also create it yourself if needed:
- *
- * ```js
- * // BROWSER
- * const client = FHIR.client("https://r4.smarthealthit.org");
- *
- * // SERVER
- * const client = smart(req, res).client("https://r4.smarthealthit.org");
- * ```
- */
-var Client = /*#__PURE__*/function () {
+var Client = /*#__PURE__*/function (_FhirClient_1$default) {
   /**
    * Validates the parameters, creates an instance and tries to connect it to
    * FhirJS, if one is available globally.
    */
   function Client(environment, state) {
-    var _this = this;
+    var _this;
     (0, _classCallCheck2.default)(this, Client);
-    /**
-     * @category Utility
-     */
-    this.units = lib_1.units;
     var _state = typeof state == "string" ? {
       serverUrl: state
     } : state;
     // Valid serverUrl is required!
     (0, lib_1.assert)(_state.serverUrl && _state.serverUrl.match(/https?:\/\/.+/), "A \"serverUrl\" option is required and must begin with \"http(s)\"");
-    this.state = _state;
-    this.environment = environment;
-    this._refreshTask = null;
-    var client = this;
+    _this = _callSuper(this, Client, [_state.serverUrl]);
+    /**
+     * @category Utility
+     */
+    _this.units = lib_1.units;
+    _this.state = _state;
+    _this.environment = environment;
+    _this._refreshTask = null;
+    var client = _this;
     // patient api ---------------------------------------------------------
-    this.patient = {
+    _this.patient = {
       get id() {
         return client.getPatientId();
       },
@@ -1161,7 +1056,7 @@ var Client = /*#__PURE__*/function () {
       request: function request(requestOptions) {
         var fhirOptions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
         if (_this.patient.id) {
-          return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+          return (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee() {
             var options;
             return _regenerator.default.wrap(function _callee$(_context) {
               while (1) switch (_context.prev = _context.next) {
@@ -1183,7 +1078,7 @@ var Client = /*#__PURE__*/function () {
       }
     };
     // encounter api -------------------------------------------------------
-    this.encounter = {
+    _this.encounter = {
       get id() {
         return client.getEncounterId();
       },
@@ -1195,7 +1090,7 @@ var Client = /*#__PURE__*/function () {
       }
     };
     // user api ------------------------------------------------------------
-    this.user = {
+    _this.user = {
       get fhirUser() {
         return client.getFhirUser();
       },
@@ -1214,7 +1109,8 @@ var Client = /*#__PURE__*/function () {
     };
     // fhir.js api (attached automatically in browser)
     // ---------------------------------------------------------------------
-    this.connect(environment.fhir);
+    _this.connect(environment.fhir);
+    return _this;
   }
   /**
    * This method is used to make the "link" between the `fhirclient` and the
@@ -1224,6 +1120,7 @@ var Client = /*#__PURE__*/function () {
    * instance. You should only use this method to connect to `fhir.js` which
    * is not global.
    */
+  (0, _inherits2.default)(Client, _FhirClient_1$default);
   return (0, _createClass2.default)(Client, [{
     key: "connect",
     value: function connect(fhirJs) {
@@ -1422,7 +1319,7 @@ var Client = /*#__PURE__*/function () {
   }, {
     key: "_clearState",
     value: (function () {
-      var _clearState2 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2() {
+      var _clearState2 = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee2() {
         var storage, key;
         return _regenerator.default.wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
@@ -1455,115 +1352,33 @@ var Client = /*#__PURE__*/function () {
       return _clearState;
     }()
     /**
-     * Creates a new resource in a server-assigned location
-     * @see http://hl7.org/fhir/http.html#create
-     * @param resource A FHIR resource to be created
-     * @param [requestOptions] Any options to be passed to the fetch call.
-     * Note that `method` and `body` will be ignored.
-     * @category Request
+     * Default request options to be used for every request.
      */
     )
   }, {
-    key: "create",
-    value: function create(resource, requestOptions) {
-      return this.request(_objectSpread(_objectSpread({}, requestOptions), {}, {
-        url: "".concat(resource.resourceType),
-        method: "POST",
-        body: JSON.stringify(resource),
-        headers: _objectSpread({
-          // TODO: Do we need to alternate with "application/json+fhir"?
-          "content-type": "application/json"
-        }, (requestOptions || {}).headers)
-      }));
-    }
-    /**
-     * Creates a new current version for an existing resource or creates an
-     * initial version if no resource already exists for the given id.
-     * @see http://hl7.org/fhir/http.html#update
-     * @param resource A FHIR resource to be updated
-     * @param requestOptions Any options to be passed to the fetch call.
-     * Note that `method` and `body` will be ignored.
-     * @category Request
-     */
-  }, {
-    key: "update",
-    value: function update(resource, requestOptions) {
-      return this.request(_objectSpread(_objectSpread({}, requestOptions), {}, {
-        url: "".concat(resource.resourceType, "/").concat(resource.id),
-        method: "PUT",
-        body: JSON.stringify(resource),
-        headers: _objectSpread({
-          // TODO: Do we need to alternate with "application/json+fhir"?
-          "content-type": "application/json"
-        }, (requestOptions || {}).headers)
-      }));
-    }
-    /**
-     * Removes an existing resource.
-     * @see http://hl7.org/fhir/http.html#delete
-     * @param url Relative URI of the FHIR resource to be deleted
-     * (format: `resourceType/id`)
-     * @param requestOptions Any options (except `method` which will be fixed
-     * to `DELETE`) to be passed to the fetch call.
-     * @category Request
-     */
-  }, {
-    key: "delete",
-    value: function _delete(url) {
-      var requestOptions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      return this.request(_objectSpread(_objectSpread({}, requestOptions), {}, {
-        url: url,
-        method: "DELETE"
-      }));
-    }
-    /**
-     * Makes a JSON Patch to the given resource
-     * @see http://hl7.org/fhir/http.html#patch
-     * @param url Relative URI of the FHIR resource to be patched
-     * (format: `resourceType/id`)
-     * @param patch A JSON Patch array to send to the server, For details
-     * see https://datatracker.ietf.org/doc/html/rfc6902
-     * @param requestOptions Any options to be passed to the fetch call,
-     * except for `method`, `url` and `body` which cannot be overridden.
-     * @since 2.4.0
-     * @category Request
-     * @typeParam ResolveType This method would typically resolve with the
-     * patched resource or reject with an OperationOutcome. However, this may
-     * depend on the server implementation or even on the request headers.
-     * For that reason, if the default resolve type (which is
-     * [[fhirclient.FHIR.Resource]]) does not work for you, you can pass
-     * in your own resolve type parameter.
-     */
-  }, {
-    key: "patch",
+    key: "getRequestDefaults",
     value: (function () {
-      var _patch2 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3(url, _patch) {
-        var requestOptions,
-          _args3 = arguments;
+      var _getRequestDefaults = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee3() {
+        var authHeader;
         return _regenerator.default.wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
-              requestOptions = _args3.length > 2 && _args3[2] !== undefined ? _args3[2] : {};
-              (0, lib_1.assertJsonPatch)(_patch);
-              return _context3.abrupt("return", this.request(_objectSpread(_objectSpread({}, requestOptions), {}, {
-                url: url,
-                method: "PATCH",
-                body: JSON.stringify(_patch),
-                headers: _objectSpread({
-                  "prefer": "return=presentation",
-                  "content-type": "application/json-patch+json; charset=UTF-8"
-                }, requestOptions.headers)
-              })));
-            case 3:
+              authHeader = this.getAuthorizationHeader();
+              return _context3.abrupt("return", {
+                headers: _objectSpread({}, authHeader ? {
+                  authorization: authHeader
+                } : {})
+              });
+            case 2:
             case "end":
               return _context3.stop();
           }
         }, _callee3, this);
       }));
-      function patch(_x3, _x4) {
-        return _patch2.apply(this, arguments);
+      function getRequestDefaults() {
+        return _getRequestDefaults.apply(this, arguments);
       }
-      return patch;
+      return getRequestDefaults;
     }()
     /**
      * @param requestOptions Can be a string URL (relative to the serviceUrl),
@@ -1576,7 +1391,7 @@ var Client = /*#__PURE__*/function () {
   }, {
     key: "request",
     value: (function () {
-      var _request = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee7(requestOptions) {
+      var _request = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee7(requestOptions) {
         var _this2 = this;
         var fhirOptions,
           _resolvedRefs,
@@ -1585,7 +1400,7 @@ var Client = /*#__PURE__*/function () {
           url,
           options,
           signal,
-          job,
+          authHeader,
           response,
           _args7 = arguments;
         return _regenerator.default.wrap(function _callee7$(_context7) {
@@ -1608,44 +1423,39 @@ var Client = /*#__PURE__*/function () {
                 graph: fhirOptions.graph !== false,
                 flat: !!fhirOptions.flat,
                 pageLimit: (_a = fhirOptions.pageLimit) !== null && _a !== void 0 ? _a : 1,
-                resolveReferences: fhirOptions.resolveReferences || [],
+                resolveReferences: (0, lib_1.makeArray)(fhirOptions.resolveReferences || []),
                 useRefreshToken: fhirOptions.useRefreshToken !== false,
                 onPage: typeof fhirOptions.onPage == "function" ? fhirOptions.onPage : undefined
               };
               signal = requestOptions.signal || undefined; // Refresh the access token if needed
-              job = options.useRefreshToken ? this.refreshIfNeeded({
+              if (!options.useRefreshToken) {
+                _context7.next = 11;
+                break;
+              }
+              _context7.next = 11;
+              return this.refreshIfNeeded({
                 signal: signal
-              }).then(function () {
-                return requestOptions;
-              }) : Promise.resolve(requestOptions);
-              return _context7.abrupt("return", job
+              });
+            case 11:
               // Add the Authorization header now, after the access token might
               // have been updated
-              .then(function (requestOptions) {
-                var authHeader = _this2.getAuthorizationHeader();
-                if (authHeader) {
-                  requestOptions.headers = _objectSpread(_objectSpread({}, requestOptions.headers), {}, {
-                    authorization: authHeader
-                  });
-                }
-                return requestOptions;
-              })
-              // Make the request
-              .then(function (requestOptions) {
-                debugRequest("%s, options: %O, fhirOptions: %O", url, requestOptions, options);
-                return (0, lib_1.request)(url, requestOptions).then(function (result) {
-                  var resp = result.response;
-                  debugRequest("Response: %O", resp);
-                  if (requestOptions.includeResponse) {
-                    response = resp;
-                    return result.body;
-                  }
-                  return result;
+              authHeader = this.getAuthorizationHeader();
+              if (authHeader) {
+                requestOptions.headers = _objectSpread(_objectSpread({}, requestOptions.headers), {}, {
+                  authorization: authHeader
                 });
+              }
+              debugRequest("%s, options: %O, fhirOptions: %O", url, requestOptions, options);
+              return _context7.abrupt("return", _superPropGet(Client, "fhirRequest", this, 3)([url, requestOptions]).then(function (result) {
+                if (requestOptions.includeResponse) {
+                  response = result.response;
+                  return result.body;
+                }
+                return result;
               })
-              // Handle 401 ------------------------------------------------------
-              .catch( /*#__PURE__*/function () {
-                var _ref3 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee4(error) {
+              // Handle 401 ----------------------------------------------------------
+              .catch(/*#__PURE__*/function () {
+                var _ref3 = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee4(error) {
                   return _regenerator.default.wrap(function _callee4$(_context4) {
                     while (1) switch (_context4.prev = _context4.next) {
                       case 0:
@@ -1690,162 +1500,150 @@ var Client = /*#__PURE__*/function () {
                     }
                   }, _callee4);
                 }));
-                return function (_x6) {
+                return function (_x4) {
                   return _ref3.apply(this, arguments);
                 };
               }())
-              // Handle 403 ------------------------------------------------------
+              // Handle 403 ----------------------------------------------------------
               .catch(function (error) {
                 if (error.status == 403) {
                   debugRequest("Permission denied! Please make sure that you have requested the proper scopes.");
                 }
                 throw error;
-              }).then(function (data) {
-                // At this point we don't know what `data` actually is!
-                // We might get an empty or falsy result. If so return it as is
-                // Also handle raw responses
-                if (!data || typeof data == "string" || data instanceof Response) {
-                  if (requestOptions.includeResponse) {
-                    return {
-                      body: data,
-                      response: response
-                    };
-                  }
-                  return data;
-                }
-                // Resolve References ------------------------------------------
-                return function () {
-                  var _ref4 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee5(_data) {
-                    return _regenerator.default.wrap(function _callee5$(_context5) {
-                      while (1) switch (_context5.prev = _context5.next) {
-                        case 0:
-                          if (!(_data.resourceType == "Bundle")) {
-                            _context5.next = 5;
-                            break;
-                          }
-                          _context5.next = 3;
-                          return Promise.all((_data.entry || []).map(function (item) {
-                            return resolveRefs(item.resource, options, _resolvedRefs, _this2, requestOptions);
-                          }));
-                        case 3:
-                          _context5.next = 7;
+              }).then(/*#__PURE__*/function () {
+                var _ref4 = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee6(data) {
+                  return _regenerator.default.wrap(function _callee6$(_context6) {
+                    while (1) switch (_context6.prev = _context6.next) {
+                      case 0:
+                        if (!(!data || typeof data == "string" || data instanceof Response)) {
+                          _context6.next = 4;
                           break;
-                        case 5:
-                          _context5.next = 7;
-                          return resolveRefs(_data, options, _resolvedRefs, _this2, requestOptions);
-                        case 7:
-                          return _context5.abrupt("return", _data);
-                        case 8:
-                        case "end":
-                          return _context5.stop();
-                      }
-                    }, _callee5);
-                  }));
-                  return function (_x7) {
-                    return _ref4.apply(this, arguments);
-                  };
-                }()(data)
-                // Pagination ----------------------------------------------
-                .then( /*#__PURE__*/function () {
-                  var _ref5 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee6(_data) {
-                    var links, next, nextPage;
-                    return _regenerator.default.wrap(function _callee6$(_context6) {
-                      while (1) switch (_context6.prev = _context6.next) {
-                        case 0:
-                          if (!(_data && _data.resourceType == "Bundle")) {
-                            _context6.next = 19;
-                            break;
+                        }
+                        if (!requestOptions.includeResponse) {
+                          _context6.next = 3;
+                          break;
+                        }
+                        return _context6.abrupt("return", {
+                          body: data,
+                          response: response
+                        });
+                      case 3:
+                        return _context6.abrupt("return", data);
+                      case 4:
+                        _context6.next = 6;
+                        return _this2.fetchReferences(data, options.resolveReferences, options.graph, _resolvedRefs, requestOptions);
+                      case 6:
+                        return _context6.abrupt("return", Promise.resolve(data)
+                        // Pagination ------------------------------------------------------
+                        .then(/*#__PURE__*/function () {
+                          var _ref5 = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee5(_data) {
+                            var links, next, nextPage;
+                            return _regenerator.default.wrap(function _callee5$(_context5) {
+                              while (1) switch (_context5.prev = _context5.next) {
+                                case 0:
+                                  if (!(_data && _data.resourceType == "Bundle")) {
+                                    _context5.next = 19;
+                                    break;
+                                  }
+                                  links = _data.link || [];
+                                  if (options.flat) {
+                                    _data = (_data.entry || []).map(function (entry) {
+                                      return entry.resource;
+                                    });
+                                  }
+                                  if (!options.onPage) {
+                                    _context5.next = 6;
+                                    break;
+                                  }
+                                  _context5.next = 6;
+                                  return options.onPage(_data, _objectSpread({}, _resolvedRefs));
+                                case 6:
+                                  if (! --options.pageLimit) {
+                                    _context5.next = 19;
+                                    break;
+                                  }
+                                  next = links.find(function (l) {
+                                    return l.relation == "next";
+                                  });
+                                  _data = (0, lib_1.makeArray)(_data);
+                                  if (!(next && next.url)) {
+                                    _context5.next = 19;
+                                    break;
+                                  }
+                                  _context5.next = 12;
+                                  return _this2.request({
+                                    url: next.url,
+                                    // Aborting the main request (even after it is complete)
+                                    // must propagate to any child requests and abort them!
+                                    // To do so, just pass the same AbortSignal if one is
+                                    // provided.
+                                    signal: signal
+                                  }, options, _resolvedRefs);
+                                case 12:
+                                  nextPage = _context5.sent;
+                                  if (!options.onPage) {
+                                    _context5.next = 15;
+                                    break;
+                                  }
+                                  return _context5.abrupt("return", null);
+                                case 15:
+                                  if (!options.resolveReferences.length) {
+                                    _context5.next = 18;
+                                    break;
+                                  }
+                                  Object.assign(_resolvedRefs, nextPage.references);
+                                  return _context5.abrupt("return", _data.concat((0, lib_1.makeArray)(nextPage.data || nextPage)));
+                                case 18:
+                                  return _context5.abrupt("return", _data.concat((0, lib_1.makeArray)(nextPage)));
+                                case 19:
+                                  return _context5.abrupt("return", _data);
+                                case 20:
+                                case "end":
+                                  return _context5.stop();
+                              }
+                            }, _callee5);
+                          }));
+                          return function (_x6) {
+                            return _ref5.apply(this, arguments);
+                          };
+                        }())
+                        // Finalize --------------------------------------------------------
+                        .then(function (_data) {
+                          if (options.graph) {
+                            _resolvedRefs = {};
+                          } else if (!options.onPage && options.resolveReferences.length) {
+                            return {
+                              data: _data,
+                              references: _resolvedRefs
+                            };
                           }
-                          links = _data.link || [];
-                          if (options.flat) {
-                            _data = (_data.entry || []).map(function (entry) {
-                              return entry.resource;
-                            });
+                          return _data;
+                        }).then(function (_data) {
+                          if (requestOptions.includeResponse) {
+                            return {
+                              body: _data,
+                              response: response
+                            };
                           }
-                          if (!options.onPage) {
-                            _context6.next = 6;
-                            break;
-                          }
-                          _context6.next = 6;
-                          return options.onPage(_data, _objectSpread({}, _resolvedRefs));
-                        case 6:
-                          if (! --options.pageLimit) {
-                            _context6.next = 19;
-                            break;
-                          }
-                          next = links.find(function (l) {
-                            return l.relation == "next";
-                          });
-                          _data = (0, lib_1.makeArray)(_data);
-                          if (!(next && next.url)) {
-                            _context6.next = 19;
-                            break;
-                          }
-                          _context6.next = 12;
-                          return _this2.request({
-                            url: next.url,
-                            // Aborting the main request (even after it is complete)
-                            // must propagate to any child requests and abort them!
-                            // To do so, just pass the same AbortSignal if one is
-                            // provided.
-                            signal: signal
-                          }, options, _resolvedRefs);
-                        case 12:
-                          nextPage = _context6.sent;
-                          if (!options.onPage) {
-                            _context6.next = 15;
-                            break;
-                          }
-                          return _context6.abrupt("return", null);
-                        case 15:
-                          if (!options.resolveReferences.length) {
-                            _context6.next = 18;
-                            break;
-                          }
-                          Object.assign(_resolvedRefs, nextPage.references);
-                          return _context6.abrupt("return", _data.concat((0, lib_1.makeArray)(nextPage.data || nextPage)));
-                        case 18:
-                          return _context6.abrupt("return", _data.concat((0, lib_1.makeArray)(nextPage)));
-                        case 19:
-                          return _context6.abrupt("return", _data);
-                        case 20:
-                        case "end":
-                          return _context6.stop();
-                      }
-                    }, _callee6);
-                  }));
-                  return function (_x8) {
-                    return _ref5.apply(this, arguments);
-                  };
-                }())
-                // Finalize ------------------------------------------------
-                .then(function (_data) {
-                  if (options.graph) {
-                    _resolvedRefs = {};
-                  } else if (!options.onPage && options.resolveReferences.length) {
-                    return {
-                      data: _data,
-                      references: _resolvedRefs
-                    };
-                  }
-                  return _data;
-                }).then(function (_data) {
-                  if (requestOptions.includeResponse) {
-                    return {
-                      body: _data,
-                      response: response
-                    };
-                  }
-                  return _data;
-                });
-              }));
-            case 10:
+                          return _data;
+                        }));
+                      case 7:
+                      case "end":
+                        return _context6.stop();
+                    }
+                  }, _callee6);
+                }));
+                return function (_x5) {
+                  return _ref4.apply(this, arguments);
+                };
+              }()));
+            case 15:
             case "end":
               return _context7.stop();
           }
         }, _callee7, this);
       }));
-      function request(_x5) {
+      function request(_x3) {
         return _request.apply(this, arguments);
       }
       return request;
@@ -1906,6 +1704,10 @@ var Client = /*#__PURE__*/function () {
       // requests in parallel which may result in multiple refresh calls.
       // To avoid that, we keep a reference to the current refresh task (if any).
       if (!this._refreshTask) {
+        var body = "grant_type=refresh_token&refresh_token=".concat(encodeURIComponent(refreshToken));
+        if (this.environment.options.refreshTokenWithClientId) {
+          body += "&client_id=".concat(this.state.clientId);
+        }
         var refreshRequestOptions = _objectSpread(_objectSpread({
           credentials: this.environment.options.refreshTokenWithCredentials || "same-origin"
         }, requestOptions), {}, {
@@ -1914,7 +1716,7 @@ var Client = /*#__PURE__*/function () {
           headers: _objectSpread(_objectSpread({}, requestOptions.headers || {}), {}, {
             "content-type": "application/x-www-form-urlencoded"
           }),
-          body: "grant_type=refresh_token&refresh_token=".concat(encodeURIComponent(refreshToken))
+          body: body
         });
         // custom authorization header can be passed on manual calls
         if (!("authorization" in refreshRequestOptions.headers)) {
@@ -2032,17 +1834,757 @@ var Client = /*#__PURE__*/function () {
       var path = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
       return (0, lib_1.getPath)(_objectSpread({}, this.state), path);
     }
+  }]);
+}(FhirClient_1.default);
+exports["default"] = Client;
+
+/***/ }),
+
+/***/ "./src/FhirClient.ts":
+/*!***************************!*\
+  !*** ./src/FhirClient.ts ***!
+  \***************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(/*! core-js/modules/es.array.from.js */ "./node_modules/core-js/modules/es.array.from.js");
+__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(/*! core-js/modules/es.function.name.js */ "./node_modules/core-js/modules/es.function.name.js");
+__webpack_require__(/*! core-js/modules/es.object.get-own-property-descriptor.js */ "./node_modules/core-js/modules/es.object.get-own-property-descriptor.js");
+__webpack_require__(/*! core-js/modules/es.object.get-own-property-descriptors.js */ "./node_modules/core-js/modules/es.object.get-own-property-descriptors.js");
+__webpack_require__(/*! core-js/modules/es.regexp.to-string.js */ "./node_modules/core-js/modules/es.regexp.to-string.js");
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
+__webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+__webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
+__webpack_require__(/*! core-js/modules/es.symbol.async-iterator.js */ "./node_modules/core-js/modules/es.symbol.async-iterator.js");
+__webpack_require__(/*! core-js/modules/es.symbol.iterator.js */ "./node_modules/core-js/modules/es.symbol.iterator.js");
+__webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
+__webpack_require__(/*! core-js/modules/es.array.filter.js */ "./node_modules/core-js/modules/es.array.filter.js");
+__webpack_require__(/*! core-js/modules/es.array.find.js */ "./node_modules/core-js/modules/es.array.find.js");
+__webpack_require__(/*! core-js/modules/es.array.includes.js */ "./node_modules/core-js/modules/es.array.includes.js");
+__webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+__webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
+__webpack_require__(/*! core-js/modules/es.array.sort.js */ "./node_modules/core-js/modules/es.array.sort.js");
+__webpack_require__(/*! core-js/modules/es.object.keys.js */ "./node_modules/core-js/modules/es.object.keys.js");
+__webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+__webpack_require__(/*! core-js/modules/es.promise.js */ "./node_modules/core-js/modules/es.promise.js");
+__webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+__webpack_require__(/*! core-js/modules/es.string.includes.js */ "./node_modules/core-js/modules/es.string.includes.js");
+__webpack_require__(/*! core-js/modules/es.string.iterator.js */ "./node_modules/core-js/modules/es.string.iterator.js");
+__webpack_require__(/*! core-js/modules/es.string.match.js */ "./node_modules/core-js/modules/es.string.match.js");
+__webpack_require__(/*! core-js/modules/es.string.replace.js */ "./node_modules/core-js/modules/es.string.replace.js");
+__webpack_require__(/*! core-js/modules/es.string.trim.js */ "./node_modules/core-js/modules/es.string.trim.js");
+__webpack_require__(/*! core-js/modules/es.string.link.js */ "./node_modules/core-js/modules/es.string.link.js");
+__webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+__webpack_require__(/*! core-js/modules/web.dom-collections.iterator.js */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
+__webpack_require__(/*! core-js/modules/web.url.js */ "./node_modules/core-js/modules/web.url.js");
+__webpack_require__(/*! core-js/modules/web.url.to-json.js */ "./node_modules/core-js/modules/web.url.to-json.js");
+__webpack_require__(/*! core-js/modules/web.url-search-params.js */ "./node_modules/core-js/modules/web.url-search-params.js");
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js"));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/asyncToGenerator.js"));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js"));
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js"));
+var _awaitAsyncGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/awaitAsyncGenerator */ "./node_modules/@babel/runtime/helpers/awaitAsyncGenerator.js"));
+var _wrapAsyncGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/wrapAsyncGenerator */ "./node_modules/@babel/runtime/helpers/wrapAsyncGenerator.js"));
+var _excluded = ["limit"];
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t.return || t.return(); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2.default)(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _asyncIterator(r) { var n, t, o, e = 2; for ("undefined" != typeof Symbol && (t = Symbol.asyncIterator, o = Symbol.iterator); e--;) { if (t && null != (n = r[t])) return n.call(r); if (o && null != (n = r[o])) return new AsyncFromSyncIterator(n.call(r)); t = "@@asyncIterator", o = "@@iterator"; } throw new TypeError("Object is not async iterable"); }
+function AsyncFromSyncIterator(r) { function AsyncFromSyncIteratorContinuation(r) { if (Object(r) !== r) return Promise.reject(new TypeError(r + " is not an object.")); var n = r.done; return Promise.resolve(r.value).then(function (r) { return { value: r, done: n }; }); } return AsyncFromSyncIterator = function AsyncFromSyncIterator(r) { this.s = r, this.n = r.next; }, AsyncFromSyncIterator.prototype = { s: null, n: null, next: function next() { return AsyncFromSyncIteratorContinuation(this.n.apply(this.s, arguments)); }, return: function _return(r) { var n = this.s.return; return void 0 === n ? Promise.resolve({ value: r, done: !0 }) : AsyncFromSyncIteratorContinuation(n.apply(this.s, arguments)); }, throw: function _throw(r) { var n = this.s.return; return void 0 === n ? Promise.reject(r) : AsyncFromSyncIteratorContinuation(n.apply(this.s, arguments)); } }, new AsyncFromSyncIterator(r); }
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+var settings_1 = __webpack_require__(/*! ./settings */ "./src/settings.ts");
+var lib_1 = __webpack_require__(/*! ./lib */ "./src/lib.ts");
+var debug = lib_1.debug.extend("FhirClient");
+/**
+ * This is a basic FHIR client for making basic FHIR API calls
+ */
+var FhirClient = /*#__PURE__*/function () {
+  /**
+   * Validates the parameters, creates an instance and tries to connect it to
+   * FhirJS, if one is available globally.
+   */
+  function FhirClient(fhirBaseUrl) {
+    (0, _classCallCheck2.default)(this, FhirClient);
+    (0, lib_1.assert)(fhirBaseUrl && typeof fhirBaseUrl === "string" && fhirBaseUrl.match(/https?:\/\/.+/), "A \"fhirBaseUrl\" string parameter is required and must begin with \"http(s)\"");
+    this.fhirBaseUrl = fhirBaseUrl;
+  }
+  /**
+   * Default request options to be used for every request. This method can be
+   * overridden in subclasses to provide custom default options.
+   */
+  return (0, _createClass2.default)(FhirClient, [{
+    key: "getRequestDefaults",
+    value: (function () {
+      var _getRequestDefaults = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee() {
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              return _context.abrupt("return", {});
+            case 1:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee);
+      }));
+      function getRequestDefaults() {
+        return _getRequestDefaults.apply(this, arguments);
+      }
+      return getRequestDefaults;
+    }()
+    /**
+     * Creates a new resource in a server-assigned location
+     * @see http://hl7.org/fhir/http.html#create
+     * @param resource A FHIR resource to be created
+     * @param [requestOptions] Any options to be passed to the fetch call.
+     * Note that `method` and `body` will be ignored.
+     * @category Request
+     */
+    )
+  }, {
+    key: "create",
+    value: (function () {
+      var _create = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee2(resource, requestOptions) {
+        return _regenerator.default.wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              return _context2.abrupt("return", this.fhirRequest(resource.resourceType, _objectSpread(_objectSpread({}, requestOptions), {}, {
+                method: "POST",
+                body: JSON.stringify(resource),
+                headers: _objectSpread({
+                  "content-type": "application/json"
+                }, (requestOptions || {}).headers)
+              })));
+            case 1:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2, this);
+      }));
+      function create(_x, _x2) {
+        return _create.apply(this, arguments);
+      }
+      return create;
+    }()
+    /**
+     * Creates a new current version for an existing resource or creates an
+     * initial version if no resource already exists for the given id.
+     * @see http://hl7.org/fhir/http.html#update
+     * @param resource A FHIR resource to be updated
+     * @param requestOptions Any options to be passed to the fetch call.
+     * Note that `method` and `body` will be ignored.
+     * @category Request
+     */
+    )
+  }, {
+    key: "update",
+    value: (function () {
+      var _update = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee3(resource, requestOptions) {
+        return _regenerator.default.wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              return _context3.abrupt("return", this.fhirRequest("".concat(resource.resourceType, "/").concat(resource.id), _objectSpread(_objectSpread({}, requestOptions), {}, {
+                method: "PUT",
+                body: JSON.stringify(resource),
+                headers: _objectSpread({
+                  "content-type": "application/json"
+                }, (requestOptions || {}).headers)
+              })));
+            case 1:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3, this);
+      }));
+      function update(_x3, _x4) {
+        return _update.apply(this, arguments);
+      }
+      return update;
+    }()
+    /**
+     * Removes an existing resource.
+     * @see http://hl7.org/fhir/http.html#delete
+     * @param url Relative URI of the FHIR resource to be deleted
+     * (format: `resourceType/id`)
+     * @param requestOptions Any options (except `method` which will be fixed
+     * to `DELETE`) to be passed to the fetch call.
+     * @category Request
+     */
+    )
+  }, {
+    key: "delete",
+    value: (function () {
+      var _delete2 = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee4(url) {
+        var requestOptions,
+          _args4 = arguments;
+        return _regenerator.default.wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
+            case 0:
+              requestOptions = _args4.length > 1 && _args4[1] !== undefined ? _args4[1] : {};
+              return _context4.abrupt("return", this.fhirRequest(url, _objectSpread(_objectSpread({}, requestOptions), {}, {
+                method: "DELETE"
+              })));
+            case 2:
+            case "end":
+              return _context4.stop();
+          }
+        }, _callee4, this);
+      }));
+      function _delete(_x5) {
+        return _delete2.apply(this, arguments);
+      }
+      return _delete;
+    }()
+    /**
+     * Makes a JSON Patch to the given resource
+     * @see http://hl7.org/fhir/http.html#patch
+     * @param url Relative URI of the FHIR resource to be patched
+     * (format: `resourceType/id`)
+     * @param patch A JSON Patch array to send to the server, For details
+     * see https://datatracker.ietf.org/doc/html/rfc6902
+     * @param requestOptions Any options to be passed to the fetch call,
+     * except for `method`, `url` and `body` which cannot be overridden.
+     * @since 2.4.0
+     * @category Request
+     * @typeParam ResolveType This method would typically resolve with the
+     * patched resource or reject with an OperationOutcome. However, this may
+     * depend on the server implementation or even on the request headers.
+     * For that reason, if the default resolve type (which is
+     * [[fhirclient.FHIR.Resource]]) does not work for you, you can pass
+     * in your own resolve type parameter.
+     */
+    )
+  }, {
+    key: "patch",
+    value: (function () {
+      var _patch2 = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee5(url, _patch) {
+        var requestOptions,
+          _args5 = arguments;
+        return _regenerator.default.wrap(function _callee5$(_context5) {
+          while (1) switch (_context5.prev = _context5.next) {
+            case 0:
+              requestOptions = _args5.length > 2 && _args5[2] !== undefined ? _args5[2] : {};
+              (0, lib_1.assertJsonPatch)(_patch);
+              return _context5.abrupt("return", this.fhirRequest(url, _objectSpread(_objectSpread({}, requestOptions), {}, {
+                method: "PATCH",
+                body: JSON.stringify(_patch),
+                headers: _objectSpread({
+                  "prefer": "return=presentation",
+                  "content-type": "application/json-patch+json; charset=UTF-8"
+                }, requestOptions.headers)
+              })));
+            case 3:
+            case "end":
+              return _context5.stop();
+          }
+        }, _callee5, this);
+      }));
+      function patch(_x6, _x7) {
+        return _patch2.apply(this, arguments);
+      }
+      return patch;
+    }())
+  }, {
+    key: "resolveRef",
+    value: function () {
+      var _resolveRef = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee6(obj, path, graph, cache) {
+        var _this3 = this;
+        var requestOptions,
+          node,
+          isArray,
+          _args6 = arguments;
+        return _regenerator.default.wrap(function _callee6$(_context6) {
+          while (1) switch (_context6.prev = _context6.next) {
+            case 0:
+              requestOptions = _args6.length > 4 && _args6[4] !== undefined ? _args6[4] : {};
+              node = (0, lib_1.getPath)(obj, path);
+              if (!node) {
+                _context6.next = 5;
+                break;
+              }
+              isArray = Array.isArray(node);
+              return _context6.abrupt("return", Promise.all((0, lib_1.makeArray)(node).filter(Boolean).map(function (item, i) {
+                var ref = item.reference;
+                if (ref) {
+                  return _this3.fhirRequest(ref, _objectSpread(_objectSpread({}, requestOptions), {}, {
+                    includeResponse: false,
+                    cacheMap: cache
+                  })).then(function (sub) {
+                    if (graph) {
+                      if (isArray) {
+                        if (path.indexOf("..") > -1) {
+                          (0, lib_1.setPath)(obj, "".concat(path.replace("..", ".".concat(i, "."))), sub);
+                        } else {
+                          (0, lib_1.setPath)(obj, "".concat(path, ".").concat(i), sub);
+                        }
+                      } else {
+                        (0, lib_1.setPath)(obj, path, sub);
+                      }
+                    }
+                  }).catch(function (ex) {
+                    if ((ex === null || ex === void 0 ? void 0 : ex.status) === 404) {
+                      console.warn("Missing reference ".concat(ref, ". ").concat(ex));
+                    } else {
+                      throw ex;
+                    }
+                  });
+                }
+              })));
+            case 5:
+            case "end":
+              return _context6.stop();
+          }
+        }, _callee6);
+      }));
+      function resolveRef(_x8, _x9, _x10, _x11) {
+        return _resolveRef.apply(this, arguments);
+      }
+      return resolveRef;
+    }()
+    /**
+     * Fetches all references in the given resource, ignoring duplicates, and
+     * then modifies the resource by "mounting" the resolved references in place
+     */
+  }, {
+    key: "resolveReferences",
+    value: (function () {
+      var _resolveReferences = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee7(resource, references) {
+        var requestOptions,
+          _args7 = arguments;
+        return _regenerator.default.wrap(function _callee7$(_context7) {
+          while (1) switch (_context7.prev = _context7.next) {
+            case 0:
+              requestOptions = _args7.length > 2 && _args7[2] !== undefined ? _args7[2] : {};
+              _context7.next = 3;
+              return this.fetchReferences(resource, references, true, {}, requestOptions);
+            case 3:
+            case "end":
+              return _context7.stop();
+          }
+        }, _callee7, this);
+      }));
+      function resolveReferences(_x12, _x13) {
+        return _resolveReferences.apply(this, arguments);
+      }
+      return resolveReferences;
+    }())
+  }, {
+    key: "fetchReferences",
+    value: function () {
+      var _fetchReferences = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee8(resource, references, graph) {
+        var _this4 = this;
+        var cache,
+          requestOptions,
+          _iterator2,
+          _step2,
+          item,
+          paths,
+          groups,
+          task,
+          _args8 = arguments;
+        return _regenerator.default.wrap(function _callee8$(_context8) {
+          while (1) switch (_context8.prev = _context8.next) {
+            case 0:
+              cache = _args8.length > 3 && _args8[3] !== undefined ? _args8[3] : {};
+              requestOptions = _args8.length > 4 && _args8[4] !== undefined ? _args8[4] : {};
+              if (!(resource.resourceType == "Bundle")) {
+                _context8.next = 22;
+                break;
+              }
+              _iterator2 = _createForOfIteratorHelper(resource.entry || []);
+              _context8.prev = 4;
+              _iterator2.s();
+            case 6:
+              if ((_step2 = _iterator2.n()).done) {
+                _context8.next = 13;
+                break;
+              }
+              item = _step2.value;
+              if (!item.resource) {
+                _context8.next = 11;
+                break;
+              }
+              _context8.next = 11;
+              return this.fetchReferences(item.resource, references, graph, cache, requestOptions);
+            case 11:
+              _context8.next = 6;
+              break;
+            case 13:
+              _context8.next = 18;
+              break;
+            case 15:
+              _context8.prev = 15;
+              _context8.t0 = _context8["catch"](4);
+              _iterator2.e(_context8.t0);
+            case 18:
+              _context8.prev = 18;
+              _iterator2.f();
+              return _context8.finish(18);
+            case 21:
+              return _context8.abrupt("return", cache);
+            case 22:
+              // 1. Sanitize paths, remove any invalid ones
+              paths = references.map(function (path) {
+                return String(path).trim();
+              }).filter(Boolean); // 2. Remove duplicates
+              paths = paths.reduce(function (prev, cur) {
+                if (prev.includes(cur)) {
+                  debug("Duplicated reference path \"%s\"", cur);
+                } else {
+                  prev.push(cur);
+                }
+                return prev;
+              }, []);
+              // 3. Early exit if no valid paths are found
+              if (paths.length) {
+                _context8.next = 26;
+                break;
+              }
+              return _context8.abrupt("return", Promise.resolve(cache));
+            case 26:
+              // 4. Group the paths by depth so that child refs are looked up
+              // after their parents!
+              groups = {};
+              paths.forEach(function (path) {
+                var len = path.split(".").length;
+                if (!groups[len]) {
+                  groups[len] = [];
+                }
+                groups[len].push(path);
+              });
+              // 5. Execute groups sequentially! Paths within same group are
+              // fetched in parallel!
+              task = Promise.resolve();
+              Object.keys(groups).sort().forEach(function (len) {
+                var group = groups[len];
+                task = task.then(function () {
+                  return Promise.all(group.map(function (path) {
+                    return _this4.resolveRef(resource, path, graph, cache, requestOptions);
+                  }));
+                });
+              });
+              _context8.next = 32;
+              return task;
+            case 32:
+              return _context8.abrupt("return", cache);
+            case 33:
+            case "end":
+              return _context8.stop();
+          }
+        }, _callee8, this, [[4, 15, 18, 21]]);
+      }));
+      function fetchReferences(_x14, _x15, _x16) {
+        return _fetchReferences.apply(this, arguments);
+      }
+      return fetchReferences;
+    }()
+    /**
+     * Fetches all references in the given resource, ignoring duplicates
+     */
+  }, {
+    key: "getReferences",
+    value: (function () {
+      var _getReferences = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee9(resource, references) {
+        var requestOptions,
+          refs,
+          out,
+          key,
+          _args9 = arguments;
+        return _regenerator.default.wrap(function _callee9$(_context9) {
+          while (1) switch (_context9.prev = _context9.next) {
+            case 0:
+              requestOptions = _args9.length > 2 && _args9[2] !== undefined ? _args9[2] : {};
+              _context9.next = 3;
+              return this.fetchReferences(resource, references, false, {}, requestOptions);
+            case 3:
+              refs = _context9.sent;
+              out = {};
+              _context9.t0 = _regenerator.default.keys(refs);
+            case 6:
+              if ((_context9.t1 = _context9.t0()).done) {
+                _context9.next = 13;
+                break;
+              }
+              key = _context9.t1.value;
+              _context9.next = 10;
+              return refs[key];
+            case 10:
+              out[key] = _context9.sent;
+              _context9.next = 6;
+              break;
+            case 13:
+              return _context9.abrupt("return", out);
+            case 14:
+            case "end":
+              return _context9.stop();
+          }
+        }, _callee9, this);
+      }));
+      function getReferences(_x17, _x18) {
+        return _getReferences.apply(this, arguments);
+      }
+      return getReferences;
+    }()
+    /**
+     * Given a FHIR Bundle or a URL pointing to a bundle, iterates over all
+     * entry resources. Note that this will also automatically crawl through
+     * further pages (if any)
+     */
+    )
+  }, {
+    key: "resources",
+    value: function resources(bundleOrUrl, options) {
+      var _this = this;
+      return (0, _wrapAsyncGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee10() {
+        var count, _iteratorAbruptCompletion, _didIteratorError, _iteratorError, _iterator, _step, page, _iterator3, _step3, entry;
+        return _regenerator.default.wrap(function _callee10$(_context10) {
+          while (1) switch (_context10.prev = _context10.next) {
+            case 0:
+              count = 0;
+              _iteratorAbruptCompletion = false;
+              _didIteratorError = false;
+              _context10.prev = 3;
+              _iterator = _asyncIterator(_this.pages(bundleOrUrl, options));
+            case 5:
+              _context10.next = 7;
+              return (0, _awaitAsyncGenerator2.default)(_iterator.next());
+            case 7:
+              if (!(_iteratorAbruptCompletion = !(_step = _context10.sent).done)) {
+                _context10.next = 31;
+                break;
+              }
+              page = _step.value;
+              _iterator3 = _createForOfIteratorHelper(page.entry || []);
+              _context10.prev = 10;
+              _iterator3.s();
+            case 12:
+              if ((_step3 = _iterator3.n()).done) {
+                _context10.next = 20;
+                break;
+              }
+              entry = _step3.value;
+              if (!((options === null || options === void 0 ? void 0 : options.limit) && ++count > options.limit)) {
+                _context10.next = 16;
+                break;
+              }
+              return _context10.abrupt("return");
+            case 16:
+              _context10.next = 18;
+              return entry.resource;
+            case 18:
+              _context10.next = 12;
+              break;
+            case 20:
+              _context10.next = 25;
+              break;
+            case 22:
+              _context10.prev = 22;
+              _context10.t0 = _context10["catch"](10);
+              _iterator3.e(_context10.t0);
+            case 25:
+              _context10.prev = 25;
+              _iterator3.f();
+              return _context10.finish(25);
+            case 28:
+              _iteratorAbruptCompletion = false;
+              _context10.next = 5;
+              break;
+            case 31:
+              _context10.next = 37;
+              break;
+            case 33:
+              _context10.prev = 33;
+              _context10.t1 = _context10["catch"](3);
+              _didIteratorError = true;
+              _iteratorError = _context10.t1;
+            case 37:
+              _context10.prev = 37;
+              _context10.prev = 38;
+              if (!(_iteratorAbruptCompletion && _iterator.return != null)) {
+                _context10.next = 42;
+                break;
+              }
+              _context10.next = 42;
+              return (0, _awaitAsyncGenerator2.default)(_iterator.return());
+            case 42:
+              _context10.prev = 42;
+              if (!_didIteratorError) {
+                _context10.next = 45;
+                break;
+              }
+              throw _iteratorError;
+            case 45:
+              return _context10.finish(42);
+            case 46:
+              return _context10.finish(37);
+            case 47:
+            case "end":
+              return _context10.stop();
+          }
+        }, _callee10, null, [[3, 33, 37, 47], [10, 22, 25, 28], [38,, 42, 46]]);
+      }))();
+    }
+    /**
+     * Given a FHIR Bundle or a URL pointing to a bundle, iterates over all
+     * pages. Note that this will automatically crawl through
+     * further pages (if any) but it will not detect previous pages. It is
+     * designed to be called on the first page and fetch any followup pages.
+     */
+  }, {
+    key: "pages",
+    value: function pages(bundleOrUrl, requestOptions) {
+      var _this2 = this;
+      return (0, _wrapAsyncGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee11() {
+        var _a, _b, _ref, limit, options, fetchPage, page, count, nextLink;
+        return _regenerator.default.wrap(function _callee11$(_context11) {
+          while (1) switch (_context11.prev = _context11.next) {
+            case 0:
+              _ref = requestOptions || {}, limit = _ref.limit, options = (0, _objectWithoutProperties2.default)(_ref, _excluded);
+              fetchPage = function fetchPage(url) {
+                return _this2.fhirRequest(url, options);
+              };
+              if (!(typeof bundleOrUrl === "string" || bundleOrUrl instanceof URL)) {
+                _context11.next = 8;
+                break;
+              }
+              _context11.next = 5;
+              return (0, _awaitAsyncGenerator2.default)(fetchPage(bundleOrUrl));
+            case 5:
+              _context11.t0 = _context11.sent;
+              _context11.next = 9;
+              break;
+            case 8:
+              _context11.t0 = bundleOrUrl;
+            case 9:
+              page = _context11.t0;
+              count = 0;
+            case 11:
+              if (!(page && page.resourceType === "Bundle" && (!limit || ++count <= limit))) {
+                _context11.next = 24;
+                break;
+              }
+              _context11.next = 14;
+              return page;
+            case 14:
+              if (!((_a = options === null || options === void 0 ? void 0 : options.signal) === null || _a === void 0 ? void 0 : _a.aborted)) {
+                _context11.next = 16;
+                break;
+              }
+              return _context11.abrupt("break", 24);
+            case 16:
+              // Find the "next" link
+              nextLink = ((_b = page.link) !== null && _b !== void 0 ? _b : []).find(function (l) {
+                return l.relation === 'next' && typeof l.url === 'string';
+              });
+              if (nextLink) {
+                _context11.next = 19;
+                break;
+              }
+              return _context11.abrupt("break", 24);
+            case 19:
+              _context11.next = 21;
+              return (0, _awaitAsyncGenerator2.default)(fetchPage(nextLink.url));
+            case 21:
+              page = _context11.sent;
+              _context11.next = 11;
+              break;
+            case 24:
+            case "end":
+              return _context11.stop();
+          }
+        }, _callee11);
+      }))();
+    }
+    /**
+     * The method responsible for making all http requests
+     */
+  }, {
+    key: "fhirRequest",
+    value: (function () {
+      var _fhirRequest = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee12(uri) {
+        var options,
+          getRequestDefaults,
+          path,
+          url,
+          _options,
+          cacheMap,
+          _args12 = arguments;
+        return _regenerator.default.wrap(function _callee12$(_context12) {
+          while (1) switch (_context12.prev = _context12.next) {
+            case 0:
+              options = _args12.length > 1 && _args12[1] !== undefined ? _args12[1] : {};
+              (0, lib_1.assert)(options, "fhirRequest requires a uri as first argument");
+              _context12.next = 4;
+              return this.getRequestDefaults();
+            case 4:
+              getRequestDefaults = _context12.sent;
+              options = _objectSpread(_objectSpread(_objectSpread({}, getRequestDefaults), options), {}, {
+                headers: _objectSpread(_objectSpread({}, getRequestDefaults.headers || {}), options.headers || {})
+              });
+              path = uri + "";
+              url = (0, lib_1.absolute)(path, this.fhirBaseUrl);
+              _options = options, cacheMap = _options.cacheMap;
+              if (!cacheMap) {
+                _context12.next = 12;
+                break;
+              }
+              if (!(path in cacheMap)) {
+                cacheMap[path] = (0, lib_1.request)(url, options).then(function (res) {
+                  cacheMap[path] = res;
+                  return res;
+                }).catch(function (error) {
+                  delete cacheMap[path];
+                  throw error;
+                });
+              }
+              return _context12.abrupt("return", cacheMap[path]);
+            case 12:
+              return _context12.abrupt("return", (0, lib_1.request)(url, options));
+            case 13:
+            case "end":
+              return _context12.stop();
+          }
+        }, _callee12, this);
+      }));
+      function fhirRequest(_x19) {
+        return _fhirRequest.apply(this, arguments);
+      }
+      return fhirRequest;
+    }()
     /**
      * Returns a promise that will be resolved with the fhir version as defined
      * in the CapabilityStatement.
      */
+    )
   }, {
     key: "getFhirVersion",
-    value: function getFhirVersion() {
-      return (0, lib_1.fetchConformanceStatement)(this.state.serverUrl).then(function (metadata) {
-        return metadata.fhirVersion;
-      });
-    }
+    value: (function () {
+      var _getFhirVersion = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee13() {
+        return _regenerator.default.wrap(function _callee13$(_context13) {
+          while (1) switch (_context13.prev = _context13.next) {
+            case 0:
+              return _context13.abrupt("return", (0, lib_1.fetchConformanceStatement)(this.fhirBaseUrl).then(function (metadata) {
+                return metadata.fhirVersion;
+              }));
+            case 1:
+            case "end":
+              return _context13.stop();
+          }
+        }, _callee13, this);
+      }));
+      function getFhirVersion() {
+        return _getFhirVersion.apply(this, arguments);
+      }
+      return getFhirVersion;
+    }()
     /**
      * Returns a promise that will be resolved with the numeric fhir version
      * - 2 for DSTU2
@@ -2050,17 +2592,32 @@ var Client = /*#__PURE__*/function () {
      * - 4 for R4
      * - 0 if the version is not known
      */
+    )
   }, {
     key: "getFhirRelease",
-    value: function getFhirRelease() {
-      return this.getFhirVersion().then(function (v) {
-        var _a;
-        return (_a = settings_1.fhirVersions[v]) !== null && _a !== void 0 ? _a : 0;
-      });
-    }
+    value: (function () {
+      var _getFhirRelease = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee14() {
+        return _regenerator.default.wrap(function _callee14$(_context14) {
+          while (1) switch (_context14.prev = _context14.next) {
+            case 0:
+              return _context14.abrupt("return", this.getFhirVersion().then(function (v) {
+                var _a;
+                return (_a = settings_1.fhirVersions[v]) !== null && _a !== void 0 ? _a : 0;
+              }));
+            case 1:
+            case "end":
+              return _context14.stop();
+          }
+        }, _callee14, this);
+      }));
+      function getFhirRelease() {
+        return _getFhirRelease.apply(this, arguments);
+      }
+      return getFhirRelease;
+    }())
   }]);
 }();
-exports["default"] = Client;
+exports["default"] = FhirClient;
 
 /***/ }),
 
@@ -2108,7 +2665,7 @@ var HttpError = /*#__PURE__*/function (_Error) {
   return (0, _createClass2.default)(HttpError, [{
     key: "parse",
     value: function () {
-      var _parse = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+      var _parse = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee() {
         var type, body, _body;
         return _regenerator.default.wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
@@ -2180,7 +2737,7 @@ var HttpError = /*#__PURE__*/function (_Error) {
       };
     }
   }]);
-}( /*#__PURE__*/(0, _wrapNativeSuper2.default)(Error));
+}(/*#__PURE__*/(0, _wrapNativeSuper2.default)(Error));
 exports["default"] = HttpError;
 
 /***/ }),
@@ -2414,6 +2971,7 @@ exports["default"] = BrowserAdapter;
 __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
 __webpack_require__(/*! core-js/modules/es.promise.js */ "./node_modules/core-js/modules/es.promise.js");
 var BrowserAdapter_1 = __webpack_require__(/*! ../adapters/BrowserAdapter */ "./src/adapters/BrowserAdapter.ts");
+var FhirClient_1 = __webpack_require__(/*! ../FhirClient */ "./src/FhirClient.ts");
 var adapter = new BrowserAdapter_1.default();
 var _adapter$getSmartApi = adapter.getSmartApi(),
   ready = _adapter$getSmartApi.ready,
@@ -2442,6 +3000,11 @@ if (typeof FHIRCLIENT_PURE == "undefined") {
 var FHIR = {
   AbortController: window.AbortController,
   client: client,
+  /**
+   * Using this class if you are connecting to open server that does not
+   * require authorization.
+   */
+  FhirClient: FhirClient_1.default,
   utils: utils,
   oauth2: {
     settings: options,
@@ -2498,18 +3061,15 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.assertJsonPatch = exports.assert = exports.getTargetWindow = exports.getPatientParam = exports.byCodes = exports.byCode = exports.getAccessTokenExpiration = exports.getTimeInFuture = exports.jwtDecode = exports.randomString = exports.absolute = exports.makeArray = exports.setPath = exports.getPath = exports.fetchConformanceStatement = exports.getAndCache = exports.request = exports.loweCaseKeys = exports.responseToJSON = exports.checkResponse = exports.units = exports.debug = void 0;
-// const debug = require("debug");
-var debug_1 = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
 var HttpError_1 = __webpack_require__(/*! ./HttpError */ "./src/HttpError.ts");
 var settings_1 = __webpack_require__(/*! ./settings */ "./src/settings.ts");
-// import kantaMetadata from "../kanta-hrp-metadata.json";
-var kantaMetadata = __webpack_require__(/*! ./kanta-hrp-metadata.json */ "./src/kanta-hrp-metadata.json");
+var debug = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
 // $lab:coverage:off$
 // @ts-ignore
 var _ref = typeof FHIRCLIENT_PURE !== "undefined" ? window : __webpack_require__(/*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js"),
   fetch = _ref.fetch;
 // $lab:coverage:on$
-var _debug = (0, debug_1.default)("FHIR");
+var _debug = debug("FHIR");
 exports.debug = _debug;
 /**
  * The cache for the `getAndCache` function
@@ -2570,7 +3130,7 @@ function checkResponse(_x) {
   return _checkResponse.apply(this, arguments);
 }
 function _checkResponse() {
-  _checkResponse = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(resp) {
+  _checkResponse = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee(resp) {
     var error;
     return _regenerator.default.wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
@@ -2730,8 +3290,7 @@ function fetchConformanceStatement() {
   var requestOptions = arguments.length > 1 ? arguments[1] : undefined;
   var url = String(baseUrl).replace(/\/*$/, "/") + "metadata";
   return getAndCache(url, requestOptions).catch(function (ex) {
-    console.error("Failed to fetch the conformance statement from \"".concat(url, "\". ").concat(ex, ". Returning predefined Kanta metadata instead."));
-    return kantaMetadata;
+    throw new Error("Failed to fetch the conformance statement from \"".concat(url, "\". ").concat(ex));
   });
 }
 exports.fetchConformanceStatement = fetchConformanceStatement;
@@ -2993,7 +3552,7 @@ function getTargetWindow(_x2) {
   return _getTargetWindow.apply(this, arguments);
 }
 function _getTargetWindow() {
-  _getTargetWindow = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2(target) {
+  _getTargetWindow = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee2(target) {
     var width,
       height,
       error,
@@ -3241,7 +3800,7 @@ function digestSha256(_x) {
   return _digestSha.apply(this, arguments);
 }
 function _digestSha() {
-  _digestSha = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2(payload) {
+  _digestSha = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee2(payload) {
     var prepared, hash;
     return _regenerator.default.wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
@@ -3262,7 +3821,7 @@ function _digestSha() {
 }
 exports.digestSha256 = digestSha256;
 var generatePKCEChallenge = /*#__PURE__*/function () {
-  var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+  var _ref = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee() {
     var entropy,
       inputBytes,
       codeVerifier,
@@ -3299,7 +3858,7 @@ function importJWK(_x2) {
   return _importJWK.apply(this, arguments);
 }
 function _importJWK() {
-  _importJWK = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3(jwk) {
+  _importJWK = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee3(jwk) {
     return _regenerator.default.wrap(function _callee3$(_context3) {
       while (1) switch (_context3.prev = _context3.next) {
         case 0:
@@ -3346,7 +3905,7 @@ function signCompactJws(_x3, _x4, _x5, _x6) {
   return _signCompactJws.apply(this, arguments);
 }
 function _signCompactJws() {
-  _signCompactJws = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee4(alg, privateKey, header, payload) {
+  _signCompactJws = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee4(alg, privateKey, header, payload) {
     var jwtHeader, jwtPayload, jwtAuthenticatedContent, signature;
     return _regenerator.default.wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
@@ -3492,81 +4051,151 @@ function isBrowser() {
  * @param baseUrl The base URL of the FHIR server
  */
 function fetchWellKnownJson() {
-  var baseUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "/";
-  var requestOptions = arguments.length > 1 ? arguments[1] : undefined;
-  var url = String(baseUrl).replace(/\/*$/, "/") + ".well-known/smart-configuration";
-  return (0, lib_1.getAndCache)(url, requestOptions).catch(function (ex) {
-    throw new Error("Failed to fetch the well-known json \"".concat(url, "\". ").concat(ex.message));
-  });
+  return _fetchWellKnownJson.apply(this, arguments);
+}
+function _fetchWellKnownJson() {
+  _fetchWellKnownJson = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee() {
+    var baseUrl,
+      requestOptions,
+      url,
+      _args = arguments;
+    return _regenerator.default.wrap(function _callee$(_context) {
+      while (1) switch (_context.prev = _context.next) {
+        case 0:
+          baseUrl = _args.length > 0 && _args[0] !== undefined ? _args[0] : "/";
+          requestOptions = _args.length > 1 ? _args[1] : undefined;
+          url = String(baseUrl).replace(/\/*$/, "/") + ".well-known/smart-configuration";
+          return _context.abrupt("return", (0, lib_1.getAndCache)(url, requestOptions).catch(function (ex) {
+            throw new Error("Failed to fetch the well-known json \"".concat(url, "\". ").concat(ex.message));
+          }));
+        case 4:
+        case "end":
+          return _context.stop();
+      }
+    }, _callee);
+  }));
+  return _fetchWellKnownJson.apply(this, arguments);
 }
 exports.fetchWellKnownJson = fetchWellKnownJson;
 /**
  * Fetch a "WellKnownJson" and extract the SMART endpoints from it
  */
 function getSecurityExtensionsFromWellKnownJson() {
-  var baseUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "/";
-  var requestOptions = arguments.length > 1 ? arguments[1] : undefined;
-  return fetchWellKnownJson(baseUrl, requestOptions).then(function (meta) {
-    if (!meta.authorization_endpoint || !meta.token_endpoint) {
-      throw new Error("Invalid wellKnownJson");
-    }
-    return {
-      registrationUri: meta.registration_endpoint || "",
-      authorizeUri: meta.authorization_endpoint,
-      tokenUri: meta.token_endpoint,
-      codeChallengeMethods: meta.code_challenge_methods_supported || []
-    };
-  });
+  return _getSecurityExtensionsFromWellKnownJson.apply(this, arguments);
 }
 /**
  * Fetch a `CapabilityStatement` and extract the SMART endpoints from it
  */
+function _getSecurityExtensionsFromWellKnownJson() {
+  _getSecurityExtensionsFromWellKnownJson = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee2() {
+    var baseUrl,
+      requestOptions,
+      _args2 = arguments;
+    return _regenerator.default.wrap(function _callee2$(_context2) {
+      while (1) switch (_context2.prev = _context2.next) {
+        case 0:
+          baseUrl = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : "/";
+          requestOptions = _args2.length > 1 ? _args2[1] : undefined;
+          return _context2.abrupt("return", fetchWellKnownJson(baseUrl, requestOptions).then(function (meta) {
+            if (!meta.authorization_endpoint || !meta.token_endpoint) {
+              throw new Error("Invalid wellKnownJson");
+            }
+            return {
+              registrationUri: meta.registration_endpoint || "",
+              authorizeUri: meta.authorization_endpoint,
+              tokenUri: meta.token_endpoint,
+              codeChallengeMethods: meta.code_challenge_methods_supported || []
+            };
+          }));
+        case 3:
+        case "end":
+          return _context2.stop();
+      }
+    }, _callee2);
+  }));
+  return _getSecurityExtensionsFromWellKnownJson.apply(this, arguments);
+}
 function getSecurityExtensionsFromConformanceStatement() {
-  var baseUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "/";
-  var requestOptions = arguments.length > 1 ? arguments[1] : undefined;
-  return (0, lib_1.fetchConformanceStatement)(baseUrl, requestOptions).then(function (meta) {
-    var nsUri = "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris";
-    var extensions = ((0, lib_1.getPath)(meta || {}, "rest.0.security.extension") || []).filter(function (e) {
-      return e.url === nsUri;
-    }).map(function (o) {
-      return o.extension;
-    })[0];
-    var out = {
-      registrationUri: "",
-      authorizeUri: "",
-      tokenUri: "",
-      codeChallengeMethods: []
-    };
-    if (extensions) {
-      extensions.forEach(function (ext) {
-        if (ext.url === "register") {
-          out.registrationUri = ext.valueUri;
-        }
-        if (ext.url === "authorize") {
-          out.authorizeUri = ext.valueUri;
-        }
-        if (ext.url === "token") {
-          out.tokenUri = ext.valueUri;
-        }
-      });
-    }
-    return out;
-  });
+  return _getSecurityExtensionsFromConformanceStatement.apply(this, arguments);
 }
 /**
  * Given a FHIR server, returns an object with it's Oauth security endpoints
- * that we are interested in. This will first try to find the info in the
- * `.well-known/smart-configuration` and in case that fails, from the
- * `CapabilityStatement` through the `metadata` endpoint.
+ * that we are interested in. This will try to find the info in both the
+ * `CapabilityStatement` and the `.well-known/smart-configuration`. Whatever
+ * Arrives first will be used and the other request will be aborted.
  * @param [baseUrl = "/"] Fhir server base URL
- * @param [options] request options for call to the metadata endpoint
  */
+function _getSecurityExtensionsFromConformanceStatement() {
+  _getSecurityExtensionsFromConformanceStatement = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee3() {
+    var baseUrl,
+      requestOptions,
+      _args3 = arguments;
+    return _regenerator.default.wrap(function _callee3$(_context3) {
+      while (1) switch (_context3.prev = _context3.next) {
+        case 0:
+          baseUrl = _args3.length > 0 && _args3[0] !== undefined ? _args3[0] : "/";
+          requestOptions = _args3.length > 1 ? _args3[1] : undefined;
+          return _context3.abrupt("return", (0, lib_1.fetchConformanceStatement)(baseUrl, requestOptions).then(function (meta) {
+            var nsUri = "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris";
+            var extensions = ((0, lib_1.getPath)(meta || {}, "rest.0.security.extension") || []).filter(function (e) {
+              return e.url === nsUri;
+            }).map(function (o) {
+              return o.extension;
+            })[0];
+            var out = {
+              registrationUri: "",
+              authorizeUri: "",
+              tokenUri: "",
+              codeChallengeMethods: []
+            };
+            if (extensions) {
+              extensions.forEach(function (ext) {
+                if (ext.url === "register") {
+                  out.registrationUri = ext.valueUri;
+                }
+                if (ext.url === "authorize") {
+                  out.authorizeUri = ext.valueUri;
+                }
+                if (ext.url === "token") {
+                  out.tokenUri = ext.valueUri;
+                }
+              });
+            }
+            return out;
+          }));
+        case 3:
+        case "end":
+          return _context3.stop();
+      }
+    }, _callee3);
+  }));
+  return _getSecurityExtensionsFromConformanceStatement.apply(this, arguments);
+}
 function getSecurityExtensions() {
-  var baseUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "/";
-  var options = arguments.length > 1 ? arguments[1] : undefined;
-  return getSecurityExtensionsFromWellKnownJson(baseUrl).catch(function () {
-    return getSecurityExtensionsFromConformanceStatement(baseUrl, options);
-  });
+  return _getSecurityExtensions.apply(this, arguments);
+}
+function _getSecurityExtensions() {
+  _getSecurityExtensions = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee4() {
+    var baseUrl,
+      wellKnownRequestOptions,
+      conformanceRequestOptions,
+      _args4 = arguments;
+    return _regenerator.default.wrap(function _callee4$(_context4) {
+      while (1) switch (_context4.prev = _context4.next) {
+        case 0:
+          baseUrl = _args4.length > 0 && _args4[0] !== undefined ? _args4[0] : "/";
+          wellKnownRequestOptions = _args4.length > 1 ? _args4[1] : undefined;
+          conformanceRequestOptions = _args4.length > 2 ? _args4[2] : undefined;
+          return _context4.abrupt("return", getSecurityExtensionsFromWellKnownJson(baseUrl, wellKnownRequestOptions).catch(function () {
+            return getSecurityExtensionsFromConformanceStatement(baseUrl, conformanceRequestOptions);
+          }));
+        case 4:
+        case "end":
+          return _context4.stop();
+      }
+    }, _callee4);
+  }));
+  return _getSecurityExtensions.apply(this, arguments);
 }
 exports.getSecurityExtensions = getSecurityExtensions;
 /**
@@ -3583,7 +4212,7 @@ function authorize(_x) {
   return _authorize.apply(this, arguments);
 }
 function _authorize() {
-  _authorize = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(env) {
+  _authorize = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee5(env) {
     var params,
       url,
       urlISS,
@@ -3596,7 +4225,6 @@ function _authorize() {
       height,
       pkceMode,
       clientPublicKeySetUrl,
-      agent,
       redirect_uri,
       client_id,
       iss,
@@ -3610,33 +4238,32 @@ function _authorize() {
       clientId,
       completeInTarget,
       clientPrivateJwk,
+      stateKey,
       storage,
       serverUrl,
       inFrame,
       inPopUp,
       oldKey,
-      stateKey,
       state,
       fullSessionStorageSupport,
       redirectUrl,
-      securityOptions,
       extensions,
       redirectParams,
       codes,
       win,
-      _args = arguments;
-    return _regenerator.default.wrap(function _callee$(_context) {
-      while (1) switch (_context.prev = _context.next) {
+      _args5 = arguments;
+    return _regenerator.default.wrap(function _callee5$(_context5) {
+      while (1) switch (_context5.prev = _context5.next) {
         case 0:
-          params = _args.length > 1 && _args[1] !== undefined ? _args[1] : {};
+          params = _args5.length > 1 && _args5[1] !== undefined ? _args5[1] : {};
           url = env.getUrl(); // Multiple config for EHR launches ---------------------------------------
           if (!Array.isArray(params)) {
-            _context.next = 11;
+            _context5.next = 11;
             break;
           }
           urlISS = url.searchParams.get("iss") || url.searchParams.get("fhirServiceUrl");
           if (urlISS) {
-            _context.next = 6;
+            _context5.next = 6;
             break;
           }
           throw new Error('Passing in an "iss" url parameter is required if authorize ' + 'uses multiple configurations');
@@ -3657,15 +4284,15 @@ function _authorize() {
             return false;
           });
           (0, lib_1.assert)(cfg, "No configuration found matching the current \"iss\" parameter \"".concat(urlISS, "\""));
-          _context.next = 10;
+          _context5.next = 10;
           return authorize(env, cfg);
         case 10:
-          return _context.abrupt("return", _context.sent);
+          return _context5.abrupt("return", _context5.sent);
         case 11:
           // ------------------------------------------------------------------------
           // Obtain input
-          clientSecret = params.clientSecret, fakeTokenResponse = params.fakeTokenResponse, encounterId = params.encounterId, target = params.target, width = params.width, height = params.height, pkceMode = params.pkceMode, clientPublicKeySetUrl = params.clientPublicKeySetUrl, agent = params.agent, redirect_uri = params.redirect_uri, client_id = params.client_id;
-          iss = params.iss, launch = params.launch, patientId = params.patientId, fhirServiceUrl = params.fhirServiceUrl, redirectUri = params.redirectUri, noRedirect = params.noRedirect, _params$scope = params.scope, scope = _params$scope === void 0 ? "" : _params$scope, clientId = params.clientId, completeInTarget = params.completeInTarget, clientPrivateJwk = params.clientPrivateJwk;
+          clientSecret = params.clientSecret, fakeTokenResponse = params.fakeTokenResponse, encounterId = params.encounterId, target = params.target, width = params.width, height = params.height, pkceMode = params.pkceMode, clientPublicKeySetUrl = params.clientPublicKeySetUrl, redirect_uri = params.redirect_uri, client_id = params.client_id;
+          iss = params.iss, launch = params.launch, patientId = params.patientId, fhirServiceUrl = params.fhirServiceUrl, redirectUri = params.redirectUri, noRedirect = params.noRedirect, _params$scope = params.scope, scope = _params$scope === void 0 ? "" : _params$scope, clientId = params.clientId, completeInTarget = params.completeInTarget, clientPrivateJwk = params.clientPrivateJwk, stateKey = params.stateKey;
           storage = env.getStorage(); // For these, a url param takes precedence over inline option
           iss = url.searchParams.get("iss") || iss;
           fhirServiceUrl = url.searchParams.get("fhirServiceUrl") || fhirServiceUrl;
@@ -3686,7 +4313,7 @@ function _authorize() {
           }
           serverUrl = String(iss || fhirServiceUrl || ""); // Validate input
           if (serverUrl) {
-            _context.next = 25;
+            _context5.next = 25;
             break;
           }
           throw new Error("No server url found. It must be specified as `iss` or as " + "`fhirServiceUrl` parameter");
@@ -3714,15 +4341,15 @@ function _authorize() {
           }
           // If `authorize` is called, make sure we clear any previous state (in case
           // this is a re-authorize)
-          _context.next = 30;
+          _context5.next = 30;
           return storage.get(settings_1.SMART_KEY);
         case 30:
-          oldKey = _context.sent;
-          _context.next = 33;
+          oldKey = _context5.sent;
+          _context5.next = 33;
           return storage.unset(oldKey);
         case 33:
-          // create initial state
-          stateKey = (0, lib_1.randomString)(16);
+          stateKey = stateKey !== null && stateKey !== void 0 ? stateKey : (0, lib_1.randomString)(16);
+          // Create initial state
           state = {
             clientId: clientId,
             scope: scope,
@@ -3737,10 +4364,10 @@ function _authorize() {
           };
           fullSessionStorageSupport = isBrowser() ? (0, lib_1.getPath)(env, "options.fullSessionStorageSupport") : true;
           if (!fullSessionStorageSupport) {
-            _context.next = 39;
+            _context5.next = 39;
             break;
           }
-          _context.next = 39;
+          _context5.next = 39;
           return storage.set(settings_1.SMART_KEY, stateKey);
         case 39:
           // fakeTokenResponse to override stuff (useful in development)
@@ -3761,85 +4388,82 @@ function _authorize() {
           }
           redirectUrl = redirectUri + "?state=" + encodeURIComponent(stateKey); // bypass oauth if fhirServiceUrl is used (but iss takes precedence)
           if (!(fhirServiceUrl && !iss)) {
-            _context.next = 52;
+            _context5.next = 52;
             break;
           }
           debug("Making fake launch...");
-          _context.next = 47;
+          _context5.next = 47;
           return storage.set(stateKey, state);
         case 47:
           if (!noRedirect) {
-            _context.next = 49;
+            _context5.next = 49;
             break;
           }
-          return _context.abrupt("return", redirectUrl);
+          return _context5.abrupt("return", redirectUrl);
         case 49:
-          _context.next = 51;
+          _context5.next = 51;
           return env.redirect(redirectUrl);
         case 51:
-          return _context.abrupt("return", _context.sent);
+          return _context5.abrupt("return", _context5.sent);
         case 52:
-          securityOptions = agent ? {
-            agent: agent
-          } : undefined; // Get oauth endpoints and add them to the state
-          _context.next = 55;
-          return getSecurityExtensions(serverUrl, securityOptions);
-        case 55:
-          extensions = _context.sent;
+          _context5.next = 54;
+          return getSecurityExtensions(serverUrl, params.wellKnownRequestOptions, params.conformanceRequestOptions);
+        case 54:
+          extensions = _context5.sent;
           Object.assign(state, extensions);
-          _context.next = 59;
+          _context5.next = 58;
           return storage.set(stateKey, state);
-        case 59:
+        case 58:
           if (state.authorizeUri) {
-            _context.next = 65;
+            _context5.next = 64;
             break;
           }
           if (!noRedirect) {
-            _context.next = 62;
+            _context5.next = 61;
             break;
           }
-          return _context.abrupt("return", redirectUrl);
-        case 62:
-          _context.next = 64;
+          return _context5.abrupt("return", redirectUrl);
+        case 61:
+          _context5.next = 63;
           return env.redirect(redirectUrl);
+        case 63:
+          return _context5.abrupt("return", _context5.sent);
         case 64:
-          return _context.abrupt("return", _context.sent);
-        case 65:
           // build the redirect uri
           redirectParams = ["response_type=code", "client_id=" + encodeURIComponent(clientId || ""), "scope=" + encodeURIComponent(scope), "redirect_uri=" + encodeURIComponent(redirectUri), "aud=" + encodeURIComponent(serverUrl), "state=" + encodeURIComponent(stateKey)]; // also pass this in case of EHR launch
           if (launch) {
             redirectParams.push("launch=" + encodeURIComponent(launch));
           }
           if (!shouldIncludeChallenge(extensions.codeChallengeMethods.includes('S256'), pkceMode)) {
-            _context.next = 76;
+            _context5.next = 75;
             break;
           }
-          _context.next = 70;
+          _context5.next = 69;
           return env.security.generatePKCEChallenge();
-        case 70:
-          codes = _context.sent;
+        case 69:
+          codes = _context5.sent;
           Object.assign(state, codes);
-          _context.next = 74;
+          _context5.next = 73;
           return storage.set(stateKey, state);
-        case 74:
+        case 73:
           redirectParams.push("code_challenge=" + state.codeChallenge); // note that the challenge is ALREADY encoded properly
           redirectParams.push("code_challenge_method=S256");
-        case 76:
+        case 75:
           redirectUrl = state.authorizeUri + "?" + redirectParams.join("&");
           if (!noRedirect) {
-            _context.next = 79;
+            _context5.next = 78;
             break;
           }
-          return _context.abrupt("return", redirectUrl);
-        case 79:
+          return _context5.abrupt("return", redirectUrl);
+        case 78:
           if (!(target && isBrowser())) {
-            _context.next = 88;
+            _context5.next = 87;
             break;
           }
-          _context.next = 82;
+          _context5.next = 81;
           return (0, lib_1.getTargetWindow)(target, width, height);
-        case 82:
-          win = _context.sent;
+        case 81:
+          win = _context5.sent;
           if (win !== self) {
             try {
               // Also remove any old state from the target window and then
@@ -3862,17 +4486,17 @@ function _authorize() {
           } else {
             self.location.href = redirectUrl;
           }
-          return _context.abrupt("return");
-        case 88:
-          _context.next = 90;
+          return _context5.abrupt("return");
+        case 87:
+          _context5.next = 89;
           return env.redirect(redirectUrl);
+        case 89:
+          return _context5.abrupt("return", _context5.sent);
         case 90:
-          return _context.abrupt("return", _context.sent);
-        case 91:
         case "end":
-          return _context.stop();
+          return _context5.stop();
       }
-    }, _callee);
+    }, _callee5);
   }));
   return _authorize.apply(this, arguments);
 }
@@ -3943,7 +4567,7 @@ function ready(_x2) {
   return _ready.apply(this, arguments);
 }
 function _ready() {
-  _ready = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2(env) {
+  _ready = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee6(env) {
     var options,
       _a,
       _b,
@@ -3965,29 +4589,29 @@ function _ready() {
       requestOptions,
       tokenResponse,
       client,
-      _args2 = arguments;
-    return _regenerator.default.wrap(function _callee2$(_context2) {
-      while (1) switch (_context2.prev = _context2.next) {
+      _args6 = arguments;
+    return _regenerator.default.wrap(function _callee6$(_context6) {
+      while (1) switch (_context6.prev = _context6.next) {
         case 0:
-          options = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : {};
+          options = _args6.length > 1 && _args6[1] !== undefined ? _args6[1] : {};
           url = env.getUrl();
           Storage = env.getStorage();
           params = url.searchParams;
-          key = params.get("state");
-          code = params.get("code");
+          key = params.get("state") || options.stateKey;
+          code = params.get("code") || options.code;
           authError = params.get("error");
           authErrorDescription = params.get("error_description");
           if (key) {
-            _context2.next = 12;
+            _context6.next = 12;
             break;
           }
-          _context2.next = 11;
+          _context6.next = 11;
           return Storage.get(settings_1.SMART_KEY);
         case 11:
-          key = _context2.sent;
+          key = _context6.sent;
         case 12:
           if (!(authError || authErrorDescription)) {
-            _context2.next = 14;
+            _context6.next = 14;
             break;
           }
           throw new Error([authError, authErrorDescription].filter(Boolean).join(": "));
@@ -3996,14 +4620,14 @@ function _ready() {
           // key might be coming from the page url so it might be empty or missing
           (0, lib_1.assert)(key, "No 'state' parameter found. Please (re)launch the app.");
           // Check if we have a previous state
-          _context2.next = 18;
+          _context6.next = 18;
           return Storage.get(key);
         case 18:
-          state = _context2.sent;
+          state = _context6.sent;
           fullSessionStorageSupport = isBrowser() ? (0, lib_1.getPath)(env, "options.fullSessionStorageSupport") : true; // If we are in a popup window or an iframe and the authorization is
           // complete, send the location back to our opener and exit.
           if (!(isBrowser() && state && !state.completeInTarget)) {
-            _context2.next = 29;
+            _context6.next = 29;
             break;
           }
           inFrame = isInFrame();
@@ -4014,7 +4638,7 @@ function _ready() {
           // recursion we pass one additional parameter to the url which we later
           // remove.
           if (!((inFrame || inPopUp) && !url.searchParams.get("complete"))) {
-            _context2.next = 29;
+            _context6.next = 29;
             break;
           }
           url.searchParams.set("complete", "1");
@@ -4032,11 +4656,11 @@ function _ready() {
             }, origin);
             window.close();
           }
-          return _context2.abrupt("return", new Promise(function () {}));
+          return _context6.abrupt("return", new Promise(function () {}));
         case 29:
           url.searchParams.delete("complete");
           // Do we have to remove the `code` and `state` params from the URL?
-          hasState = params.has("state");
+          hasState = params.has("state") || options.stateKey ? true : false;
           if (isBrowser() && (0, lib_1.getPath)(env, "options.replaceBrowserHistory") && (code || hasState)) {
             // `code` is the flag that tell us to request an access token.
             // We have to remove it, otherwise the page will authorize on
@@ -4072,12 +4696,12 @@ function _ready() {
           authorized = !code || ((_a = state.tokenResponse) === null || _a === void 0 ? void 0 : _a.access_token); // If we are authorized already, then this is just a reload.
           // Otherwise, we have to complete the code flow
           if (!(!authorized && state.tokenUri)) {
-            _context2.next = 54;
+            _context6.next = 53;
             break;
           }
           (0, lib_1.assert)(code, "'code' url parameter is required");
           debug("Preparing to exchange the code for access token...");
-          _context2.next = 39;
+          _context6.next = 39;
           return buildTokenRequest(env, {
             code: code,
             state: state,
@@ -4085,18 +4709,15 @@ function _ready() {
             privateKey: options.privateKey || state.clientPrivateJwk
           });
         case 39:
-          requestOptions = _context2.sent;
+          requestOptions = _context6.sent;
           debug("Token request options: %O", requestOptions);
-          if (options.agent) {
-            requestOptions.agent = options.agent;
-          }
           // The EHR authorization server SHALL return a JSON structure that
           // includes an access token or a message indicating that the
           // authorization request has been denied.
-          _context2.next = 44;
+          _context6.next = 43;
           return (0, lib_1.request)(state.tokenUri, requestOptions);
-        case 44:
-          tokenResponse = _context2.sent;
+        case 43:
+          tokenResponse = _context6.sent;
           debug("Token response: %O", tokenResponse);
           (0, lib_1.assert)(tokenResponse.access_token, "Failed to obtain access token.");
           // Now we need to determine when is this authorization going to expire
@@ -4106,30 +4727,30 @@ function _ready() {
           state = _objectSpread(_objectSpread({}, state), {}, {
             tokenResponse: tokenResponse
           });
-          _context2.next = 51;
+          _context6.next = 50;
           return Storage.set(key, state);
-        case 51:
+        case 50:
           debug("Authorization successful!");
-          _context2.next = 55;
+          _context6.next = 54;
           break;
-        case 54:
+        case 53:
           debug(((_b = state.tokenResponse) === null || _b === void 0 ? void 0 : _b.access_token) ? "Already authorized" : "No authorization needed");
-        case 55:
+        case 54:
           if (!fullSessionStorageSupport) {
-            _context2.next = 58;
+            _context6.next = 57;
             break;
           }
-          _context2.next = 58;
+          _context6.next = 57;
           return Storage.set(settings_1.SMART_KEY, key);
-        case 58:
+        case 57:
           client = new Client_1.default(env, state);
           debug("Created client instance: %O", client);
-          return _context2.abrupt("return", client);
-        case 61:
+          return _context6.abrupt("return", client);
+        case 60:
         case "end":
-          return _context2.stop();
+          return _context6.stop();
       }
-    }, _callee2);
+    }, _callee6);
   }));
   return _ready.apply(this, arguments);
 }
@@ -4142,10 +4763,10 @@ function buildTokenRequest(_x3, _x4) {
   return _buildTokenRequest.apply(this, arguments);
 }
 function _buildTokenRequest() {
-  _buildTokenRequest = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3(env, _ref) {
+  _buildTokenRequest = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee7(env, _ref) {
     var code, state, clientPublicKeySetUrl, privateKey, redirectUri, clientSecret, tokenUri, clientId, codeVerifier, requestOptions, pk, jwtHeaders, jwtClaims, clientAssertion;
-    return _regenerator.default.wrap(function _callee3$(_context3) {
-      while (1) switch (_context3.prev = _context3.next) {
+    return _regenerator.default.wrap(function _callee7$(_context7) {
+      while (1) switch (_context7.prev = _context7.next) {
         case 0:
           code = _ref.code, state = _ref.state, clientPublicKeySetUrl = _ref.clientPublicKeySetUrl, privateKey = _ref.privateKey;
           redirectUri = state.redirectUri, clientSecret = state.clientSecret, tokenUri = state.tokenUri, clientId = state.clientId, codeVerifier = state.codeVerifier;
@@ -4166,32 +4787,32 @@ function _buildTokenRequest() {
           // Basic authentication is required, where the username is the app’s
           // client_id and the password is the app’s client_secret (see example).
           if (!clientSecret) {
-            _context3.next = 11;
+            _context7.next = 11;
             break;
           }
           requestOptions.headers.authorization = "Basic " + env.btoa(clientId + ":" + clientSecret);
           debug("Using state.clientSecret to construct the authorization header: %s", requestOptions.headers.authorization);
-          _context3.next = 32;
+          _context7.next = 32;
           break;
         case 11:
           if (!privateKey) {
-            _context3.next = 30;
+            _context7.next = 30;
             break;
           }
           if (!("key" in privateKey)) {
-            _context3.next = 16;
+            _context7.next = 16;
             break;
           }
-          _context3.t0 = privateKey.key;
-          _context3.next = 19;
+          _context7.t0 = privateKey.key;
+          _context7.next = 19;
           break;
         case 16:
-          _context3.next = 18;
+          _context7.next = 18;
           return env.security.importJWK(privateKey);
         case 18:
-          _context3.t0 = _context3.sent;
+          _context7.t0 = _context7.sent;
         case 19:
-          pk = _context3.t0;
+          pk = _context7.t0;
           jwtHeaders = {
             typ: "JWT",
             kid: privateKey.kid,
@@ -4204,14 +4825,14 @@ function _buildTokenRequest() {
             jti: env.base64urlencode(env.security.randomBytes(32)),
             exp: (0, lib_1.getTimeInFuture)(120) // two minutes in the future
           };
-          _context3.next = 24;
+          _context7.next = 24;
           return env.security.signCompactJws(privateKey.alg, pk, jwtHeaders, jwtClaims);
         case 24:
-          clientAssertion = _context3.sent;
+          clientAssertion = _context7.sent;
           requestOptions.body += "&client_assertion_type=".concat(encodeURIComponent("urn:ietf:params:oauth:client-assertion-type:jwt-bearer"));
           requestOptions.body += "&client_assertion=".concat(encodeURIComponent(clientAssertion));
           debug("Using state.clientPrivateJwk to add a client_assertion to the POST body");
-          _context3.next = 32;
+          _context7.next = 32;
           break;
         case 30:
           debug("Public client detected; adding state.clientId to the POST body");
@@ -4222,12 +4843,12 @@ function _buildTokenRequest() {
             // Note that the codeVerifier is ALREADY encoded properly  
             requestOptions.body += "&code_verifier=" + codeVerifier;
           }
-          return _context3.abrupt("return", requestOptions);
+          return _context7.abrupt("return", requestOptions);
         case 34:
         case "end":
-          return _context3.stop();
+          return _context7.stop();
       }
-    }, _callee3);
+    }, _callee7);
   }));
   return _buildTokenRequest.apply(this, arguments);
 }
@@ -4266,46 +4887,46 @@ function init(_x5, _x6, _x7) {
   return _init.apply(this, arguments);
 }
 function _init() {
-  _init = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee4(env, authorizeOptions, readyOptions) {
+  _init = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee8(env, authorizeOptions, readyOptions) {
     var url, code, state, storage, key, cached;
-    return _regenerator.default.wrap(function _callee4$(_context4) {
-      while (1) switch (_context4.prev = _context4.next) {
+    return _regenerator.default.wrap(function _callee8$(_context8) {
+      while (1) switch (_context8.prev = _context8.next) {
         case 0:
           url = env.getUrl();
           code = url.searchParams.get("code");
           state = url.searchParams.get("state"); // if `code` and `state` params are present we need to complete the auth flow
           if (!(code && state)) {
-            _context4.next = 5;
+            _context8.next = 5;
             break;
           }
-          return _context4.abrupt("return", ready(env, readyOptions));
+          return _context8.abrupt("return", ready(env, readyOptions));
         case 5:
           // Check for existing client state. If state is found, it means a client
           // instance have already been created in this session and we should try to
           // "revive" it.
           storage = env.getStorage();
-          _context4.t0 = state;
-          if (_context4.t0) {
-            _context4.next = 11;
+          _context8.t0 = state;
+          if (_context8.t0) {
+            _context8.next = 11;
             break;
           }
-          _context4.next = 10;
+          _context8.next = 10;
           return storage.get(settings_1.SMART_KEY);
         case 10:
-          _context4.t0 = _context4.sent;
+          _context8.t0 = _context8.sent;
         case 11:
-          key = _context4.t0;
-          _context4.next = 14;
+          key = _context8.t0;
+          _context8.next = 14;
           return storage.get(key);
         case 14:
-          cached = _context4.sent;
+          cached = _context8.sent;
           if (!cached) {
-            _context4.next = 17;
+            _context8.next = 17;
             break;
           }
-          return _context4.abrupt("return", new Client_1.default(env, cached));
+          return _context8.abrupt("return", new Client_1.default(env, cached));
         case 17:
-          return _context4.abrupt("return", authorize(env, authorizeOptions).then(function () {
+          return _context8.abrupt("return", authorize(env, authorizeOptions).then(function () {
             // `init` promises a Client but that cannot happen in this case. The
             // browser will be redirected (unload the page and be redirected back
             // to it later and the same init function will be called again). On
@@ -4317,9 +4938,9 @@ function _init() {
           }));
         case 18:
         case "end":
-          return _context4.stop();
+          return _context8.stop();
       }
-    }, _callee4);
+    }, _callee8);
   }));
   return _init.apply(this, arguments);
 }
@@ -4357,7 +4978,7 @@ var Storage = /*#__PURE__*/function () {
      * with that value (or undefined for missing keys).
      */
     function () {
-      var _get = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(key) {
+      var _get = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee(key) {
         var value;
         return _regenerator.default.wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
@@ -4389,7 +5010,7 @@ var Storage = /*#__PURE__*/function () {
   }, {
     key: "set",
     value: (function () {
-      var _set = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2(key, value) {
+      var _set = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee2(key, value) {
         return _regenerator.default.wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -4415,7 +5036,7 @@ var Storage = /*#__PURE__*/function () {
   }, {
     key: "unset",
     value: (function () {
-      var _unset = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3(key) {
+      var _unset = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee3(key) {
         return _regenerator.default.wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -5511,6 +6132,19 @@ function plural(ms, msAbs, n, name) {
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/OverloadYield.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/OverloadYield.js ***!
+  \**************************************************************/
+/***/ (function(module) {
+
+function _OverloadYield(e, d) {
+  this.v = e, this.k = d;
+}
+module.exports = _OverloadYield, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/arrayLikeToArray.js":
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/arrayLikeToArray.js ***!
@@ -5589,6 +6223,20 @@ module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exp
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/awaitAsyncGenerator.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/awaitAsyncGenerator.js ***!
+  \********************************************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var OverloadYield = __webpack_require__(/*! ./OverloadYield.js */ "./node_modules/@babel/runtime/helpers/OverloadYield.js");
+function _awaitAsyncGenerator(e) {
+  return new OverloadYield(e, 0);
+}
+module.exports = _awaitAsyncGenerator, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/classCallCheck.js":
 /*!***************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/classCallCheck.js ***!
@@ -5659,6 +6307,26 @@ function _defineProperty(e, r, t) {
   }) : e[r] = t, e;
 }
 module.exports = _defineProperty, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/get.js":
+/*!****************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/get.js ***!
+  \****************************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var superPropBase = __webpack_require__(/*! ./superPropBase.js */ "./node_modules/@babel/runtime/helpers/superPropBase.js");
+function _get() {
+  return module.exports = _get = "undefined" != typeof Reflect && Reflect.get ? Reflect.get.bind() : function (e, t, r) {
+    var p = superPropBase(e, t);
+    if (p) {
+      var n = Object.getOwnPropertyDescriptor(p, t);
+      return n.get ? n.get.call(arguments.length < 3 ? e : r) : n.value;
+    }
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports, _get.apply(null, arguments);
+}
+module.exports = _get, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
 
@@ -5789,8 +6457,8 @@ function _objectWithoutProperties(e, t) {
     r,
     i = objectWithoutPropertiesLoose(e, t);
   if (Object.getOwnPropertySymbols) {
-    var s = Object.getOwnPropertySymbols(e);
-    for (r = 0; r < s.length; r++) o = s[r], t.includes(o) || {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]);
+    var n = Object.getOwnPropertySymbols(e);
+    for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]);
   }
   return i;
 }
@@ -5808,7 +6476,7 @@ function _objectWithoutPropertiesLoose(r, e) {
   if (null == r) return {};
   var t = {};
   for (var n in r) if ({}.hasOwnProperty.call(r, n)) {
-    if (e.includes(n)) continue;
+    if (-1 !== e.indexOf(n)) continue;
     t[n] = r[n];
   }
   return t;
@@ -5842,49 +6510,79 @@ module.exports = _possibleConstructorReturn, module.exports.__esModule = true, m
 
 var _typeof = (__webpack_require__(/*! ./typeof.js */ "./node_modules/@babel/runtime/helpers/typeof.js")["default"]);
 function _regeneratorRuntime() {
-  "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+  "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
   module.exports = _regeneratorRuntime = function _regeneratorRuntime() {
-    return e;
+    return r;
   }, module.exports.__esModule = true, module.exports["default"] = module.exports;
   var t,
-    e = {},
-    r = Object.prototype,
-    n = r.hasOwnProperty,
-    o = Object.defineProperty || function (t, e, r) {
-      t[e] = r.value;
-    },
-    i = "function" == typeof Symbol ? Symbol : {},
-    a = i.iterator || "@@iterator",
-    c = i.asyncIterator || "@@asyncIterator",
-    u = i.toStringTag || "@@toStringTag";
-  function define(t, e, r) {
-    return Object.defineProperty(t, e, {
-      value: r,
-      enumerable: !0,
-      configurable: !0,
-      writable: !0
-    }), t[e];
+    r = {},
+    e = Object.prototype,
+    n = e.hasOwnProperty,
+    o = "function" == typeof Symbol ? Symbol : {},
+    i = o.iterator || "@@iterator",
+    a = o.asyncIterator || "@@asyncIterator",
+    u = o.toStringTag || "@@toStringTag";
+  function c(t, r, e, n) {
+    Object.defineProperty(t, r, {
+      value: e,
+      enumerable: !n,
+      configurable: !n,
+      writable: !n
+    });
   }
   try {
-    define({}, "");
+    c({}, "");
   } catch (t) {
-    define = function define(t, e, r) {
-      return t[e] = r;
+    c = function c(t, r, e) {
+      return t[r] = e;
     };
   }
-  function wrap(t, e, r, n) {
+  function h(r, e, n, o) {
     var i = e && e.prototype instanceof Generator ? e : Generator,
-      a = Object.create(i.prototype),
-      c = new Context(n || []);
-    return o(a, "_invoke", {
-      value: makeInvokeMethod(t, r, c)
-    }), a;
+      a = Object.create(i.prototype);
+    return c(a, "_invoke", function (r, e, n) {
+      var o = 1;
+      return function (i, a) {
+        if (3 === o) throw Error("Generator is already running");
+        if (4 === o) {
+          if ("throw" === i) throw a;
+          return {
+            value: t,
+            done: !0
+          };
+        }
+        for (n.method = i, n.arg = a;;) {
+          var u = n.delegate;
+          if (u) {
+            var c = d(u, n);
+            if (c) {
+              if (c === f) continue;
+              return c;
+            }
+          }
+          if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) {
+            if (1 === o) throw o = 4, n.arg;
+            n.dispatchException(n.arg);
+          } else "return" === n.method && n.abrupt("return", n.arg);
+          o = 3;
+          var h = s(r, e, n);
+          if ("normal" === h.type) {
+            if (o = n.done ? 4 : 2, h.arg === f) continue;
+            return {
+              value: h.arg,
+              done: n.done
+            };
+          }
+          "throw" === h.type && (o = 4, n.method = "throw", n.arg = h.arg);
+        }
+      };
+    }(r, n, new Context(o || [])), !0), a;
   }
-  function tryCatch(t, e, r) {
+  function s(t, r, e) {
     try {
       return {
         type: "normal",
-        arg: t.call(e, r)
+        arg: t.call(r, e)
       };
     } catch (t) {
       return {
@@ -5893,255 +6591,193 @@ function _regeneratorRuntime() {
       };
     }
   }
-  e.wrap = wrap;
-  var h = "suspendedStart",
-    l = "suspendedYield",
-    f = "executing",
-    s = "completed",
-    y = {};
+  r.wrap = h;
+  var f = {};
   function Generator() {}
   function GeneratorFunction() {}
   function GeneratorFunctionPrototype() {}
-  var p = {};
-  define(p, a, function () {
+  var l = {};
+  c(l, i, function () {
     return this;
   });
-  var d = Object.getPrototypeOf,
-    v = d && d(d(values([])));
-  v && v !== r && n.call(v, a) && (p = v);
-  var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p);
-  function defineIteratorMethods(t) {
-    ["next", "throw", "return"].forEach(function (e) {
-      define(t, e, function (t) {
-        return this._invoke(e, t);
+  var p = Object.getPrototypeOf,
+    y = p && p(p(x([])));
+  y && y !== e && n.call(y, i) && (l = y);
+  var v = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(l);
+  function g(t) {
+    ["next", "throw", "return"].forEach(function (r) {
+      c(t, r, function (t) {
+        return this._invoke(r, t);
       });
     });
   }
-  function AsyncIterator(t, e) {
-    function invoke(r, o, i, a) {
-      var c = tryCatch(t[r], t, o);
+  function AsyncIterator(t, r) {
+    function e(o, i, a, u) {
+      var c = s(t[o], t, i);
       if ("throw" !== c.type) {
-        var u = c.arg,
-          h = u.value;
-        return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) {
-          invoke("next", t, i, a);
+        var h = c.arg,
+          f = h.value;
+        return f && "object" == _typeof(f) && n.call(f, "__await") ? r.resolve(f.__await).then(function (t) {
+          e("next", t, a, u);
         }, function (t) {
-          invoke("throw", t, i, a);
-        }) : e.resolve(h).then(function (t) {
-          u.value = t, i(u);
+          e("throw", t, a, u);
+        }) : r.resolve(f).then(function (t) {
+          h.value = t, a(h);
         }, function (t) {
-          return invoke("throw", t, i, a);
+          return e("throw", t, a, u);
         });
       }
-      a(c.arg);
+      u(c.arg);
     }
-    var r;
-    o(this, "_invoke", {
-      value: function value(t, n) {
-        function callInvokeWithMethodAndArg() {
-          return new e(function (e, r) {
-            invoke(t, n, e, r);
-          });
-        }
-        return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
+    var o;
+    c(this, "_invoke", function (t, n) {
+      function i() {
+        return new r(function (r, o) {
+          e(t, n, r, o);
+        });
       }
-    });
+      return o = o ? o.then(i, i) : i();
+    }, !0);
   }
-  function makeInvokeMethod(e, r, n) {
-    var o = h;
-    return function (i, a) {
-      if (o === f) throw Error("Generator is already running");
-      if (o === s) {
-        if ("throw" === i) throw a;
-        return {
-          value: t,
-          done: !0
-        };
-      }
-      for (n.method = i, n.arg = a;;) {
-        var c = n.delegate;
-        if (c) {
-          var u = maybeInvokeDelegate(c, n);
-          if (u) {
-            if (u === y) continue;
-            return u;
-          }
-        }
-        if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) {
-          if (o === h) throw o = s, n.arg;
-          n.dispatchException(n.arg);
-        } else "return" === n.method && n.abrupt("return", n.arg);
-        o = f;
-        var p = tryCatch(e, r, n);
-        if ("normal" === p.type) {
-          if (o = n.done ? s : l, p.arg === y) continue;
-          return {
-            value: p.arg,
-            done: n.done
-          };
-        }
-        "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg);
-      }
-    };
-  }
-  function maybeInvokeDelegate(e, r) {
-    var n = r.method,
-      o = e.iterator[n];
-    if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y;
-    var i = tryCatch(o, e.iterator, r.arg);
-    if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y;
+  function d(r, e) {
+    var n = e.method,
+      o = r.i[n];
+    if (o === t) return e.delegate = null, "throw" === n && r.i["return"] && (e.method = "return", e.arg = t, d(r, e), "throw" === e.method) || "return" !== n && (e.method = "throw", e.arg = new TypeError("The iterator does not provide a '" + n + "' method")), f;
+    var i = s(o, r.i, e.arg);
+    if ("throw" === i.type) return e.method = "throw", e.arg = i.arg, e.delegate = null, f;
     var a = i.arg;
-    return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y);
+    return a ? a.done ? (e[r.r] = a.value, e.next = r.n, "return" !== e.method && (e.method = "next", e.arg = t), e.delegate = null, f) : a : (e.method = "throw", e.arg = new TypeError("iterator result is not an object"), e.delegate = null, f);
   }
-  function pushTryEntry(t) {
-    var e = {
-      tryLoc: t[0]
-    };
-    1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e);
+  function w(t) {
+    this.tryEntries.push(t);
   }
-  function resetTryEntry(t) {
-    var e = t.completion || {};
-    e.type = "normal", delete e.arg, t.completion = e;
+  function m(r) {
+    var e = r[4] || {};
+    e.type = "normal", e.arg = t, r[4] = e;
   }
   function Context(t) {
-    this.tryEntries = [{
-      tryLoc: "root"
-    }], t.forEach(pushTryEntry, this), this.reset(!0);
+    this.tryEntries = [[-1]], t.forEach(w, this), this.reset(!0);
   }
-  function values(e) {
-    if (e || "" === e) {
-      var r = e[a];
-      if (r) return r.call(e);
-      if ("function" == typeof e.next) return e;
-      if (!isNaN(e.length)) {
+  function x(r) {
+    if (null != r) {
+      var e = r[i];
+      if (e) return e.call(r);
+      if ("function" == typeof r.next) return r;
+      if (!isNaN(r.length)) {
         var o = -1,
-          i = function next() {
-            for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next;
-            return next.value = t, next.done = !0, next;
+          a = function e() {
+            for (; ++o < r.length;) if (n.call(r, o)) return e.value = r[o], e.done = !1, e;
+            return e.value = t, e.done = !0, e;
           };
-        return i.next = i;
+        return a.next = a;
       }
     }
-    throw new TypeError(_typeof(e) + " is not iterable");
+    throw new TypeError(_typeof(r) + " is not iterable");
   }
-  return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", {
-    value: GeneratorFunctionPrototype,
-    configurable: !0
-  }), o(GeneratorFunctionPrototype, "constructor", {
-    value: GeneratorFunction,
-    configurable: !0
-  }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) {
-    var e = "function" == typeof t && t.constructor;
-    return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name));
-  }, e.mark = function (t) {
-    return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t;
-  }, e.awrap = function (t) {
+  return GeneratorFunction.prototype = GeneratorFunctionPrototype, c(v, "constructor", GeneratorFunctionPrototype), c(GeneratorFunctionPrototype, "constructor", GeneratorFunction), c(GeneratorFunctionPrototype, u, GeneratorFunction.displayName = "GeneratorFunction"), r.isGeneratorFunction = function (t) {
+    var r = "function" == typeof t && t.constructor;
+    return !!r && (r === GeneratorFunction || "GeneratorFunction" === (r.displayName || r.name));
+  }, r.mark = function (t) {
+    return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, c(t, u, "GeneratorFunction")), t.prototype = Object.create(v), t;
+  }, r.awrap = function (t) {
     return {
       __await: t
     };
-  }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () {
+  }, g(AsyncIterator.prototype), c(AsyncIterator.prototype, a, function () {
     return this;
-  }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) {
+  }), r.AsyncIterator = AsyncIterator, r.async = function (t, e, n, o, i) {
     void 0 === i && (i = Promise);
-    var a = new AsyncIterator(wrap(t, r, n, o), i);
-    return e.isGeneratorFunction(r) ? a : a.next().then(function (t) {
+    var a = new AsyncIterator(h(t, e, n, o), i);
+    return r.isGeneratorFunction(e) ? a : a.next().then(function (t) {
       return t.done ? t.value : a.next();
     });
-  }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () {
+  }, g(v), c(v, u, "Generator"), c(v, i, function () {
     return this;
-  }), define(g, "toString", function () {
+  }), c(v, "toString", function () {
     return "[object Generator]";
-  }), e.keys = function (t) {
-    var e = Object(t),
-      r = [];
-    for (var n in e) r.push(n);
-    return r.reverse(), function next() {
-      for (; r.length;) {
-        var t = r.pop();
-        if (t in e) return next.value = t, next.done = !1, next;
-      }
-      return next.done = !0, next;
+  }), r.keys = function (t) {
+    var r = Object(t),
+      e = [];
+    for (var n in r) e.unshift(n);
+    return function t() {
+      for (; e.length;) if ((n = e.pop()) in r) return t.value = n, t.done = !1, t;
+      return t.done = !0, t;
     };
-  }, e.values = values, Context.prototype = {
+  }, r.values = x, Context.prototype = {
     constructor: Context,
-    reset: function reset(e) {
-      if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t);
+    reset: function reset(r) {
+      if (this.prev = this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(m), !r) for (var e in this) "t" === e.charAt(0) && n.call(this, e) && !isNaN(+e.slice(1)) && (this[e] = t);
     },
     stop: function stop() {
       this.done = !0;
-      var t = this.tryEntries[0].completion;
+      var t = this.tryEntries[0][4];
       if ("throw" === t.type) throw t.arg;
       return this.rval;
     },
-    dispatchException: function dispatchException(e) {
-      if (this.done) throw e;
-      var r = this;
-      function handle(n, o) {
-        return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o;
+    dispatchException: function dispatchException(r) {
+      if (this.done) throw r;
+      var e = this;
+      function n(t) {
+        a.type = "throw", a.arg = r, e.next = t;
       }
-      for (var o = this.tryEntries.length - 1; o >= 0; --o) {
+      for (var o = e.tryEntries.length - 1; o >= 0; --o) {
         var i = this.tryEntries[o],
-          a = i.completion;
-        if ("root" === i.tryLoc) return handle("end");
-        if (i.tryLoc <= this.prev) {
-          var c = n.call(i, "catchLoc"),
-            u = n.call(i, "finallyLoc");
-          if (c && u) {
-            if (this.prev < i.catchLoc) return handle(i.catchLoc, !0);
-            if (this.prev < i.finallyLoc) return handle(i.finallyLoc);
-          } else if (c) {
-            if (this.prev < i.catchLoc) return handle(i.catchLoc, !0);
-          } else {
-            if (!u) throw Error("try statement without catch or finally");
-            if (this.prev < i.finallyLoc) return handle(i.finallyLoc);
-          }
+          a = i[4],
+          u = this.prev,
+          c = i[1],
+          h = i[2];
+        if (-1 === i[0]) return n("end"), !1;
+        if (!c && !h) throw Error("try statement without catch or finally");
+        if (null != i[0] && i[0] <= u) {
+          if (u < c) return this.method = "next", this.arg = t, n(c), !0;
+          if (u < h) return n(h), !1;
         }
       }
     },
-    abrupt: function abrupt(t, e) {
-      for (var r = this.tryEntries.length - 1; r >= 0; --r) {
-        var o = this.tryEntries[r];
-        if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) {
-          var i = o;
+    abrupt: function abrupt(t, r) {
+      for (var e = this.tryEntries.length - 1; e >= 0; --e) {
+        var n = this.tryEntries[e];
+        if (n[0] > -1 && n[0] <= this.prev && this.prev < n[2]) {
+          var o = n;
           break;
         }
       }
-      i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null);
-      var a = i ? i.completion : {};
-      return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a);
+      o && ("break" === t || "continue" === t) && o[0] <= r && r <= o[2] && (o = null);
+      var i = o ? o[4] : {};
+      return i.type = t, i.arg = r, o ? (this.method = "next", this.next = o[2], f) : this.complete(i);
     },
-    complete: function complete(t, e) {
+    complete: function complete(t, r) {
       if ("throw" === t.type) throw t.arg;
-      return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y;
+      return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && r && (this.next = r), f;
     },
     finish: function finish(t) {
-      for (var e = this.tryEntries.length - 1; e >= 0; --e) {
-        var r = this.tryEntries[e];
-        if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y;
+      for (var r = this.tryEntries.length - 1; r >= 0; --r) {
+        var e = this.tryEntries[r];
+        if (e[2] === t) return this.complete(e[4], e[3]), m(e), f;
       }
     },
     "catch": function _catch(t) {
-      for (var e = this.tryEntries.length - 1; e >= 0; --e) {
-        var r = this.tryEntries[e];
-        if (r.tryLoc === t) {
-          var n = r.completion;
+      for (var r = this.tryEntries.length - 1; r >= 0; --r) {
+        var e = this.tryEntries[r];
+        if (e[0] === t) {
+          var n = e[4];
           if ("throw" === n.type) {
             var o = n.arg;
-            resetTryEntry(r);
+            m(e);
           }
           return o;
         }
       }
       throw Error("illegal catch attempt");
     },
-    delegateYield: function delegateYield(e, r, n) {
+    delegateYield: function delegateYield(r, e, n) {
       return this.delegate = {
-        iterator: values(e),
-        resultName: r,
-        nextLoc: n
-      }, "next" === this.method && (this.arg = t), y;
+        i: x(r),
+        r: e,
+        n: n
+      }, "next" === this.method && (this.arg = t), f;
     }
-  }, e;
+  }, r;
 }
 module.exports = _regeneratorRuntime, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
@@ -6159,6 +6795,21 @@ function _setPrototypeOf(t, e) {
   }, module.exports.__esModule = true, module.exports["default"] = module.exports, _setPrototypeOf(t, e);
 }
 module.exports = _setPrototypeOf, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/superPropBase.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/superPropBase.js ***!
+  \**************************************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var getPrototypeOf = __webpack_require__(/*! ./getPrototypeOf.js */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+function _superPropBase(t, o) {
+  for (; !{}.hasOwnProperty.call(t, o) && null !== (t = getPrototypeOf(t)););
+  return t;
+}
+module.exports = _superPropBase, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
 
@@ -6250,6 +6901,84 @@ function _unsupportedIterableToArray(r, a) {
   }
 }
 module.exports = _unsupportedIterableToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/wrapAsyncGenerator.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/wrapAsyncGenerator.js ***!
+  \*******************************************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var OverloadYield = __webpack_require__(/*! ./OverloadYield.js */ "./node_modules/@babel/runtime/helpers/OverloadYield.js");
+function _wrapAsyncGenerator(e) {
+  return function () {
+    return new AsyncGenerator(e.apply(this, arguments));
+  };
+}
+function AsyncGenerator(e) {
+  var r, t;
+  function resume(r, t) {
+    try {
+      var n = e[r](t),
+        o = n.value,
+        u = o instanceof OverloadYield;
+      Promise.resolve(u ? o.v : o).then(function (t) {
+        if (u) {
+          var i = "return" === r ? "return" : "next";
+          if (!o.k || t.done) return resume(i, t);
+          t = e[i](t).value;
+        }
+        settle(n.done ? "return" : "normal", t);
+      }, function (e) {
+        resume("throw", e);
+      });
+    } catch (e) {
+      settle("throw", e);
+    }
+  }
+  function settle(e, n) {
+    switch (e) {
+      case "return":
+        r.resolve({
+          value: n,
+          done: !0
+        });
+        break;
+      case "throw":
+        r.reject(n);
+        break;
+      default:
+        r.resolve({
+          value: n,
+          done: !1
+        });
+    }
+    (r = r.next) ? resume(r.key, r.arg) : t = null;
+  }
+  this._invoke = function (e, n) {
+    return new Promise(function (o, u) {
+      var i = {
+        key: e,
+        arg: n,
+        resolve: o,
+        reject: u,
+        next: null
+      };
+      t ? t = t.next = i : (r = t = i, resume(e, n));
+    });
+  }, "function" != typeof e["return"] && (this["return"] = void 0);
+}
+AsyncGenerator.prototype["function" == typeof Symbol && Symbol.asyncIterator || "@@asyncIterator"] = function () {
+  return this;
+}, AsyncGenerator.prototype.next = function (e) {
+  return this._invoke("next", e);
+}, AsyncGenerator.prototype["throw"] = function (e) {
+  return this._invoke("throw", e);
+}, AsyncGenerator.prototype["return"] = function (e) {
+  return this._invoke("return", e);
+};
+module.exports = _wrapAsyncGenerator, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
 
@@ -13354,6 +14083,32 @@ $({ target: 'Array', proto: true }, {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/modules/es.array.from.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.from.js ***!
+  \*******************************************************/
+/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var from = __webpack_require__(/*! ../internals/array-from */ "./node_modules/core-js/internals/array-from.js");
+var checkCorrectnessOfIteration = __webpack_require__(/*! ../internals/check-correctness-of-iteration */ "./node_modules/core-js/internals/check-correctness-of-iteration.js");
+
+var INCORRECT_ITERATION = !checkCorrectnessOfIteration(function (iterable) {
+  // eslint-disable-next-line es/no-array-from -- required for testing
+  Array.from(iterable);
+});
+
+// `Array.from` method
+// https://tc39.es/ecma262/#sec-array.from
+$({ target: 'Array', stat: true, forced: INCORRECT_ITERATION }, {
+  from: from
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/modules/es.array.includes.js":
 /*!***********************************************************!*\
   !*** ./node_modules/core-js/modules/es.array.includes.js ***!
@@ -15647,6 +16402,23 @@ $({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/modules/es.symbol.async-iterator.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.symbol.async-iterator.js ***!
+  \******************************************************************/
+/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+
+"use strict";
+
+var defineWellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol-define */ "./node_modules/core-js/internals/well-known-symbol-define.js");
+
+// `Symbol.asyncIterator` well-known symbol
+// https://tc39.es/ecma262/#sec-symbol.asynciterator
+defineWellKnownSymbol('asyncIterator');
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/modules/es.symbol.constructor.js":
 /*!***************************************************************!*\
   !*** ./node_modules/core-js/modules/es.symbol.constructor.js ***!
@@ -15921,6 +16693,77 @@ hiddenKeys[HIDDEN] = true;
 
 /***/ }),
 
+/***/ "./node_modules/core-js/modules/es.symbol.description.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.symbol.description.js ***!
+  \***************************************************************/
+/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+
+"use strict";
+// `Symbol.prototype.description` getter
+// https://tc39.es/ecma262/#sec-symbol.prototype.description
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
+var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
+var hasOwn = __webpack_require__(/*! ../internals/has-own-property */ "./node_modules/core-js/internals/has-own-property.js");
+var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
+var isPrototypeOf = __webpack_require__(/*! ../internals/object-is-prototype-of */ "./node_modules/core-js/internals/object-is-prototype-of.js");
+var toString = __webpack_require__(/*! ../internals/to-string */ "./node_modules/core-js/internals/to-string.js");
+var defineBuiltInAccessor = __webpack_require__(/*! ../internals/define-built-in-accessor */ "./node_modules/core-js/internals/define-built-in-accessor.js");
+var copyConstructorProperties = __webpack_require__(/*! ../internals/copy-constructor-properties */ "./node_modules/core-js/internals/copy-constructor-properties.js");
+
+var NativeSymbol = globalThis.Symbol;
+var SymbolPrototype = NativeSymbol && NativeSymbol.prototype;
+
+if (DESCRIPTORS && isCallable(NativeSymbol) && (!('description' in SymbolPrototype) ||
+  // Safari 12 bug
+  NativeSymbol().description !== undefined
+)) {
+  var EmptyStringDescriptionStore = {};
+  // wrap Symbol constructor for correct work with undefined description
+  var SymbolWrapper = function Symbol() {
+    var description = arguments.length < 1 || arguments[0] === undefined ? undefined : toString(arguments[0]);
+    var result = isPrototypeOf(SymbolPrototype, this)
+      // eslint-disable-next-line sonar/inconsistent-function-call -- ok
+      ? new NativeSymbol(description)
+      // in Edge 13, String(Symbol(undefined)) === 'Symbol(undefined)'
+      : description === undefined ? NativeSymbol() : NativeSymbol(description);
+    if (description === '') EmptyStringDescriptionStore[result] = true;
+    return result;
+  };
+
+  copyConstructorProperties(SymbolWrapper, NativeSymbol);
+  SymbolWrapper.prototype = SymbolPrototype;
+  SymbolPrototype.constructor = SymbolWrapper;
+
+  var NATIVE_SYMBOL = String(NativeSymbol('description detection')) === 'Symbol(description detection)';
+  var thisSymbolValue = uncurryThis(SymbolPrototype.valueOf);
+  var symbolDescriptiveString = uncurryThis(SymbolPrototype.toString);
+  var regexp = /^Symbol\((.*)\)[^)]+$/;
+  var replace = uncurryThis(''.replace);
+  var stringSlice = uncurryThis(''.slice);
+
+  defineBuiltInAccessor(SymbolPrototype, 'description', {
+    configurable: true,
+    get: function description() {
+      var symbol = thisSymbolValue(this);
+      if (hasOwn(EmptyStringDescriptionStore, symbol)) return '';
+      var string = symbolDescriptiveString(symbol);
+      var desc = NATIVE_SYMBOL ? stringSlice(string, 7, -1) : replace(string, regexp, '$1');
+      return desc === '' ? undefined : desc;
+    }
+  });
+
+  $({ global: true, constructor: true, forced: true }, {
+    Symbol: SymbolWrapper
+  });
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/modules/es.symbol.for.js":
 /*!*******************************************************!*\
   !*** ./node_modules/core-js/modules/es.symbol.for.js ***!
@@ -15951,6 +16794,23 @@ $({ target: 'Symbol', stat: true, forced: !NATIVE_SYMBOL_REGISTRY }, {
     return symbol;
   }
 });
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/modules/es.symbol.iterator.js":
+/*!************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.symbol.iterator.js ***!
+  \************************************************************/
+/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+
+"use strict";
+
+var defineWellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol-define */ "./node_modules/core-js/internals/well-known-symbol-define.js");
+
+// `Symbol.iterator` well-known symbol
+// https://tc39.es/ecma262/#sec-symbol.iterator
+defineWellKnownSymbol('iterator');
 
 
 /***/ }),
@@ -19130,17 +19990,6 @@ $({ target: 'URL', proto: true, enumerable: true }, {
 
  /* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ({}); // section modified by isomorphic-webcrypto build 
 
-
-/***/ }),
-
-/***/ "./src/kanta-hrp-metadata.json":
-/*!*************************************!*\
-  !*** ./src/kanta-hrp-metadata.json ***!
-  \*************************************/
-/***/ (function(module) {
-
-"use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"resourceType":"CapabilityStatement","id":"kanta-hrp","name":"MockMetadataForKantaHRP","status":"active","experimental":true,"date":"2024-12-07T06:35:44Z","kind":"instance","fhirVersion":"4.0.1","format":["json"],"rest":[{"mode":"server","security":{"extension":[{"extension":[{"valueUri":"https://phr-auth.at.kanta.fi/phr-authserver/authorize","url":"authorize"},{"valueUri":"https://phr-token.at.kanta.fi/phr-authserver/token","url":"token"}],"url":"http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris"}],"cors":true,"service":[{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/restful-security-service","code":"OAuth","display":"OAuth"}],"text":"OAuth"},{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/restful-security-service","code":"SMART-on-FHIR","display":"SMART-on-FHIR"}],"text":"SMART-on-FHIR"},{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/restful-security-service","code":"Basic","display":"Basic"}],"text":"Basic"}]}}]}');
 
 /***/ })
 
