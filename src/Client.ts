@@ -585,8 +585,9 @@ export default class Client extends FhirClient
         let response: Response | undefined;
 
         return super.fhirRequest<fhirclient.FetchResult>(url, requestOptions).then(result => {
+            response = (result as fhirclient.CombinedFetchResult).response;
+            debugRequest("Response: %O", response);
             if ((requestOptions as fhirclient.RequestOptions).includeResponse) {
-                response = (result as fhirclient.CombinedFetchResult).response;
                 return (result as fhirclient.CombinedFetchResult).body;
             }
             return result;
