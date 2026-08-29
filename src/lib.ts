@@ -6,8 +6,8 @@
 import HttpError from "./HttpError";
 import { patientParams } from "./settings";
 import { fhirclient } from "./types";
-import kantaMetadata from "./kanta-hrp-metadata.json";
 const debug = require("debug");
+const kantaMetadata = require("./kanta-hrp-metadata.json");
 
 
 // $lab:coverage:off$
@@ -194,8 +194,11 @@ export function fetchConformanceStatement(baseUrl = "/", requestOptions?: Reques
 {
     const url = String(baseUrl).replace(/\/*$/, "/") + "metadata";
     return getAndCache(url, requestOptions).catch((ex: Error) => {
-        _debug(`Failed to fetch the conformance statement from "${url}". Returning predefined Kanta metadata instead.`);
-        return kantaMetadata;
+        if (baseUrl.indexOf('.kanta.fi') >= 0) {
+            _debug(`Failed to fetch the conformance statement from "${url}". Returning predefined Kanta metadata instead.`);
+            return kantaMetadata;
+        }
+        throw ex;
     });
 }
 
