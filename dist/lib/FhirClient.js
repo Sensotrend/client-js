@@ -276,16 +276,22 @@ class FhirClient {
    */
   resources(bundleOrUrl, options) {
     return __asyncGenerator(this, arguments, function* resources_1() {
-      var e_1, _a;
+      var _a, e_1, _b, _c;
       let count = 0;
       try {
-        for (var _b = __asyncValues(this.pages(bundleOrUrl, options)), _c; _c = yield __await(_b.next()), !_c.done;) {
-          const page = _c.value;
-          for (const entry of page.entry || []) {
-            if ((options === null || options === void 0 ? void 0 : options.limit) && ++count > options.limit) {
-              return yield __await(void 0);
+        for (var _d = true, _e = __asyncValues(this.pages(bundleOrUrl, options)), _f; _f = yield __await(_e.next()), _a = _f.done, !_a;) {
+          _c = _f.value;
+          _d = false;
+          try {
+            const page = _c;
+            for (const entry of page.entry || []) {
+              if ((options === null || options === void 0 ? void 0 : options.limit) && ++count > options.limit) {
+                return yield __await(void 0);
+              }
+              yield yield __await(entry.resource);
             }
-            yield yield __await(entry.resource);
+          } finally {
+            _d = true;
           }
         }
       } catch (e_1_1) {
@@ -294,7 +300,7 @@ class FhirClient {
         };
       } finally {
         try {
-          if (_c && !_c.done && (_a = _b.return)) yield __await(_a.call(_b));
+          if (!_d && !_a && (_b = _e.return)) yield __await(_b.call(_e));
         } finally {
           if (e_1) throw e_1.error;
         }

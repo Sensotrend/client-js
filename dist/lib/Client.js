@@ -383,8 +383,9 @@ class Client extends FhirClient_1.default {
     debugRequest("%s, options: %O, fhirOptions: %O", url, requestOptions, options);
     let response;
     return super.fhirRequest(url, requestOptions).then(result => {
+      response = result.response;
+      debugRequest("Response: %O", response);
       if (requestOptions.includeResponse) {
-        response = result.response;
         return result.body;
       }
       return result;

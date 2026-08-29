@@ -4,7 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.init = exports.buildTokenRequest = exports.ready = exports.onMessage = exports.isInPopUp = exports.isInFrame = exports.authorize = exports.getSecurityExtensions = exports.fetchWellKnownJson = exports.KEY = void 0;
-/* global window */
 const lib_1 = require("./lib");
 const Client_1 = require("./Client");
 const settings_1 = require("./settings");
@@ -473,7 +472,8 @@ async function ready(env, options = {}) {
       code,
       state,
       clientPublicKeySetUrl: options.clientPublicKeySetUrl,
-      privateKey: options.privateKey || state.clientPrivateJwk
+      privateKey: options.privateKey || state.clientPrivateJwk,
+      agent: options.agent
     });
     debug("Token request options: %O", requestOptions);
     // The EHR authorization server SHALL return a JSON structure that
@@ -510,7 +510,8 @@ async function buildTokenRequest(env, {
   code,
   state,
   clientPublicKeySetUrl,
-  privateKey
+  privateKey,
+  agent
 }) {
   const {
     redirectUri,
@@ -569,6 +570,9 @@ async function buildTokenRequest(env, {
     debug("Found state.codeVerifier, adding to the POST body");
     // Note that the codeVerifier is ALREADY encoded properly  
     requestOptions.body += "&code_verifier=" + codeVerifier;
+  }
+  if (agent) {
+    requestOptions.agent = agent;
   }
   return requestOptions;
 }

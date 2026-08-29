@@ -1,5 +1,5 @@
 import { fhirclient } from "./types";
-declare const _debug: import("debug").Debugger;
+declare const _debug: any;
 export { _debug as debug };
 /**
  * A namespace with functions for converting between different measurement units

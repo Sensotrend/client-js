@@ -16,11 +16,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.assertJsonPatch = exports.assert = exports.getTargetWindow = exports.getPatientParam = exports.byCodes = exports.byCode = exports.getAccessTokenExpiration = exports.getTimeInFuture = exports.jwtDecode = exports.randomString = exports.absolute = exports.makeArray = exports.setPath = exports.getPath = exports.fetchConformanceStatement = exports.getAndCache = exports.request = exports.loweCaseKeys = exports.responseToJSON = exports.checkResponse = exports.units = exports.debug = void 0;
-// const debug = require("debug");
-const debug_1 = require("debug");
 const HttpError_1 = require("./HttpError");
 const settings_1 = require("./settings");
-// import kantaMetadata from "../kanta-hrp-metadata.json";
+const debug = require("debug");
 const kantaMetadata = require("./kanta-hrp-metadata.json");
 // $lab:coverage:off$
 // @ts-ignore
@@ -28,7 +26,7 @@ const {
   fetch
 } = typeof FHIRCLIENT_PURE !== "undefined" ? window : require("cross-fetch");
 // $lab:coverage:on$
-const _debug = (0, debug_1.default)("FHIR");
+const _debug = debug("FHIR");
 exports.debug = _debug;
 /**
  * The cache for the `getAndCache` function
@@ -223,8 +221,11 @@ exports.getAndCache = getAndCache;
 function fetchConformanceStatement(baseUrl = "/", requestOptions) {
   const url = String(baseUrl).replace(/\/*$/, "/") + "metadata";
   return getAndCache(url, requestOptions).catch(ex => {
-    console.error(`Failed to fetch the conformance statement from "${url}". ${ex}. Returning predefined Kanta metadata instead.`);
-    return kantaMetadata;
+    if (baseUrl.indexOf('.kanta.fi') >= 0) {
+      _debug(`Failed to fetch the conformance statement from "${url}". Returning predefined Kanta metadata instead.`);
+      return kantaMetadata;
+    }
+    throw ex;
   });
 }
 exports.fetchConformanceStatement = fetchConformanceStatement;

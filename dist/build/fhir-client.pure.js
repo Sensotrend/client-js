@@ -1,18 +1,19 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/Client.ts":
+/***/ "./src/Client.ts"
 /*!***********************!*\
   !*** ./src/Client.ts ***!
   \***********************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
+var __webpack_unused_export__;
 
 
-Object.defineProperty(exports, "__esModule", ({
+__webpack_unused_export__ = ({
   value: true
-}));
+});
 const lib_1 = __webpack_require__(/*! ./lib */ "./src/lib.ts");
 const strings_1 = __webpack_require__(/*! ./strings */ "./src/strings.ts");
 const settings_1 = __webpack_require__(/*! ./settings */ "./src/settings.ts");
@@ -400,8 +401,9 @@ class Client extends FhirClient_1.default {
     debugRequest("%s, options: %O, fhirOptions: %O", url, requestOptions, options);
     let response;
     return super.fhirRequest(url, requestOptions).then(result => {
+      response = result.response;
+      debugRequest("Response: %O", response);
       if (requestOptions.includeResponse) {
-        response = result.response;
         return result.body;
       }
       return result;
@@ -693,20 +695,21 @@ class Client extends FhirClient_1.default {
 }
 exports["default"] = Client;
 
-/***/ }),
+/***/ },
 
-/***/ "./src/FhirClient.ts":
+/***/ "./src/FhirClient.ts"
 /*!***************************!*\
   !*** ./src/FhirClient.ts ***!
   \***************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
+var __webpack_unused_export__;
 
 
-Object.defineProperty(exports, "__esModule", ({
+__webpack_unused_export__ = ({
   value: true
-}));
+});
 const settings_1 = __webpack_require__(/*! ./settings */ "./src/settings.ts");
 const lib_1 = __webpack_require__(/*! ./lib */ "./src/lib.ts");
 const debug = lib_1.debug.extend("FhirClient");
@@ -1015,20 +1018,21 @@ class FhirClient {
 }
 exports["default"] = FhirClient;
 
-/***/ }),
+/***/ },
 
-/***/ "./src/HttpError.ts":
+/***/ "./src/HttpError.ts"
 /*!**************************!*\
   !*** ./src/HttpError.ts ***!
   \**************************/
-/***/ ((__unused_webpack_module, exports) => {
+(__unused_webpack_module, exports) {
 
 "use strict";
+var __webpack_unused_export__;
 
 
-Object.defineProperty(exports, "__esModule", ({
+__webpack_unused_export__ = ({
   value: true
-}));
+});
 class HttpError extends Error {
   constructor(response) {
     super(`${response.status} ${response.statusText}\nURL: ${response.url}`);
@@ -1076,20 +1080,21 @@ class HttpError extends Error {
 }
 exports["default"] = HttpError;
 
-/***/ }),
+/***/ },
 
-/***/ "./src/adapters/BrowserAdapter.ts":
+/***/ "./src/adapters/BrowserAdapter.ts"
 /*!****************************************!*\
   !*** ./src/adapters/BrowserAdapter.ts ***!
   \****************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
+var __webpack_unused_export__;
 
 
-Object.defineProperty(exports, "__esModule", ({
+__webpack_unused_export__ = ({
   value: true
-}));
+});
 const smart_1 = __webpack_require__(/*! ../smart */ "./src/smart.ts");
 const Client_1 = __webpack_require__(/*! ../Client */ "./src/Client.ts");
 const BrowserStorage_1 = __webpack_require__(/*! ../storage/BrowserStorage */ "./src/storage/BrowserStorage.ts");
@@ -1235,13 +1240,13 @@ class BrowserAdapter {
 }
 exports["default"] = BrowserAdapter;
 
-/***/ }),
+/***/ },
 
-/***/ "./src/entry/browser.ts":
+/***/ "./src/entry/browser.ts"
 /*!******************************!*\
   !*** ./src/entry/browser.ts ***!
   \******************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+(module, __unused_webpack_exports, __webpack_require__) {
 
 "use strict";
 
@@ -1265,7 +1270,8 @@ const {
 // automatically polyfill everything except "fetch", which we have to handle
 // manually.
 // @ts-ignore
-if (false) {}
+if (false) // removed by dead control flow
+{}
 // $lab:coverage:off$
 const FHIR = {
   AbortController: window.AbortController,
@@ -1286,28 +1292,30 @@ const FHIR = {
 module.exports = FHIR;
 // $lab:coverage:on$
 
-/***/ }),
+/***/ },
 
-/***/ "./src/lib.ts":
+/***/ "./src/lib.ts"
 /*!********************!*\
   !*** ./src/lib.ts ***!
   \********************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
+var __webpack_unused_export__;
 
 
 /*
  * This file contains some shared functions. They are used by other modules, but
  * are defined here so that tests can import this library and test them.
  */
-Object.defineProperty(exports, "__esModule", ({
+__webpack_unused_export__ = ({
   value: true
-}));
-exports.assertJsonPatch = exports.assert = exports.getTargetWindow = exports.getPatientParam = exports.byCodes = exports.byCode = exports.getAccessTokenExpiration = exports.getTimeInFuture = exports.jwtDecode = exports.randomString = exports.absolute = exports.makeArray = exports.setPath = exports.getPath = exports.fetchConformanceStatement = exports.getAndCache = exports.request = exports.loweCaseKeys = exports.responseToJSON = exports.checkResponse = exports.units = exports.debug = void 0;
+});
+exports.assertJsonPatch = exports.assert = exports.getTargetWindow = exports.getPatientParam = exports.byCodes = exports.byCode = exports.getAccessTokenExpiration = exports.getTimeInFuture = exports.jwtDecode = exports.randomString = exports.absolute = exports.makeArray = exports.setPath = exports.getPath = exports.fetchConformanceStatement = exports.getAndCache = exports.request = __webpack_unused_export__ = __webpack_unused_export__ = __webpack_unused_export__ = exports.units = exports.debug = void 0;
 const HttpError_1 = __webpack_require__(/*! ./HttpError */ "./src/HttpError.ts");
 const settings_1 = __webpack_require__(/*! ./settings */ "./src/settings.ts");
 const debug = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+const kantaMetadata = __webpack_require__(/*! ./kanta-hrp-metadata.json */ "./src/kanta-hrp-metadata.json");
 // $lab:coverage:off$
 // @ts-ignore
 const {
@@ -1382,7 +1390,7 @@ async function checkResponse(resp) {
   }
   return resp;
 }
-exports.checkResponse = checkResponse;
+__webpack_unused_export__ = checkResponse;
 /**
  * Used in fetch Promise chains to return the JSON version of the response.
  * Note that `resp.json()` will throw on empty body so we use resp.text()
@@ -1391,7 +1399,7 @@ exports.checkResponse = checkResponse;
 function responseToJSON(resp) {
   return resp.text().then(text => text.length ? JSON.parse(text) : "");
 }
-exports.responseToJSON = responseToJSON;
+__webpack_unused_export__ = responseToJSON;
 function loweCaseKeys(obj) {
   // Can be undefined to signal that this key should be removed
   if (!obj) {
@@ -1410,7 +1418,7 @@ function loweCaseKeys(obj) {
   });
   return out;
 }
-exports.loweCaseKeys = loweCaseKeys;
+__webpack_unused_export__ = loweCaseKeys;
 /**
  * This is our built-in request function. It does a few things by default
  * (unless told otherwise):
@@ -1511,7 +1519,11 @@ exports.getAndCache = getAndCache;
 function fetchConformanceStatement(baseUrl = "/", requestOptions) {
   const url = String(baseUrl).replace(/\/*$/, "/") + "metadata";
   return getAndCache(url, requestOptions).catch(ex => {
-    throw new Error(`Failed to fetch the conformance statement from "${url}". ${ex}`);
+    if (baseUrl.indexOf('.kanta.fi') >= 0) {
+      _debug(`Failed to fetch the conformance statement from "${url}". Returning predefined Kanta metadata instead.`);
+      return kantaMetadata;
+    }
+    throw ex;
   });
 }
 exports.fetchConformanceStatement = fetchConformanceStatement;
@@ -1844,13 +1856,13 @@ function assertJsonPatch(patch) {
 }
 exports.assertJsonPatch = assertJsonPatch;
 
-/***/ }),
+/***/ },
 
-/***/ "./src/security/browser.ts":
+/***/ "./src/security/browser.ts"
 /*!*********************************!*\
   !*** ./src/security/browser.ts ***!
   \*********************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -1943,20 +1955,21 @@ async function signCompactJws(alg, privateKey, header, payload) {
 }
 exports.signCompactJws = signCompactJws;
 
-/***/ }),
+/***/ },
 
-/***/ "./src/settings.ts":
+/***/ "./src/settings.ts"
 /*!*************************!*\
   !*** ./src/settings.ts ***!
   \*************************/
-/***/ ((__unused_webpack_module, exports) => {
+(__unused_webpack_module, exports) {
 
 "use strict";
+var __webpack_unused_export__;
 
 
-Object.defineProperty(exports, "__esModule", ({
+__webpack_unused_export__ = ({
   value: true
-}));
+});
 exports.SMART_KEY = exports.patientParams = exports.fhirVersions = exports.patientCompartment = void 0;
 /**
  * Combined list of FHIR resource types accepting patient parameter in FHIR R2-R4
@@ -1992,31 +2005,31 @@ exports.patientParams = ["patient", "subject", "requester", "member", "actor", "
  */
 exports.SMART_KEY = "SMART_KEY";
 
-/***/ }),
+/***/ },
 
-/***/ "./src/smart.ts":
+/***/ "./src/smart.ts"
 /*!**********************!*\
   !*** ./src/smart.ts ***!
   \**********************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
+var __webpack_unused_export__;
 
 
-Object.defineProperty(exports, "__esModule", ({
+__webpack_unused_export__ = ({
   value: true
-}));
-exports.init = exports.buildTokenRequest = exports.ready = exports.onMessage = exports.isInPopUp = exports.isInFrame = exports.authorize = exports.getSecurityExtensions = exports.fetchWellKnownJson = exports.KEY = void 0;
-/* global window */
+});
+exports.init = __webpack_unused_export__ = exports.ready = __webpack_unused_export__ = __webpack_unused_export__ = __webpack_unused_export__ = exports.authorize = __webpack_unused_export__ = __webpack_unused_export__ = __webpack_unused_export__ = void 0;
 const lib_1 = __webpack_require__(/*! ./lib */ "./src/lib.ts");
 const Client_1 = __webpack_require__(/*! ./Client */ "./src/Client.ts");
 const settings_1 = __webpack_require__(/*! ./settings */ "./src/settings.ts");
-Object.defineProperty(exports, "KEY", ({
+__webpack_unused_export__ = ({
   enumerable: true,
   get: function () {
     return settings_1.SMART_KEY;
   }
-}));
+});
 const debug = lib_1.debug.extend("oauth2");
 function isBrowser() {
   return typeof window === "object";
@@ -2033,7 +2046,7 @@ async function fetchWellKnownJson(baseUrl = "/", requestOptions) {
     throw new Error(`Failed to fetch the well-known json "${url}". ${ex.message}`);
   });
 }
-exports.fetchWellKnownJson = fetchWellKnownJson;
+__webpack_unused_export__ = fetchWellKnownJson;
 /**
  * Fetch a "WellKnownJson" and extract the SMART endpoints from it
  */
@@ -2089,7 +2102,7 @@ async function getSecurityExtensionsFromConformanceStatement(baseUrl = "/", requ
 async function getSecurityExtensions(baseUrl = "/", wellKnownRequestOptions, conformanceRequestOptions) {
   return getSecurityExtensionsFromWellKnownJson(baseUrl, wellKnownRequestOptions).catch(() => getSecurityExtensionsFromConformanceStatement(baseUrl, conformanceRequestOptions));
 }
-exports.getSecurityExtensions = getSecurityExtensions;
+__webpack_unused_export__ = getSecurityExtensions;
 /**
  * Starts the SMART Launch Sequence.
  * > **IMPORTANT**:
@@ -2334,7 +2347,7 @@ function isInFrame() {
     return true;
   }
 }
-exports.isInFrame = isInFrame;
+__webpack_unused_export__ = isInFrame;
 /**
  * Checks if called within another window (popup or tab). Only works in browsers!
  * To consider itself called in a new window, this function verifies that:
@@ -2349,7 +2362,7 @@ function isInPopUp() {
     return false;
   }
 }
-exports.isInPopUp = isInPopUp;
+__webpack_unused_export__ = isInPopUp;
 /**
  * Another window can send a "completeAuth" message to this one, making it to
  * navigate to e.data.url
@@ -2361,7 +2374,7 @@ function onMessage(e) {
     window.location.href = e.data.url;
   }
 }
-exports.onMessage = onMessage;
+__webpack_unused_export__ = onMessage;
 /**
  * The ready function should only be called on the page that represents
  * the redirectUri. We typically land there after a redirect from the
@@ -2476,7 +2489,8 @@ async function ready(env, options = {}) {
       code,
       state,
       clientPublicKeySetUrl: options.clientPublicKeySetUrl,
-      privateKey: options.privateKey || state.clientPrivateJwk
+      privateKey: options.privateKey || state.clientPrivateJwk,
+      agent: options.agent
     });
     debug("Token request options: %O", requestOptions);
     // The EHR authorization server SHALL return a JSON structure that
@@ -2514,7 +2528,8 @@ async function buildTokenRequest(env, {
   code,
   state,
   clientPublicKeySetUrl,
-  privateKey
+  privateKey,
+  agent
 }) {
   const {
     redirectUri,
@@ -2574,9 +2589,12 @@ async function buildTokenRequest(env, {
     // Note that the codeVerifier is ALREADY encoded properly  
     requestOptions.body += "&code_verifier=" + codeVerifier;
   }
+  if (agent) {
+    requestOptions.agent = agent;
+  }
   return requestOptions;
 }
-exports.buildTokenRequest = buildTokenRequest;
+__webpack_unused_export__ = buildTokenRequest;
 /**
  * This function can be used when you want to handle everything in one page
  * (no launch endpoint needed). You can think of it as if it does:
@@ -2638,20 +2656,21 @@ async function init(env, authorizeOptions, readyOptions) {
 }
 exports.init = init;
 
-/***/ }),
+/***/ },
 
-/***/ "./src/storage/BrowserStorage.ts":
+/***/ "./src/storage/BrowserStorage.ts"
 /*!***************************************!*\
   !*** ./src/storage/BrowserStorage.ts ***!
   \***************************************/
-/***/ ((__unused_webpack_module, exports) => {
+(__unused_webpack_module, exports) {
 
 "use strict";
+var __webpack_unused_export__;
 
 
-Object.defineProperty(exports, "__esModule", ({
+__webpack_unused_export__ = ({
   value: true
-}));
+});
 class Storage {
   /**
    * Gets the value at `key`. Returns a promise that will be resolved
@@ -2687,20 +2706,21 @@ class Storage {
 }
 exports["default"] = Storage;
 
-/***/ }),
+/***/ },
 
-/***/ "./src/strings.ts":
+/***/ "./src/strings.ts"
 /*!************************!*\
   !*** ./src/strings.ts ***!
   \************************/
-/***/ ((__unused_webpack_module, exports) => {
+(__unused_webpack_module, exports) {
 
 "use strict";
+var __webpack_unused_export__;
 
 
-Object.defineProperty(exports, "__esModule", ({
+__webpack_unused_export__ = ({
   value: true
-}));
+});
 // This map contains reusable debug messages (only those used in multiple places)
 exports["default"] = {
   expired: "Session expired! Please re-launch the app",
@@ -2709,13 +2729,13 @@ exports["default"] = {
   noFreeContext: "Please don't use open fhir servers if you need to access launch context items like the %S."
 };
 
-/***/ }),
+/***/ },
 
-/***/ "./node_modules/debug/src/browser.js":
+/***/ "./node_modules/debug/src/browser.js"
 /*!*******************************************!*\
   !*** ./node_modules/debug/src/browser.js ***!
   \*******************************************/
-/***/ ((module, exports, __webpack_require__) => {
+(module, exports, __webpack_require__) {
 
 /* eslint-env browser */
 
@@ -2848,6 +2868,7 @@ function useColors() {
 
 	// Is webkit? http://stackoverflow.com/a/16459606/376773
 	// document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
+	// eslint-disable-next-line no-return-assign
 	return (typeof document !== 'undefined' && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance) ||
 		// Is firebug? http://stackoverflow.com/a/398120/376773
 		(typeof window !== 'undefined' && window.console && (window.console.firebug || (window.console.exception && window.console.table))) ||
@@ -2937,7 +2958,7 @@ function save(namespaces) {
 function load() {
 	let r;
 	try {
-		r = exports.storage.getItem('debug');
+		r = exports.storage.getItem('debug') || exports.storage.getItem('DEBUG') ;
 	} catch (error) {
 		// Swallow
 		// XXX (@Qix-) should we be logging these?
@@ -2990,13 +3011,13 @@ formatters.j = function (v) {
 };
 
 
-/***/ }),
+/***/ },
 
-/***/ "./node_modules/debug/src/common.js":
+/***/ "./node_modules/debug/src/common.js"
 /*!******************************************!*\
   !*** ./node_modules/debug/src/common.js ***!
   \******************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+(module, __unused_webpack_exports, __webpack_require__) {
 
 
 /**
@@ -3166,24 +3187,62 @@ function setup(env) {
 		createDebug.names = [];
 		createDebug.skips = [];
 
-		let i;
-		const split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
-		const len = split.length;
+		const split = (typeof namespaces === 'string' ? namespaces : '')
+			.trim()
+			.replace(/\s+/g, ',')
+			.split(',')
+			.filter(Boolean);
 
-		for (i = 0; i < len; i++) {
-			if (!split[i]) {
-				// ignore empty strings
-				continue;
-			}
-
-			namespaces = split[i].replace(/\*/g, '.*?');
-
-			if (namespaces[0] === '-') {
-				createDebug.skips.push(new RegExp('^' + namespaces.slice(1) + '$'));
+		for (const ns of split) {
+			if (ns[0] === '-') {
+				createDebug.skips.push(ns.slice(1));
 			} else {
-				createDebug.names.push(new RegExp('^' + namespaces + '$'));
+				createDebug.names.push(ns);
 			}
 		}
+	}
+
+	/**
+	 * Checks if the given string matches a namespace template, honoring
+	 * asterisks as wildcards.
+	 *
+	 * @param {String} search
+	 * @param {String} template
+	 * @return {Boolean}
+	 */
+	function matchesTemplate(search, template) {
+		let searchIndex = 0;
+		let templateIndex = 0;
+		let starIndex = -1;
+		let matchIndex = 0;
+
+		while (searchIndex < search.length) {
+			if (templateIndex < template.length && (template[templateIndex] === search[searchIndex] || template[templateIndex] === '*')) {
+				// Match character or proceed with wildcard
+				if (template[templateIndex] === '*') {
+					starIndex = templateIndex;
+					matchIndex = searchIndex;
+					templateIndex++; // Skip the '*'
+				} else {
+					searchIndex++;
+					templateIndex++;
+				}
+			} else if (starIndex !== -1) { // eslint-disable-line no-negated-condition
+				// Backtrack to the last '*' and try to match more characters
+				templateIndex = starIndex + 1;
+				matchIndex++;
+				searchIndex = matchIndex;
+			} else {
+				return false; // No match
+			}
+		}
+
+		// Handle trailing '*' in template
+		while (templateIndex < template.length && template[templateIndex] === '*') {
+			templateIndex++;
+		}
+
+		return templateIndex === template.length;
 	}
 
 	/**
@@ -3194,8 +3253,8 @@ function setup(env) {
 	*/
 	function disable() {
 		const namespaces = [
-			...createDebug.names.map(toNamespace),
-			...createDebug.skips.map(toNamespace).map(namespace => '-' + namespace)
+			...createDebug.names,
+			...createDebug.skips.map(namespace => '-' + namespace)
 		].join(',');
 		createDebug.enable('');
 		return namespaces;
@@ -3209,39 +3268,19 @@ function setup(env) {
 	* @api public
 	*/
 	function enabled(name) {
-		if (name[name.length - 1] === '*') {
-			return true;
-		}
-
-		let i;
-		let len;
-
-		for (i = 0, len = createDebug.skips.length; i < len; i++) {
-			if (createDebug.skips[i].test(name)) {
+		for (const skip of createDebug.skips) {
+			if (matchesTemplate(name, skip)) {
 				return false;
 			}
 		}
 
-		for (i = 0, len = createDebug.names.length; i < len; i++) {
-			if (createDebug.names[i].test(name)) {
+		for (const ns of createDebug.names) {
+			if (matchesTemplate(name, ns)) {
 				return true;
 			}
 		}
 
 		return false;
-	}
-
-	/**
-	* Convert regexp to namespace
-	*
-	* @param {RegExp} regxep
-	* @return {String} namespace
-	* @api private
-	*/
-	function toNamespace(regexp) {
-		return regexp.toString()
-			.substring(2, regexp.toString().length - 2)
-			.replace(/\.\*\?$/, '*');
 	}
 
 	/**
@@ -3274,322 +3313,332 @@ function setup(env) {
 module.exports = setup;
 
 
-/***/ }),
+/***/ },
 
-/***/ "./node_modules/js-base64/base64.js":
+/***/ "./node_modules/js-base64/base64.js"
 /*!******************************************!*\
   !*** ./node_modules/js-base64/base64.js ***!
   \******************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+(__unused_webpack_module, exports) {
 
 //
 // THIS FILE IS AUTOMATICALLY GENERATED! DO NOT EDIT BY HAND!
 //
-;
 (function (global, factory) {
-     true
-        ? module.exports = factory()
-        : 0;
-}((typeof self !== 'undefined' ? self
-    : typeof window !== 'undefined' ? window
-        : typeof __webpack_require__.g !== 'undefined' ? __webpack_require__.g
-            : this), function () {
-    'use strict';
-    /**
-     *  base64.ts
-     *
-     *  Licensed under the BSD 3-Clause License.
-     *    http://opensource.org/licenses/BSD-3-Clause
-     *
-     *  References:
-     *    http://en.wikipedia.org/wiki/Base64
-     *
-     * @author Dan Kogai (https://github.com/dankogai)
-     */
-    var version = '3.7.7';
-    /**
-     * @deprecated use lowercase `version`.
-     */
-    var VERSION = version;
-    var _hasBuffer = typeof Buffer === 'function';
-    var _TD = typeof TextDecoder === 'function' ? new TextDecoder() : undefined;
-    var _TE = typeof TextEncoder === 'function' ? new TextEncoder() : undefined;
-    var b64ch = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-    var b64chs = Array.prototype.slice.call(b64ch);
-    var b64tab = (function (a) {
-        var tab = {};
-        a.forEach(function (c, i) { return tab[c] = i; });
-        return tab;
-    })(b64chs);
-    var b64re = /^(?:[A-Za-z\d+\/]{4})*?(?:[A-Za-z\d+\/]{2}(?:==)?|[A-Za-z\d+\/]{3}=?)?$/;
-    var _fromCC = String.fromCharCode.bind(String);
-    var _U8Afrom = typeof Uint8Array.from === 'function'
-        ? Uint8Array.from.bind(Uint8Array)
-        : function (it) { return new Uint8Array(Array.prototype.slice.call(it, 0)); };
-    var _mkUriSafe = function (src) { return src
-        .replace(/=/g, '').replace(/[+\/]/g, function (m0) { return m0 == '+' ? '-' : '_'; }); };
-    var _tidyB64 = function (s) { return s.replace(/[^A-Za-z0-9\+\/]/g, ''); };
-    /**
-     * polyfill version of `btoa`
-     */
-    var btoaPolyfill = function (bin) {
-        // console.log('polyfilled');
-        var u32, c0, c1, c2, asc = '';
-        var pad = bin.length % 3;
-        for (var i = 0; i < bin.length;) {
-            if ((c0 = bin.charCodeAt(i++)) > 255 ||
-                (c1 = bin.charCodeAt(i++)) > 255 ||
-                (c2 = bin.charCodeAt(i++)) > 255)
-                throw new TypeError('invalid character found');
-            u32 = (c0 << 16) | (c1 << 8) | c2;
-            asc += b64chs[u32 >> 18 & 63]
-                + b64chs[u32 >> 12 & 63]
-                + b64chs[u32 >> 6 & 63]
-                + b64chs[u32 & 63];
-        }
-        return pad ? asc.slice(0, pad - 3) + "===".substring(pad) : asc;
-    };
-    /**
-     * does what `window.btoa` of web browsers do.
-     * @param {String} bin binary string
-     * @returns {string} Base64-encoded string
-     */
-    var _btoa = typeof btoa === 'function' ? function (bin) { return btoa(bin); }
-        : _hasBuffer ? function (bin) { return Buffer.from(bin, 'binary').toString('base64'); }
-            : btoaPolyfill;
-    var _fromUint8Array = _hasBuffer
-        ? function (u8a) { return Buffer.from(u8a).toString('base64'); }
-        : function (u8a) {
-            // cf. https://stackoverflow.com/questions/12710001/how-to-convert-uint8-array-to-base64-encoded-string/12713326#12713326
-            var maxargs = 0x1000;
-            var strs = [];
-            for (var i = 0, l = u8a.length; i < l; i += maxargs) {
-                strs.push(_fromCC.apply(null, u8a.subarray(i, i + maxargs)));
-            }
-            return _btoa(strs.join(''));
-        };
-    /**
-     * converts a Uint8Array to a Base64 string.
-     * @param {boolean} [urlsafe] URL-and-filename-safe a la RFC4648 §5
-     * @returns {string} Base64 string
-     */
-    var fromUint8Array = function (u8a, urlsafe) {
-        if (urlsafe === void 0) { urlsafe = false; }
-        return urlsafe ? _mkUriSafe(_fromUint8Array(u8a)) : _fromUint8Array(u8a);
-    };
-    // This trick is found broken https://github.com/dankogai/js-base64/issues/130
-    // const utob = (src: string) => unescape(encodeURIComponent(src));
-    // reverting good old fationed regexp
-    var cb_utob = function (c) {
-        if (c.length < 2) {
-            var cc = c.charCodeAt(0);
-            return cc < 0x80 ? c
-                : cc < 0x800 ? (_fromCC(0xc0 | (cc >>> 6))
-                    + _fromCC(0x80 | (cc & 0x3f)))
-                    : (_fromCC(0xe0 | ((cc >>> 12) & 0x0f))
-                        + _fromCC(0x80 | ((cc >>> 6) & 0x3f))
-                        + _fromCC(0x80 | (cc & 0x3f)));
-        }
-        else {
-            var cc = 0x10000
-                + (c.charCodeAt(0) - 0xD800) * 0x400
-                + (c.charCodeAt(1) - 0xDC00);
-            return (_fromCC(0xf0 | ((cc >>> 18) & 0x07))
-                + _fromCC(0x80 | ((cc >>> 12) & 0x3f))
-                + _fromCC(0x80 | ((cc >>> 6) & 0x3f))
-                + _fromCC(0x80 | (cc & 0x3f)));
-        }
-    };
-    var re_utob = /[\uD800-\uDBFF][\uDC00-\uDFFFF]|[^\x00-\x7F]/g;
-    /**
-     * @deprecated should have been internal use only.
-     * @param {string} src UTF-8 string
-     * @returns {string} UTF-16 string
-     */
-    var utob = function (u) { return u.replace(re_utob, cb_utob); };
-    //
-    var _encode = _hasBuffer
-        ? function (s) { return Buffer.from(s, 'utf8').toString('base64'); }
-        : _TE
-            ? function (s) { return _fromUint8Array(_TE.encode(s)); }
-            : function (s) { return _btoa(utob(s)); };
-    /**
-     * converts a UTF-8-encoded string to a Base64 string.
-     * @param {boolean} [urlsafe] if `true` make the result URL-safe
-     * @returns {string} Base64 string
-     */
-    var encode = function (src, urlsafe) {
-        if (urlsafe === void 0) { urlsafe = false; }
-        return urlsafe
-            ? _mkUriSafe(_encode(src))
-            : _encode(src);
-    };
-    /**
-     * converts a UTF-8-encoded string to URL-safe Base64 RFC4648 §5.
-     * @returns {string} Base64 string
-     */
-    var encodeURI = function (src) { return encode(src, true); };
-    // This trick is found broken https://github.com/dankogai/js-base64/issues/130
-    // const btou = (src: string) => decodeURIComponent(escape(src));
-    // reverting good old fationed regexp
-    var re_btou = /[\xC0-\xDF][\x80-\xBF]|[\xE0-\xEF][\x80-\xBF]{2}|[\xF0-\xF7][\x80-\xBF]{3}/g;
-    var cb_btou = function (cccc) {
-        switch (cccc.length) {
-            case 4:
-                var cp = ((0x07 & cccc.charCodeAt(0)) << 18)
-                    | ((0x3f & cccc.charCodeAt(1)) << 12)
-                    | ((0x3f & cccc.charCodeAt(2)) << 6)
-                    | (0x3f & cccc.charCodeAt(3)), offset = cp - 0x10000;
-                return (_fromCC((offset >>> 10) + 0xD800)
-                    + _fromCC((offset & 0x3FF) + 0xDC00));
-            case 3:
-                return _fromCC(((0x0f & cccc.charCodeAt(0)) << 12)
-                    | ((0x3f & cccc.charCodeAt(1)) << 6)
-                    | (0x3f & cccc.charCodeAt(2)));
-            default:
-                return _fromCC(((0x1f & cccc.charCodeAt(0)) << 6)
-                    | (0x3f & cccc.charCodeAt(1)));
-        }
-    };
-    /**
-     * @deprecated should have been internal use only.
-     * @param {string} src UTF-16 string
-     * @returns {string} UTF-8 string
-     */
-    var btou = function (b) { return b.replace(re_btou, cb_btou); };
-    /**
-     * polyfill version of `atob`
-     */
-    var atobPolyfill = function (asc) {
-        // console.log('polyfilled');
-        asc = asc.replace(/\s+/g, '');
-        if (!b64re.test(asc))
-            throw new TypeError('malformed base64.');
-        asc += '=='.slice(2 - (asc.length & 3));
-        var u24, bin = '', r1, r2;
-        for (var i = 0; i < asc.length;) {
-            u24 = b64tab[asc.charAt(i++)] << 18
-                | b64tab[asc.charAt(i++)] << 12
-                | (r1 = b64tab[asc.charAt(i++)]) << 6
-                | (r2 = b64tab[asc.charAt(i++)]);
-            bin += r1 === 64 ? _fromCC(u24 >> 16 & 255)
-                : r2 === 64 ? _fromCC(u24 >> 16 & 255, u24 >> 8 & 255)
-                    : _fromCC(u24 >> 16 & 255, u24 >> 8 & 255, u24 & 255);
-        }
-        return bin;
-    };
-    /**
-     * does what `window.atob` of web browsers do.
-     * @param {String} asc Base64-encoded string
-     * @returns {string} binary string
-     */
-    var _atob = typeof atob === 'function' ? function (asc) { return atob(_tidyB64(asc)); }
-        : _hasBuffer ? function (asc) { return Buffer.from(asc, 'base64').toString('binary'); }
-            : atobPolyfill;
-    //
-    var _toUint8Array = _hasBuffer
-        ? function (a) { return _U8Afrom(Buffer.from(a, 'base64')); }
-        : function (a) { return _U8Afrom(_atob(a).split('').map(function (c) { return c.charCodeAt(0); })); };
-    /**
-     * converts a Base64 string to a Uint8Array.
-     */
-    var toUint8Array = function (a) { return _toUint8Array(_unURI(a)); };
-    //
-    var _decode = _hasBuffer
-        ? function (a) { return Buffer.from(a, 'base64').toString('utf8'); }
-        : _TD
-            ? function (a) { return _TD.decode(_toUint8Array(a)); }
-            : function (a) { return btou(_atob(a)); };
-    var _unURI = function (a) { return _tidyB64(a.replace(/[-_]/g, function (m0) { return m0 == '-' ? '+' : '/'; })); };
-    /**
-     * converts a Base64 string to a UTF-8 string.
-     * @param {String} src Base64 string.  Both normal and URL-safe are supported
-     * @returns {string} UTF-8 string
-     */
-    var decode = function (src) { return _decode(_unURI(src)); };
-    /**
-     * check if a value is a valid Base64 string
-     * @param {String} src a value to check
-      */
-    var isValid = function (src) {
-        if (typeof src !== 'string')
-            return false;
-        var s = src.replace(/\s+/g, '').replace(/={0,2}$/, '');
-        return !/[^\s0-9a-zA-Z\+/]/.test(s) || !/[^\s0-9a-zA-Z\-_]/.test(s);
-    };
-    //
-    var _noEnum = function (v) {
-        return {
-            value: v, enumerable: false, writable: true, configurable: true
-        };
-    };
-    /**
-     * extend String.prototype with relevant methods
-     */
-    var extendString = function () {
-        var _add = function (name, body) { return Object.defineProperty(String.prototype, name, _noEnum(body)); };
-        _add('fromBase64', function () { return decode(this); });
-        _add('toBase64', function (urlsafe) { return encode(this, urlsafe); });
-        _add('toBase64URI', function () { return encode(this, true); });
-        _add('toBase64URL', function () { return encode(this, true); });
-        _add('toUint8Array', function () { return toUint8Array(this); });
-    };
-    /**
-     * extend Uint8Array.prototype with relevant methods
-     */
-    var extendUint8Array = function () {
-        var _add = function (name, body) { return Object.defineProperty(Uint8Array.prototype, name, _noEnum(body)); };
-        _add('toBase64', function (urlsafe) { return fromUint8Array(this, urlsafe); });
-        _add('toBase64URI', function () { return fromUint8Array(this, true); });
-        _add('toBase64URL', function () { return fromUint8Array(this, true); });
-    };
-    /**
-     * extend Builtin prototypes with relevant methods
-     */
-    var extendBuiltins = function () {
-        extendString();
-        extendUint8Array();
-    };
-    var gBase64 = {
-        version: version,
-        VERSION: VERSION,
-        atob: _atob,
-        atobPolyfill: atobPolyfill,
-        btoa: _btoa,
-        btoaPolyfill: btoaPolyfill,
-        fromBase64: decode,
-        toBase64: encode,
-        encode: encode,
-        encodeURI: encodeURI,
-        encodeURL: encodeURI,
-        utob: utob,
-        btou: btou,
-        decode: decode,
-        isValid: isValid,
-        fromUint8Array: fromUint8Array,
-        toUint8Array: toUint8Array,
-        extendString: extendString,
-        extendUint8Array: extendUint8Array,
-        extendBuiltins: extendBuiltins
-    };
-    //
-    // export Base64 to the namespace
-    //
-    // ES5 is yet to have Object.assign() that may make transpilers unhappy.
-    // gBase64.Base64 = Object.assign({}, gBase64);
-    gBase64.Base64 = {};
-    Object.keys(gBase64).forEach(function (k) { return gBase64.Base64[k] = gBase64[k]; });
-    return gBase64;
+   true ? factory(exports) :
+  0;
+})(this, (function (exports) { 'use strict';
+
+  /**
+   *  base64.ts
+   *
+   *  Licensed under the BSD 3-Clause License.
+   *    http://opensource.org/licenses/BSD-3-Clause
+   *
+   *  References:
+   *    http://en.wikipedia.org/wiki/Base64
+   *
+   * @author Dan Kogai (https://github.com/dankogai)
+   */
+  var version = '3.9.3';
+  /**
+   * @deprecated use lowercase `version`.
+   */
+  var VERSION = version;
+  var _TD = typeof TextDecoder === 'function' ? new TextDecoder('utf-8', { ignoreBOM: true }) : undefined;
+  var _TE = typeof TextEncoder === 'function' ? new TextEncoder() : undefined;
+  var b64ch = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+  var b64chs = Array.prototype.slice.call(b64ch);
+  var b64tab = (function (a) {
+      var tab = {};
+      a.forEach(function (c, i) { return tab[c] = i; });
+      return tab;
+  })(b64chs);
+  var b64re = /^(?:[A-Za-z\d+\/]{4})*?(?:[A-Za-z\d+\/]{2}(?:==)?|[A-Za-z\d+\/]{3}=?)?$/;
+  var _fromCC = String.fromCharCode.bind(String);
+  var _U8Afrom = typeof Uint8Array.from === 'function'
+      ? Uint8Array.from.bind(Uint8Array)
+      : function (it) { return new Uint8Array(Array.prototype.slice.call(it, 0)); };
+  var _mkUriSafe = function (src) { return src
+      .replace(/=/g, '').replace(/[+\/]/g, function (m0) { return m0 == '+' ? '-' : '_'; }); };
+  var _tidyB64 = function (s) { return s.replace(/[^A-Za-z0-9\+\/]/g, ''); };
+  /**
+   * polyfill version of `btoa`
+   */
+  var btoaPolyfill = function (bin) {
+      // console.log('polyfilled');
+      var u32, c0, c1, c2, asc = '';
+      var pad = bin.length % 3;
+      for (var i = 0; i < bin.length;) {
+          if ((c0 = bin.charCodeAt(i++)) > 255 ||
+              (c1 = bin.charCodeAt(i++)) > 255 ||
+              (c2 = bin.charCodeAt(i++)) > 255)
+              throw new TypeError('invalid character found');
+          u32 = (c0 << 16) | (c1 << 8) | c2;
+          asc += b64chs[u32 >> 18 & 63]
+              + b64chs[u32 >> 12 & 63]
+              + b64chs[u32 >> 6 & 63]
+              + b64chs[u32 & 63];
+      }
+      return pad ? asc.slice(0, pad - 3) + "===".substring(pad) : asc;
+  };
+  /**
+   * does what `window.btoa` of web browsers do.
+   * @param {String} bin binary string
+   * @returns {string} Base64-encoded string
+   */
+  var _btoa = typeof btoa === 'function' ? function (bin) { return btoa(bin); }
+      : btoaPolyfill;
+  var _fromUint8Array = typeof Uint8Array.prototype.toBase64 === 'function' ? function (u8a) { return u8a.toBase64(); }
+      : function (u8a) {
+          // cf. https://stackoverflow.com/questions/12710001/how-to-convert-uint8-array-to-base64-encoded-string/12713326#12713326
+          var maxargs = 0x1000;
+          var strs = [];
+          for (var i = 0, l = u8a.length; i < l; i += maxargs) {
+              strs.push(_fromCC.apply(null, u8a.subarray(i, i + maxargs)));
+          }
+          return _btoa(strs.join(''));
+      };
+  /**
+   * converts a Uint8Array to a Base64 string.
+   * @param {boolean} [urlsafe] URL-and-filename-safe a la RFC4648 §5
+   * @returns {string} Base64 string
+   */
+  var fromUint8Array = function (u8a, urlsafe) {
+      if (urlsafe === void 0) { urlsafe = false; }
+      return urlsafe ? _mkUriSafe(_fromUint8Array(u8a)) : _fromUint8Array(u8a);
+  };
+  // This trick is found broken https://github.com/dankogai/js-base64/issues/130
+  // const utob = (src: string) => unescape(encodeURIComponent(src));
+  // reverting good old fationed regexp
+  var cb_utob = function (c) {
+      if (c.length < 2) {
+          var cc = c.charCodeAt(0);
+          return cc < 0x80 ? c
+              : cc < 0x800 ? (_fromCC(0xc0 | (cc >>> 6))
+                  + _fromCC(0x80 | (cc & 0x3f)))
+                  : (_fromCC(0xe0 | ((cc >>> 12) & 0x0f))
+                      + _fromCC(0x80 | ((cc >>> 6) & 0x3f))
+                      + _fromCC(0x80 | (cc & 0x3f)));
+      }
+      else {
+          var cc = 0x10000
+              + (c.charCodeAt(0) - 0xD800) * 0x400
+              + (c.charCodeAt(1) - 0xDC00);
+          return (_fromCC(0xf0 | ((cc >>> 18) & 0x07))
+              + _fromCC(0x80 | ((cc >>> 12) & 0x3f))
+              + _fromCC(0x80 | ((cc >>> 6) & 0x3f))
+              + _fromCC(0x80 | (cc & 0x3f)));
+      }
+  };
+  var re_utob = /[\uD800-\uDBFF][\uDC00-\uDFFF]|[^\x00-\x7F]/g;
+  /**
+   * @deprecated should have been internal use only.
+   * @param {string} src UTF-8 string
+   * @returns {string} UTF-16 string
+   */
+  var utob = function (u) { return u.replace(re_utob, cb_utob); };
+  //
+  var _encode = _TE
+      ? function (s) { return _fromUint8Array(_TE.encode(s)); }
+      : function (s) { return _btoa(utob(s)); };
+  /**
+   * converts a UTF-8-encoded string to a Base64 string.
+   * @param {boolean} [urlsafe] if `true` make the result URL-safe
+   * @returns {string} Base64 string
+   */
+  var encode = function (src, urlsafe) {
+      if (urlsafe === void 0) { urlsafe = false; }
+      return urlsafe
+          ? _mkUriSafe(_encode(src))
+          : _encode(src);
+  };
+  /**
+   * converts a UTF-8-encoded string to URL-safe Base64 RFC4648 §5.
+   * @returns {string} Base64 string
+   */
+  var encodeURI = function (src) { return encode(src, true); };
+  // This trick is found broken https://github.com/dankogai/js-base64/issues/130
+  // const btou = (src: string) => decodeURIComponent(escape(src));
+  // reverting good old fationed regexp
+  var re_btou = /[\xC0-\xDF][\x80-\xBF]|[\xE0-\xEF][\x80-\xBF]{2}|[\xF0-\xF7][\x80-\xBF]{3}/g;
+  var cb_btou = function (cccc) {
+      switch (cccc.length) {
+          case 4:
+              var cp = ((0x07 & cccc.charCodeAt(0)) << 18)
+                  | ((0x3f & cccc.charCodeAt(1)) << 12)
+                  | ((0x3f & cccc.charCodeAt(2)) << 6)
+                  | (0x3f & cccc.charCodeAt(3)), offset = cp - 0x10000;
+              return (_fromCC((offset >>> 10) + 0xD800)
+                  + _fromCC((offset & 0x3FF) + 0xDC00));
+          case 3:
+              return _fromCC(((0x0f & cccc.charCodeAt(0)) << 12)
+                  | ((0x3f & cccc.charCodeAt(1)) << 6)
+                  | (0x3f & cccc.charCodeAt(2)));
+          default:
+              return _fromCC(((0x1f & cccc.charCodeAt(0)) << 6)
+                  | (0x3f & cccc.charCodeAt(1)));
+      }
+  };
+  /**
+   * @deprecated should have been internal use only.
+   * @param {string} src UTF-16 string
+   * @returns {string} UTF-8 string
+   */
+  var btou = function (b) { return b.replace(re_btou, cb_btou); };
+  /**
+   * polyfill version of `atob`
+   */
+  var atobPolyfill = function (asc) {
+      // console.log('polyfilled');
+      asc = asc.replace(/\s+/g, '');
+      if (!b64re.test(asc))
+          throw new TypeError('malformed base64.');
+      asc += '=='.slice(2 - (asc.length & 3));
+      var u24, r1, r2;
+      var binArray = []; // use array to avoid minor gc in loop
+      for (var i = 0; i < asc.length;) {
+          u24 = b64tab[asc.charAt(i++)] << 18
+              | b64tab[asc.charAt(i++)] << 12
+              | (r1 = b64tab[asc.charAt(i++)]) << 6
+              | (r2 = b64tab[asc.charAt(i++)]);
+          if (r1 === 64) {
+              binArray.push(_fromCC(u24 >> 16 & 255));
+          }
+          else if (r2 === 64) {
+              binArray.push(_fromCC(u24 >> 16 & 255, u24 >> 8 & 255));
+          }
+          else {
+              binArray.push(_fromCC(u24 >> 16 & 255, u24 >> 8 & 255, u24 & 255));
+          }
+      }
+      return binArray.join('');
+  };
+  /**
+   * does what `window.atob` of web browsers do.
+   * @param {String} asc Base64-encoded string
+   * @returns {string} binary string
+   */
+  var _atob = typeof atob === 'function' ? function (asc) { return atob(_tidyB64(asc)); }
+      : atobPolyfill;
+  //
+  var _toUint8Array = typeof Uint8Array.fromBase64 === 'function'
+      ? function (a) { return Uint8Array.fromBase64(a); } : function (a) { return _U8Afrom(_atob(a).split('').map(function (c) { return c.charCodeAt(0); })); };
+  /**
+   * converts a Base64 string to a Uint8Array.
+   */
+  var toUint8Array = function (a) { return _toUint8Array(_unURI(a)); };
+  //
+  var _decode = _TD
+      ? function (a) { return _TD.decode(_toUint8Array(a)); }
+      : function (a) { return btou(_atob(a)); };
+  var _unURI = function (a) {
+      return _tidyB64(a.replace(/[-_]/g, function (m0) { return m0 == '-' ? '+' : '/'; }));
+  };
+  /**
+   * converts a Base64 string to a UTF-8 string.
+   * @param {String} src Base64 string.  Both normal and URL-safe are supported
+   * @returns {string} UTF-8 string
+   */
+  var decode = function (src) { return _decode(_unURI(src)); };
+  /**
+   * check if a value is a valid Base64 string
+   * @param {String} src a value to check
+    */
+  var isValid = function (src) {
+      if (typeof src !== 'string')
+          return false;
+      var s = src.replace(/\s+/g, '').replace(/={0,2}$/, '');
+      return !/[^\s0-9a-zA-Z\+/]/.test(s) || !/[^\s0-9a-zA-Z\-_]/.test(s);
+  };
+  //
+  var _noEnum = function (v) {
+      return {
+          value: v, enumerable: false, writable: true, configurable: true
+      };
+  };
+  /**
+   * extend String.prototype with relevant methods
+   */
+  var extendString = function () {
+      var _add = function (name, body) { return Object.defineProperty(String.prototype, name, _noEnum(body)); };
+      _add('fromBase64', function () { return decode(this); });
+      _add('toBase64', function (urlsafe) { return encode(this, urlsafe); });
+      _add('toBase64URI', function () { return encode(this, true); });
+      _add('toBase64URL', function () { return encode(this, true); });
+      _add('toUint8Array', function () { return toUint8Array(this); });
+  };
+  /**
+   * extend Uint8Array.prototype with relevant methods
+   */
+  var extendUint8Array = function () {
+      var _add = function (name, body) { return Object.defineProperty(Uint8Array.prototype, name, _noEnum(body)); };
+      _add('toBase64', function (urlsafe) { return fromUint8Array(this, urlsafe); });
+      _add('toBase64URI', function () { return fromUint8Array(this, true); });
+      _add('toBase64URL', function () { return fromUint8Array(this, true); });
+  };
+  /**
+   * extend Builtin prototypes with relevant methods
+   */
+  var extendBuiltins = function () {
+      extendString();
+      extendUint8Array();
+  };
+  var gBase64 = {
+      version: version,
+      VERSION: VERSION,
+      atob: _atob,
+      atobPolyfill: atobPolyfill,
+      btoa: _btoa,
+      btoaPolyfill: btoaPolyfill,
+      fromBase64: decode,
+      toBase64: encode,
+      encode: encode,
+      encodeURI: encodeURI,
+      encodeURL: encodeURI,
+      utob: utob,
+      btou: btou,
+      decode: decode,
+      isValid: isValid,
+      fromUint8Array: fromUint8Array,
+      toUint8Array: toUint8Array,
+      extendString: extendString,
+      extendUint8Array: extendUint8Array,
+      extendBuiltins: extendBuiltins
+  };
+
+  exports.Base64 = gBase64;
+  exports.VERSION = VERSION;
+  exports.atob = _atob;
+  exports.atobPolyfill = atobPolyfill;
+  exports.btoa = _btoa;
+  exports.btoaPolyfill = btoaPolyfill;
+  exports.btou = btou;
+  exports.decode = decode;
+  exports.encode = encode;
+  exports.encodeURI = encodeURI;
+  exports.encodeURL = encodeURI;
+  exports.extendBuiltins = extendBuiltins;
+  exports.extendString = extendString;
+  exports.extendUint8Array = extendUint8Array;
+  exports.fromBase64 = decode;
+  exports.fromUint8Array = fromUint8Array;
+  exports.isValid = isValid;
+  exports.toBase64 = encode;
+  exports.toUint8Array = toUint8Array;
+  exports.utob = utob;
+  exports.version = version;
+
 }));
 
 
-/***/ }),
+/***/ },
 
-/***/ "./node_modules/ms/index.js":
+/***/ "./node_modules/ms/index.js"
 /*!**********************************!*\
   !*** ./node_modules/ms/index.js ***!
   \**********************************/
-/***/ ((module) => {
+(module) {
 
 /**
  * Helpers.
@@ -3616,7 +3665,7 @@ var y = d * 365.25;
  * @api public
  */
 
-module.exports = function(val, options) {
+module.exports = function (val, options) {
   options = options || {};
   var type = typeof val;
   if (type === 'string' && val.length > 0) {
@@ -3755,13 +3804,13 @@ function plural(ms, msAbs, n, name) {
 }
 
 
-/***/ }),
+/***/ },
 
-/***/ "./node_modules/isomorphic-webcrypto/src/browser.mjs":
+/***/ "./node_modules/isomorphic-webcrypto/src/browser.mjs"
 /*!***********************************************************!*\
   !*** ./node_modules/isomorphic-webcrypto/src/browser.mjs ***!
   \***********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -3772,13 +3821,13 @@ function plural(ms, msAbs, n, name) {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (window.crypto);
 
 
-/***/ }),
+/***/ },
 
-/***/ "./node_modules/isomorphic-webcrypto/src/webcrypto-shim.mjs":
+/***/ "./node_modules/isomorphic-webcrypto/src/webcrypto-shim.mjs"
 /*!******************************************************************!*\
   !*** ./node_modules/isomorphic-webcrypto/src/webcrypto-shim.mjs ***!
   \******************************************************************/
-/***/ (() => {
+() {
 
 "use strict";
 /**
@@ -4395,28 +4444,45 @@ function plural(ms, msAbs, n, name) {
  /* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ({}); // section modified by isomorphic-webcrypto build 
 
 
-/***/ })
+/***/ },
+
+/***/ "./src/kanta-hrp-metadata.json"
+/*!*************************************!*\
+  !*** ./src/kanta-hrp-metadata.json ***!
+  \*************************************/
+(module) {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"resourceType":"CapabilityStatement","id":"kanta-hrp","name":"MockMetadataForKantaHRP","status":"active","experimental":true,"date":"2024-12-07T06:35:44Z","kind":"instance","fhirVersion":"4.0.1","format":["json"],"rest":[{"mode":"server","security":{"extension":[{"extension":[{"valueUri":"https://phr-auth.at.kanta.fi/phr-authserver/authorize","url":"authorize"},{"valueUri":"https://phr-token.at.kanta.fi/phr-authserver/token","url":"token"}],"url":"http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris"}],"cors":true,"service":[{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/restful-security-service","code":"OAuth","display":"OAuth"}],"text":"OAuth"},{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/restful-security-service","code":"SMART-on-FHIR","display":"SMART-on-FHIR"}],"text":"SMART-on-FHIR"},{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/restful-security-service","code":"Basic","display":"Basic"}],"text":"Basic"}]}}]}');
+
+/***/ }
 
 /******/ 	});
 /************************************************************************/
 /******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
+/******/ 	const __webpack_module_cache__ = {};
 /******/ 	
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		const cachedModule = __webpack_module_cache__[moduleId];
 /******/ 		if (cachedModule !== undefined) {
 /******/ 			return cachedModule.exports;
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 		const module = __webpack_module_cache__[moduleId] = {
 /******/ 			// no module.id needed
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
+/******/ 		if (!(moduleId in __webpack_modules__)) {
+/******/ 			delete __webpack_module_cache__[moduleId];
+/******/ 			const e = new Error("Cannot find module '" + moduleId + "'");
+/******/ 			e.code = 'MODULE_NOT_FOUND';
+/******/ 			throw e;
+/******/ 		}
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
@@ -4425,40 +4491,24 @@ function plural(ms, msAbs, n, name) {
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
+/******/ 	// define getter/value functions for harmony exports
+/******/ 	__webpack_require__.d = (exports, definition) => {
+/******/ 		for(var key in definition) {
+/******/ 			if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 				Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/global */
-/******/ 	(() => {
-/******/ 		__webpack_require__.g = (function() {
-/******/ 			if (typeof globalThis === 'object') return globalThis;
-/******/ 			try {
-/******/ 				return this || new Function('return this')();
-/******/ 			} catch (e) {
-/******/ 				if (typeof window === 'object') return window;
-/******/ 			}
-/******/ 		})();
-/******/ 	})();
+/******/ 		}
+/******/ 	};
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
+/******/ 	__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop));
 /******/ 	
 /************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/entry/browser.ts");
+/******/ 	let __webpack_exports__ = __webpack_require__("./src/entry/browser.ts");
 /******/ 	window.FHIR = __webpack_exports__;
 /******/ 	
 /******/ })()

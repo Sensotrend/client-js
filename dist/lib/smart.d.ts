@@ -1,3 +1,5 @@
+/// <reference types="node" />
+import { Agent } from "https";
 import Client from "./Client";
 import { SMART_KEY } from "./settings";
 import { fhirclient } from "./types";
@@ -60,7 +62,7 @@ export declare function ready(env: fhirclient.Adapter, options?: fhirclient.Read
  * Builds the token request options. Does not make the request, just
  * creates it's configuration and returns it in a Promise.
  */
-export declare function buildTokenRequest(env: fhirclient.Adapter, { code, state, clientPublicKeySetUrl, privateKey }: {
+export declare function buildTokenRequest(env: fhirclient.Adapter, { code, state, clientPublicKeySetUrl, privateKey, agent }: {
     /**
      * The `code` URL parameter received from the auth redirect
      */
@@ -83,6 +85,10 @@ export declare function buildTokenRequest(env: fhirclient.Adapter, { code, state
         alg: "RS384" | "ES384";
         kid: string;
     };
+    /**
+     * An HTTPS Agent to support client side TLS certificates.
+    */
+    agent?: Agent;
 }): Promise<RequestInit>;
 /**
  * This function can be used when you want to handle everything in one page
