@@ -3,6 +3,7 @@
 import Client from "./Client";
 import { getPath, byCodes, byCode } from "./lib";
 import { IncomingMessage } from "http";
+import { Agent } from "https";
 
 declare namespace fhirclient {
 
@@ -265,6 +266,11 @@ declare namespace fhirclient {
          * abd the parsed body (if any)
          */
         includeResponse?: boolean;
+
+        /**
+         * An HTTPS Agent to support client side TLS certificates.
+        */
+        agent?: Agent;        
     }
 
     /**
@@ -319,6 +325,11 @@ declare namespace fhirclient {
          * status etc.
          */
         includeResponse?: boolean;
+
+        /**
+         * An HTTPS Agent to support client side TLS certificates.
+        */
+        agent?: Agent;        
     }
 
     /**
@@ -682,6 +693,7 @@ declare namespace fhirclient {
         clientPublicKeySetUrl?: string; // for jku
         code?: string;  // Optional authorization code to use vs. from URL in ready()
         stateKey?: string; // Optional state value to use vs. from URL in ready()
+        agent?: Agent; // Optional, for node.js only, HTTPS Agent to support client side TLS certificates.
         // [key: string]: any; // Other options TBD
     }
 

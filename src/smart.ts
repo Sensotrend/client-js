@@ -1,4 +1,6 @@
 /* global window */
+import { Agent } from "https";
+
 import {
     debug as _debug,
     request,
@@ -577,7 +579,8 @@ export async function ready(env: fhirclient.Adapter, options: fhirclient.ReadyOp
             code,
             state,
             clientPublicKeySetUrl: options.clientPublicKeySetUrl,
-            privateKey: options.privateKey || state.clientPrivateJwk
+            privateKey: options.privateKey || state.clientPrivateJwk,
+            agent: options.agent,
         });
         debug("Token request options: %O", requestOptions);
 
@@ -623,7 +626,8 @@ export async function buildTokenRequest(
         code,
         state,
         clientPublicKeySetUrl,
-        privateKey
+        privateKey,
+        agent
     }: {
         /**
          * The `code` URL parameter received from the auth redirect
@@ -650,6 +654,12 @@ export async function buildTokenRequest(
             alg: "RS384" | "ES384"
             kid: string
         }
+
+        /**
+         * An HTTPS Agent to support client side TLS certificates.
+        */
+        agent?: Agent;        
+
     }
 ): Promise<RequestInit>
 {
@@ -720,6 +730,10 @@ export async function buildTokenRequest(
       debug("Found state.codeVerifier, adding to the POST body")
       // Note that the codeVerifier is ALREADY encoded properly  
       requestOptions.body += "&code_verifier=" + codeVerifier;
+    }
+
+    if (agent) {
+        requestOptions.agent = agent;
     }
   
     return requestOptions as RequestInit;
