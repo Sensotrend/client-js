@@ -682,6 +682,13 @@ declare namespace fhirclient {
          * Optional request options (headers, etc) to use when calling getSecurityExtensionsFromConformanceStatement.
          */
         conformanceRequestOptions?: RequestInit;
+
+        /**
+         * Optional locale parameter for Kanta.
+         * If set, it will be passed to the authorization server as a query parameter.
+         */
+        lg?: string;
+
     }
 
     interface ReadyOptions {

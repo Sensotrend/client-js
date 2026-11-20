@@ -133,6 +133,8 @@ async function authorize(env, params = {}) {
     height,
     pkceMode,
     clientPublicKeySetUrl,
+    lg,
+    // Added for Kanta
     // Two deprecated values to use as fall-back values later
     redirect_uri,
     client_id
@@ -259,6 +261,10 @@ async function authorize(env, params = {}) {
   // also pass this in case of EHR launch
   if (launch) {
     redirectParams.push("launch=" + encodeURIComponent(launch));
+  }
+  // Locale parameter for Kanta
+  if (lg) {
+    redirectParams.push("lg=" + encodeURIComponent(lg));
   }
   if (shouldIncludeChallenge(extensions.codeChallengeMethods.includes('S256'), pkceMode)) {
     let codes = await env.security.generatePKCEChallenge();
